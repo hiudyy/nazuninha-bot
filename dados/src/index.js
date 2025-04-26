@@ -22,6 +22,7 @@ try {
  const t = require(`${__dirname}/templates/${template}/texts/index.js`);
  const from = info.key.remoteJid;
  const isGroup = from.endsWith('@g.us');
+ if(!info.key.participant && !info.key.remoteJid) return;
  const sender = isGroup ? info.key.participant.includes(':') ? info.key.participant.split(':')[0] +'@s.whatsapp.net': info.key.participant : info.key.remoteJid;
  const isStatus = from.endsWith('@broadcast');
  const nmrdn = numerodono.replace(new RegExp("[()+-/ +/]", "gi"), "") + `@s.whatsapp.net`
