@@ -45,6 +45,7 @@ read_input() {
 
     while true; do
         printf "%s (Atual: %s): " "$prompt" "${default:-Não definido}"
+        printf " "
         read -r input
         input=${input:-$default}
 
@@ -69,6 +70,7 @@ confirm() {
     local response
 
     printf "%s (S/n): " "$prompt"
+    printf " "
     read -r response
     response=$(echo "${response:-$default}" | tr '[:upper:]' '[:lower:]')
     [[ -z "$response" || "$response" = "s" ]]

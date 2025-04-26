@@ -38,6 +38,7 @@ const ask = (question) => new Promise(resolve => {
     rl.close();
     resolve(answer.trim());
   });
+  console.log(" ");
 });
 
 // Gerenciamento de conexões
