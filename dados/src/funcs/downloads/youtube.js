@@ -198,7 +198,7 @@ class DownloadManager {
       ok: true,
       title: info.title,
       image: info.thumbnail,
-      downloadUrl,
+      url: downloadUrl,
       filename: `${info.title} (${quality}${type === 'audio' ? 'kbps).mp3' : 'p).mp4'})`,
       quality: `${quality}${type === 'audio' ? 'kbps' : 'p'}`,
       availableQuality: CONFIG.FORMATS[type.toUpperCase()]
