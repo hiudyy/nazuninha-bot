@@ -37,7 +37,8 @@
     "node-webpmux": "latest",
     "qrcode-terminal": "latest",
     "ruhend-scraper": "latest",
-    "yt-search": "latest"
+    "yt-search": "latest",
+    "crypto-js": "latest"
   },
   "engines": {
     "node": ">=20.0.0",
