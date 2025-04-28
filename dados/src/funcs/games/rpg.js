@@ -1263,6 +1263,83 @@ async function saqueall(sender) {
     }
 }
 
+// Pix (transfere ouro da carteira de um usuário para a carteira de outro)
+async function pix(sender, destinatario, valor) {
+    try {
+        let remetenteDados = await getUser(sender);
+        let destinatarioDados = await getUser(destinatario);
+        if (!remetenteDados || !destinatarioDados) return { msg: '⚠️ Um dos heróis não foi encontrado!' };
+        if (sender === destinatario) return { msg: '⚠️ Não pode enviar ouro para si mesmo!' };
+        if (isNaN(valor) || valor <= 0) return { msg: '⚠️ Valor inválido! Informe um número maior que zero.' };
+        if (remetenteDados.saldo.carteira < valor) return { msg: '💸 Ouro insuficiente na carteira!' };
+        
+        // Modifica os dados
+        remetenteDados = delSaldo(remetenteDados, valor, false); // Remove da carteira do remetente
+        destinatarioDados = addSaldo(destinatarioDados, valor, false); // Adiciona à carteira do destinatário
+        
+        // Salva ambos os usuários
+        await salvar(sender, remetenteDados);
+        await salvar(destinatario, destinatarioDados);
+        
+        return { 
+            msg: `💸 Transferiu R$${valor} para @${destinatarioDados.nome || destinatario}! ` +
+                 `Você tem R$${remetenteDados.saldo.carteira} na carteira.`
+        };
+    } catch (err) {
+        console.error('Erro ao realizar pix:', err);
+        return { msg: '⚠️ Falha ao transferir ouro!' };
+    }
+}
+
+// Assaltar (tenta roubar ouro da carteira de outro usuário)
+async function assaltar(sender, alvo) {
+    try {
+        let assaltanteDados = await getUser(sender);
+        let alvoDados = await getUser(alvo);
+        if (!assaltanteDados || !alvoDados) return { msg: '⚠️ Um dos heróis não foi encontrado!' };
+        if (sender === alvo) return { msg: '⚠️ Não pode assaltar a si mesmo!' };
+        if (assaltanteDados.emprego !== 'ladrao') return { msg: '⚠️ Apenas ladrões podem assaltar!' };
+        if (assaltanteDados.status.hp <= 30) return { msg: '💔 Muito ferido para assaltar!' };
+        
+        const agora = Date.now();
+        if (assaltanteDados.delay?.assaltar && agora < assaltanteDados.delay.assaltar) {
+            return { msg: `🕵️ Guardas atentos! Espere ${Math.ceil((assaltanteDados.delay.assaltar - agora) / 1000)} segundos.` };
+        }
+
+        const chance = Math.random() * 100;
+        const maxRoubo = Math.min(alvoDados.saldo.carteira, 500); // Limite de roubo
+        let texto = '';
+
+        if (chance < 60) {
+            // Sucesso
+            const ouroRoubado = Math.floor(Math.random() * (maxRoubo - 50)) + 50;
+            if (ouroRoubado <= 0) return { msg: '🕵️ O alvo não tinha ouro para roubar!' };
+            assaltanteDados = addSaldo(assaltanteDados, ouroRoubado, false);
+            alvoDados = delSaldo(alvoDados, ouroRoubado, false);
+            texto = `🕵️ Assalto bem-sucedido! Roubou R$${ouroRoubado} de @${alvoDados.nome || alvo}!`;
+        } else if (chance < 90) {
+            // Falha sem punição
+            texto = '🛡️ O alvo escapou! Nenhum ouro roubado.';
+        } else {
+            // Falha com punição
+            assaltanteDados.status.hp -= 20;
+            texto = '🚨 Pego pelos guardas! Perdeu 20 HP!';
+        }
+
+        // Define delay do assalto (5 minutos)
+        assaltanteDados.delay.assaltar = agora + 5 * 60 * 1000;
+
+        // Salva ambos os usuários
+        await salvar(sender, assaltanteDados);
+        await salvar(alvo, alvoDados);
+
+        return { msg: texto };
+    } catch (err) {
+        console.error('Erro ao assaltar:', err);
+        return { msg: '⚠️ O assalto foi frustrado!' };
+    }
+}
+
 // Exporta funcoes
 module.exports = Object.assign(getUser, {
     rg: rgUser,
@@ -1279,6 +1356,7 @@ module.exports = Object.assign(getUser, {
     sacar,
     depoall,
     saqueall,
+    pix,
     acao: {
         minerar,
         cacar,
@@ -1287,7 +1365,8 @@ module.exports = Object.assign(getUser, {
         cortar,
         batalhar,
         pocao: usarPocao,
-        alimentarPet
+        alimentarPet,
+        assaltar
     },
     emprego: {
         add: entrarEmprego,
