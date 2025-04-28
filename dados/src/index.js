@@ -2285,16 +2285,7 @@ await reply(t.b.erro());
             const DadosRpEmpregos = await rpg(sender);
             if (!DadosRpEmpregos) return reply('⚠️ Você não está registrado.');
             const empregos = await rpg.empregos(sender);
-            let textEmpregos = `⚔️ *Caminhos da NazuCity* ⚔️\n- ✅ Disponíveis\n- ❌ Bloqueados\n`;
-            for (const emprego of empregos.disponiveis) {
-                textEmpregos += `\n- ✅ ${emprego}`;
-            }
-            textEmpregos += '\n';
-            for (const emprego of empregos.bloqueados) {
-                textEmpregos += `\n- ❌ ${emprego}`;
-            }
-            textEmpregos += `\n\n📜 Use: ${prefix}addemprego [nome]\nExemplo: ${prefix}addemprego lixeiro`;
-            return reply(textEmpregos);
+            return reply(empregos.msg);
         } catch (e) {
             console.error('Erro no comando empregos:', e);
             return reply('❌ Erro ao executar o comando empregos.');
