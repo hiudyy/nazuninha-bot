@@ -2126,7 +2126,7 @@ await reply(t.b.erro());
     case 'reg':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpReg = await rpg(sender);
             if (DadosRpReg) return reply(`🌟 Você já está registrado como ${DadosRpReg.nome}.`);
             if (!q) return reply(`📜 Digite seu nome.\nExemplo: ${prefix}registrar João`);
@@ -2143,7 +2143,7 @@ await reply(t.b.erro());
     case 'delrg':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpDel = await rpg(sender);
             if (!DadosRpDel) return reply('⚠️ Você não está registrado.');
             if (!q || q !== '1') return reply(`⚠️ Confirme a exclusão com: ${prefix}${command} 1`);
@@ -2160,7 +2160,7 @@ await reply(t.b.erro());
     case 'banco':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpSaldo = await rpg(sender);
             if (!DadosRpSaldo) return reply('⚠️ Você não está registrado.');
             return reply(`🏦 *INFORMAÇÕES BANCÁRIAS* 🏦\n\nBanco: NazuBank\nNome: ${DadosRpSaldo.nome}\nSaldo no Banco: R$${DadosRpSaldo.saldo.banco}\nSaldo na Carteira: R$${DadosRpSaldo.saldo.carteira}`);
@@ -2173,7 +2173,7 @@ await reply(t.b.erro());
     case 'depositar':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpDep = await rpg(sender);
             if (!DadosRpDep) return reply('⚠️ Você não está registrado.');
             if (!q || isNaN(q)) return reply(`💰 Digite um valor válido.\nExemplo: ${prefix}depositar 50`);
@@ -2189,7 +2189,7 @@ await reply(t.b.erro());
     case 'sacar':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpSacar = await rpg(sender);
             if (!DadosRpSacar) return reply('⚠️ Você não está registrado.');
             if (!q || isNaN(q)) return reply(`💰 Digite um valor válido.\nExemplo: ${prefix}sacar 50`);
@@ -2205,7 +2205,7 @@ await reply(t.b.erro());
     case 'depoall':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpDepAll = await rpg(sender);
             if (!DadosRpDepAll) return reply('⚠️ Você não está registrado.');
             if (DadosRpDepAll.saldo.carteira <= 0) return reply('💸 Sem ouro na carteira para depositar.');
@@ -2220,7 +2220,7 @@ await reply(t.b.erro());
     case 'saqueall':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpSaqueAll = await rpg(sender);
             if (!DadosRpSaqueAll) return reply('⚠️ Você não está registrado.');
             if (DadosRpSaqueAll.saldo.banco <= 0) return reply('💸 Sem ouro no banco para sacar.');
@@ -2236,7 +2236,7 @@ await reply(t.b.erro());
     case 'transferir':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpPix = await rpg(sender);
             if (!DadosRpPix) return reply('⚠️ Você não está registrado.');
             if (!q) return reply(`💸 Digite o usuário e valor: ${prefix}pix @usuario/valor`);
@@ -2266,7 +2266,7 @@ await reply(t.b.erro());
     case 'trabalhar':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpTrabalhar = await rpg(sender);
             if (!DadosRpTrabalhar) return reply('⚠️ Você não está registrado.');
             if (!DadosRpTrabalhar.emprego || DadosRpTrabalhar.emprego === 'desempregado') return reply('😅 Andarilhos não trabalham! Escolha um caminho!');
@@ -2281,7 +2281,7 @@ await reply(t.b.erro());
     case 'empregos':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpEmpregos = await rpg(sender);
             if (!DadosRpEmpregos) return reply('⚠️ Você não está registrado.');
             const empregos = await rpg.empregos(sender);
@@ -2304,7 +2304,7 @@ await reply(t.b.erro());
     case 'addemprego':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpAddEmprego = await rpg(sender);
             if (!DadosRpAddEmprego) return reply('⚠️ Você não está registrado.');
             if (DadosRpAddEmprego.emprego && DadosRpAddEmprego.emprego !== 'desempregado') return reply('⚠️ Você já tem um emprego. Demita-se primeiro.');
@@ -2320,7 +2320,7 @@ await reply(t.b.erro());
     case 'demissao':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpDemissao = await rpg(sender);
             if (!DadosRpDemissao) return reply('⚠️ Você não está registrado.');
             if (!DadosRpDemissao.emprego || DadosRpDemissao.emprego === 'desempregado') return reply('😅 Você já vive como andarilho!');
@@ -2336,7 +2336,7 @@ await reply(t.b.erro());
     case 'loja':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpLoja = await rpg(sender);
             if (!DadosRpLoja) return reply('⚠️ Você não está registrado.');
             const loja = await rpg.loja();
@@ -2350,7 +2350,7 @@ await reply(t.b.erro());
     case 'comprar':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpComprar = await rpg(sender);
             if (!DadosRpComprar) return reply('⚠️ Você não está registrado.');
             if (!q) return reply(`🛒 Digite o nome do item.\nExemplo: ${prefix}comprar picareta`);
@@ -2366,7 +2366,7 @@ await reply(t.b.erro());
     case 'vender':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpVender = await rpg(sender);
             if (!DadosRpVender) return reply('⚠️ Você não está registrado.');
             if (!q) return reply(`💰 Digite o item e quantidade: item/quantidade.\nExemplo: ${prefix}vender carvao/5`);
@@ -2383,7 +2383,7 @@ await reply(t.b.erro());
     case 'inventario':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpInventario = await rpg(sender);
             if (!DadosRpInventario) return reply('⚠️ Você não está registrado.');
             const inventario = await rpg.itens(sender);
@@ -2397,7 +2397,7 @@ await reply(t.b.erro());
     case 'me':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpMe = await rpg(sender);
             if (!DadosRpMe) return reply('⚠️ Você não está registrado.');
             const informacoes = await rpg.me(sender);
@@ -2412,7 +2412,7 @@ await reply(t.b.erro());
     case 'pescar':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpPescar = await rpg(sender);
             if (!DadosRpPescar) return reply('⚠️ Você não está registrado.');
             const pesca = await rpg.acao.pescar(sender);
@@ -2426,7 +2426,7 @@ await reply(t.b.erro());
     case 'minerar':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpMinerar = await rpg(sender);
             if (!DadosRpMinerar) return reply('⚠️ Você não está registrado.');
             const mineracao = await rpg.acao.minerar(sender);
@@ -2440,7 +2440,7 @@ await reply(t.b.erro());
     case 'cacar':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpCacar = await rpg(sender);
             if (!DadosRpCacar) return reply('⚠️ Você não está registrado.');
             const caca = await rpg.acao.cacar(sender);
@@ -2454,7 +2454,7 @@ await reply(t.b.erro());
     case 'plantar':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpPlantar = await rpg(sender);
             if (!DadosRpPlantar) return reply('⚠️ Você não está registrado.');
             const plantar = await rpg.acao.plantar(sender);
@@ -2468,7 +2468,7 @@ await reply(t.b.erro());
     case 'cortar':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpCortar = await rpg(sender);
             if (!DadosRpCortar) return reply('⚠️ Você não está registrado.');
             const cortar = await rpg.acao.cortar(sender);
@@ -2483,7 +2483,7 @@ await reply(t.b.erro());
     case 'batalhar':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpLutar = await rpg(sender);
             if (!DadosRpLutar) return reply('⚠️ Você não está registrado.');
             const batalha = await rpg.acao.batalhar(sender);
@@ -2497,7 +2497,7 @@ await reply(t.b.erro());
     case 'pocao':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpPocao = await rpg(sender);
             if (!DadosRpPocao) return reply('⚠️ Você não está registrado.');
             const usarPocao = await rpg.acao.pocao(sender);
@@ -2511,7 +2511,7 @@ await reply(t.b.erro());
     case 'alimentar':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpAlimentar = await rpg(sender);
             if (!DadosRpAlimentar) return reply('⚠️ Você não está registrado.');
             const alimentar = await rpg.acao.alimentarPet(sender);
@@ -2525,7 +2525,7 @@ await reply(t.b.erro());
     case 'assaltar':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpAssaltar = await rpg(sender);
             if (!DadosRpAssaltar) return reply('⚠️ Você não está registrado.');
             if (!menc_os2) return reply(`📌 Marque quem deseja assaltar.\nExemplo: ${prefix}assaltar @usuario`);
@@ -2542,7 +2542,7 @@ await reply(t.b.erro());
     case 'missao':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpMissao = await rpg(sender);
             if (!DadosRpMissao) return reply('⚠️ Você não está registrado.');
             if (!q) return reply(`📜 Digite o nome da missão.\nExemplo: ${prefix}missao caça ao tesouro`);
@@ -2557,7 +2557,7 @@ await reply(t.b.erro());
     case 'completar':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpCompletar = await rpg(sender);
             if (!DadosRpCompletar) return reply('⚠️ Você não está registrado.');
             if (!q) return reply(`📜 Digite o nome da missão.\nExemplo: ${prefix}completar caça ao tesouro`);
@@ -2573,7 +2573,7 @@ await reply(t.b.erro());
     case 'criarguilda':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpCriarGuilda = await rpg(sender);
             if (!DadosRpCriarGuilda) return reply('⚠️ Você não está registrado.');
             if (!q) return reply(`🏰 Digite o nome da guilda.\nExemplo: ${prefix}criarguilda Cavaleiros`);
@@ -2588,7 +2588,7 @@ await reply(t.b.erro());
     case 'entrarguilda':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpEntrarGuilda = await rpg(sender);
             if (!DadosRpEntrarGuilda) return reply('⚠️ Você não está registrado.');
             if (!q) return reply(`🏰 Digite o nome da guilda.\nExemplo: ${prefix}entrarguilda Cavaleiros`);
@@ -2603,7 +2603,7 @@ await reply(t.b.erro());
     case 'sairguilda':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpSairGuilda = await rpg(sender);
             if (!DadosRpSairGuilda) return reply('⚠️ Você não está registrado.');
             const sairGuilda = await rpg.guilda.sair(sender);
@@ -2618,7 +2618,7 @@ await reply(t.b.erro());
     case 'duelar':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpDuelar = await rpg(sender);
             if (!DadosRpDuelar) return reply('⚠️ Você não está registrado.');
             if (!q || !menc_os2) return reply(`⚔️ Digite o valor da aposta e marque o adversário.\nExemplo: ${prefix}duelar 100 @alvo`);
@@ -2635,7 +2635,7 @@ await reply(t.b.erro());
     case 'aceitarduelo':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpAceitarDuelo = await rpg(sender);
             if (!DadosRpAceitarDuelo) return reply('⚠️ Você não está registrado.');
             const aceitarDuelo = await rpg.duelo.aceitar(sender);
@@ -2650,7 +2650,7 @@ await reply(t.b.erro());
     case 'ranking':
         try {
             if (!isGroup) return reply('⚠️ Este comando só pode ser usado em grupos.');
-            if (!isModoRPG) return reply('⚠️ O modo RPG precisa estar ativo.');
+            if (!isModoRpg) return reply('⚠️ O modo RPG precisa estar ativo.');
             const DadosRpRanking = await rpg(sender);
             if (!DadosRpRanking) return reply('⚠️ Você não está registrado.');
             const ranking = await rpg.ranking(sender);
