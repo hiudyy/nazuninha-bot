@@ -113,7 +113,9 @@ try {
  
  function normalizarTexto(texto) {
     return texto.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-}
+ };
+ 
+ const normalizar = texto => texto.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
  //FIM FUNÇÕES BASICAS
 
  //SISTEMA ANTI PORNOGRAFIA 🤫
