@@ -1,5 +1,5 @@
 /*
- * SISTEMA DE RPG - VERSAO 2.0.0
+ * SISTEMA DE RPG - VERSAO 2.1.0
  * Criado com muito carinho por: Hiudy
  * 
  * ATENCAO: Este código é meu (Hiudy)! Não venda sem permissão.
@@ -16,8 +16,7 @@ const fs = require('fs').promises;
 const RpgPath = path.join(__dirname, '../../../database/rpg');
 const RankPath = path.join(RpgPath, 'ranking.json');
 
-// Gerenciador de delays e duelos
-let delay = {};
+// Gerenciador de duelos
 let duelosPendentes = {};
 
 // Cria pastas
@@ -131,60 +130,41 @@ const getUser = async sender => {
         if (await fs.access(caminho).then(() => true).catch(() => false)) {
             return JSON.parse(await fs.readFile(caminho, 'utf-8'));
         }
-        return false;
+        return null;
     } catch (err) {
         console.error('Erro ao buscar usuário:', err);
-        return false;
+        return null;
     }
 };
 
-const addSaldo = async (sender, valor, banco = false) => {
-    try {
-        const dados = await getUser(sender);
-        if (!dados || isNaN(valor)) return false;
-        banco ? (dados.saldo.banco += valor) : (dados.saldo.carteira += valor);
-        if (!banco && valor > 0) await atualizarRanking(sender, 'ouro', valor);
-        return await salvar(sender, dados);
-    } catch (err) {
-        console.error('Erro ao gerenciar saldo:', err);
-        return false;
-    }
+const addSaldo = (dados, valor, banco = false) => {
+    if (isNaN(valor)) return null;
+    banco ? (dados.saldo.banco += valor) : (dados.saldo.carteira += valor);
+    return dados;
 };
-const delSaldo = (sender, valor, banco = false) => addSaldo(sender, -valor, banco);
 
-const addItem = async (sender, item, qtd = 1) => {
-    try {
-        const dados = await getUser(sender);
-        if (!dados) return false;
-        dados.inv[item] = (dados.inv[item] || 0) + qtd;
-        return await salvar(sender, dados);
-    } catch (err) {
-        console.error('Erro ao adicionar item:', err);
-        return false;
-    }
+const delSaldo = (dados, valor, banco = false) => addSaldo(dados, -valor, banco);
+
+const addItem = (dados, item, qtd = 1) => {
+    dados.inv[item] = (dados.inv[item] || 0) + qtd;
+    return dados;
 };
-const delItem = async (sender, item, qtd = 1) => {
-    try {
-        const dados = await getUser(sender);
-        if (!dados || !dados.inv[item] || dados.inv[item] < qtd) return false;
-        dados.inv[item] -= qtd;
-        if (dados.inv[item] <= 0) delete dados.inv[item];
-        return await salvar(sender, dados);
-    } catch (err) {
-        console.error('Erro ao remover item:', err);
-        return false;
-    }
+
+const delItem = (dados, item, qtd = 1) => {
+    if (!dados.inv[item] || dados.inv[item] < qtd) return null;
+    dados.inv[item] -= qtd;
+    if (dados.inv[item] <= 0) delete dados.inv[item];
+    return dados;
 };
 
 // Verifica se pet fugiu
-async function verificarPet(sender, dados) {
-    if (!dados.pet) return false;
+async function verificarPet(dados) {
+    if (!dados.pet) return null;
     const agora = Date.now();
     if (agora - dados.pet.ultimaAlimentacao > 3 * 24 * 60 * 60 * 1000) {
         const pet = itensLoja.find(i => i.nome === dados.pet.nome);
         const nomePet = pet?.nomeExibicao || dados.pet.nome;
         dados.pet = null;
-        await salvar(sender, dados);
         return {
             msg: `🐾 *Seu ${nomePet} fugiu!* Ele deixou uma carta para você:\n\n` +
                  `📜 *Carta de ${nomePet}* 📜\n` +
@@ -195,7 +175,7 @@ async function verificarPet(sender, dados) {
                  `~${nomePet}`
         };
     }
-    return false;
+    return null;
 }
 
 // Atualiza ranking
@@ -284,7 +264,7 @@ async function listarEmpregos(sender) {
 // Sai do emprego
 async function sairEmprego(sender) {
     try {
-        const dados = await getUser(sender);
+        let dados = await getUser(sender);
         if (!dados) return { msg: '⚠️ Herói não encontrado!' };
         if (dados.emprego === 'desempregado') return { msg: '😅 Você já vive como andarilho!' };
         dados.emprego = 'desempregado';
@@ -299,7 +279,7 @@ async function sairEmprego(sender) {
 // Entra em emprego
 async function entrarEmprego(sender, emprego) {
     try {
-        const dados = await getUser(sender);
+        let dados = await getUser(sender);
         if (!dados) return { msg: '⚠️ Herói não encontrado!' };
         const job = empregos.find(e => normalizar(e.nome) === normalizar(emprego));
         if (!job) return { msg: '⚠️ Caminho inválido! Veja com #prefix#empregos.' };
@@ -317,10 +297,13 @@ async function entrarEmprego(sender, emprego) {
 // Trabalha
 async function trabalhar(sender) {
     try {
-        const dados = await getUser(sender);
+        let dados = await getUser(sender);
         if (!dados) return { msg: '⚠️ Herói não encontrado!' };
-        const petFugiu = await verificarPet(sender, dados);
-        if (petFugiu) return petFugiu;
+        const petFugiu = await verificarPet(dados);
+        if (petFugiu) {
+            await salvar(sender, dados);
+            return petFugiu;
+        }
         if (dados.emprego === 'desempregado') return { msg: '😅 Andarilhos não trabalham! Escolha um caminho!' };
         if (dados.status.fadiga >= 100) return { msg: '😴 Exausto! Descanse antes de continuar!' };
         if (dados.status.hp <= 0) return { msg: '💔 Ferido demais! Cure-se primeiro!' };
@@ -329,8 +312,8 @@ async function trabalhar(sender) {
         if (!job) return { msg: '⚠️ Caminho inválido!' };
 
         const agora = Date.now();
-        if (delay[sender]?.trabalhar && delay[sender].trabalhar > agora) {
-            return { msg: job.msgDelay.replace('#segundos#', Math.ceil((delay[sender].trabalhar - agora) / 1000)) };
+        if (dados.delay?.trabalhar && dados.delay.trabalhar > agora) {
+            return { msg: job.msgDelay.replace('#segundos#', Math.ceil((dados.delay.trabalhar - agora) / 1000)) };
         }
 
         let salario = 0, texto = '', xp = 1;
@@ -531,10 +514,12 @@ async function trabalhar(sender) {
                 break;
         }
 
-        delay[sender] = delay[sender] || {};
-        delay[sender].trabalhar = agora + (job.delay * 1000);
+        dados.delay.trabalhar = agora + (job.delay * 1000);
         dados.xp += xp;
-        if (salario > 0) await addSaldo(sender, salario);
+        if (salario > 0) {
+            dados = addSaldo(dados, salario);
+            await atualizarRanking(sender, 'ouro', salario);
+        }
 
         const proximo = empregos.find(e => e.xp > job.xp && e.xp <= dados.xp);
         if (proximo) texto += `\n\n📜 Nova trilha aberta! Torne-se *${proximo.nome}*!`;
@@ -553,16 +538,16 @@ async function comprarItem(sender, item) {
     try {
         const it = itensLoja.find(i => normalizar(i.nome) === normalizar(item));
         if (!it) return { msg: '⚠️ Item não está no mercado! Use #prefix#loja.' };
-        const dados = await getUser(sender);
+        let dados = await getUser(sender);
         if (!dados) return { msg: '⚠️ Herói não encontrado!' };
         if (dados.saldo.carteira < it.valor) return { msg: '💸 Ouro insuficiente!' };
         if (it.pet && dados.pet) return { msg: '⚠️ Você já tem um companheiro!' };
-        await delSaldo(sender, it.valor);
-        await addItem(sender, it.nome);
+        dados = delSaldo(dados, it.valor);
+        dados = addItem(dados, it.nome);
         if (it.pet) {
             dados.pet = { nome: it.nome, ultimaAlimentacao: Date.now() };
-            await salvar(sender, dados);
         }
+        await salvar(sender, dados);
         return { msg: `🛒 Adquiriu *${it.nomeExibicao || it.nome}* por R$${it.valor}! ${it.pet ? 'Seu novo companheiro está pronto!' : 'Na sua mochila!'}` };
     } catch (err) {
         console.error('Erro ao comprar:', err);
@@ -575,14 +560,14 @@ async function venderItem(sender, item, qtd = 1) {
     try {
         const it = itensVenda.find(i => normalizar(i.nome) === normalizar(item)) || itensLoja.find(i => normalizar(i.nome) === normalizar(item));
         if (!it) return { msg: '⚠️ Item não vendável!' };
-        const dados = await getUser(sender);
+        let dados = await getUser(sender);
         if (!dados || !dados.inv[it.nome] || dados.inv[it.nome] < qtd) {
             return { msg: `⚠️ Não tem ${qtd}x *${it.nomeExibicao || it.nome}*! Mochila: ${dados.inv[it.nome] || 0}.` };
         }
         if (it.pet && dados.pet?.nome === it.nome) dados.pet = null;
         const ganho = it.venda * qtd;
-        await addSaldo(sender, ganho);
-        await delItem(sender, it.nome, qtd);
+        dados = addSaldo(dados, ganho);
+        dados = delItem(dados, it.nome, qtd);
         await salvar(sender, dados);
         return { msg: `💰 Vendeu ${qtd}x *${it.nomeExibicao || it.nome}* por R$${ganho}!` };
     } catch (err) {
@@ -594,10 +579,13 @@ async function venderItem(sender, item, qtd = 1) {
 // Alimenta pet
 async function alimentarPet(sender) {
     try {
-        const dados = await getUser(sender);
+        let dados = await getUser(sender);
         if (!dados) return { msg: '⚠️ Herói não encontrado!' };
-        const petFugiu = await verificarPet(sender, dados);
-        if (petFugiu) return petFugiu;
+        const petFugiu = await verificarPet(dados);
+        if (petFugiu) {
+            await salvar(sender, dados);
+            return petFugiu;
+        }
         if (!dados.pet) return { msg: '⚠️ Você não tem um companheiro!' };
         if (!dados.inv.racao) return { msg: '⚠️ Sem ração! Compre no mercado!' };
         const agora = Date.now();
@@ -605,7 +593,7 @@ async function alimentarPet(sender) {
             const pet = itensLoja.find(i => i.nome === dados.pet.nome);
             return { msg: `🐾 Seu *${pet?.nomeExibicao || dados.pet.nome}* ainda está satisfeito! Volte em ${Math.ceil((24 * 60 * 60 * 1000 - (agora - dados.pet.ultimaAlimentacao)) / 1000 / 3600)} horas.` };
         }
-        await delItem(sender, 'racao');
+        dados = delItem(dados, 'racao');
         dados.pet.ultimaAlimentacao = agora;
         await salvar(sender, dados);
         const pet = itensLoja.find(i => i.nome === dados.pet.nome);
@@ -619,10 +607,13 @@ async function alimentarPet(sender) {
 // Pesca
 async function pescar(sender) {
     try {
-        const dados = await getUser(sender);
+        let dados = await getUser(sender);
         if (!dados) return { msg: '⚠️ Herói não encontrado!' };
-        const petFugiu = await verificarPet(sender, dados);
-        if (petFugiu) return petFugiu;
+        const petFugiu = await verificarPet(dados);
+        if (petFugiu) {
+            await salvar(sender, dados);
+            return petFugiu;
+        }
         if (!dados.inv.isca) return { msg: '🎣 Sem iscas! Compre no mercado!' };
         const agora = Date.now();
         if (dados.delay?.pescar && agora < dados.delay.pescar) {
@@ -631,8 +622,8 @@ async function pescar(sender) {
         let peixes = Math.floor(Math.random() * 11) + 5;
         if (dados.pet?.nome === 'falcao') peixes = Math.floor(peixes * 1.1);
         dados.delay.pescar = agora + 2 * 60 * 1000;
-        await delItem(sender, 'isca');
-        await addItem(sender, 'peixe', peixes);
+        dados = delItem(dados, 'isca');
+        dados = addItem(dados, 'peixe', peixes);
         await salvar(sender, dados);
         return { msg: `🎣 Pescou ${peixes} peixes brilhantes! Boa, pescador!` };
     } catch (err) {
@@ -644,10 +635,13 @@ async function pescar(sender) {
 // Caca
 async function cacar(sender) {
     try {
-        const dados = await getUser(sender);
+        let dados = await getUser(sender);
         if (!dados) return { msg: '⚠️ Herói não encontrado!' };
-        const petFugiu = await verificarPet(sender, dados);
-        if (petFugiu) return petFugiu;
+        const petFugiu = await verificarPet(dados);
+        if (petFugiu) {
+            await salvar(sender, dados);
+            return petFugiu;
+        }
         if (!dados.inv.arma || !dados.inv.municao) return { msg: '🏹 Precisa de arma e munição!' };
         const agora = Date.now();
         if (dados.delay?.cacar && agora < dados.delay.cacar) {
@@ -657,13 +651,13 @@ async function cacar(sender) {
         let carnes = Math.floor(Math.random() * 11) + 10;
         if (dados.pet?.nome === 'lobo') carnes = Math.floor(carnes * 1.2);
         dados.delay.cacar = agora + 4 * 60 * 1000;
-        await delItem(sender, 'municao');
+        dados = delItem(dados, 'municao');
         if (quebra) {
-            await delItem(sender, 'arma');
+            dados = delItem(dados, 'arma');
             await salvar(sender, dados);
             return { msg: `🏹 Caçou ${carnes} carnes, mas sua arma partiu-se!` };
         }
-        await addItem(sender, 'carne', carnes);
+        dados = addItem(dados, 'carne', carnes);
         await salvar(sender, dados);
         return { msg: `🏹 Caçada gloriosa! Conseguiu ${carnes} carnes!` };
     } catch (err) {
@@ -675,10 +669,13 @@ async function cacar(sender) {
 // Mineracao
 async function minerar(sender) {
     try {
-        const dados = await getUser(sender);
+        let dados = await getUser(sender);
         if (!dados) return { msg: '⚠️ Herói não encontrado!' };
-        const petFugiu = await verificarPet(sender, dados);
-        if (petFugiu) return petFugiu;
+        const petFugiu = await verificarPet(dados);
+        if (petFugiu) {
+            await salvar(sender, dados);
+            return petFugiu;
+        }
         if (!dados.inv.picareta) return { msg: '⛏️ Precisa de picareta!' };
         const agora = Date.now();
         if (dados.delay?.minerar && agora < dados.delay.minerar) {
@@ -697,11 +694,11 @@ async function minerar(sender) {
             if (Math.random() * 100 < m.chance) {
                 const qtd = Math.floor(Math.random() * 3) + 1;
                 ganhos.push({ nome: m.nome, qtd });
-                await addItem(sender, m.nome, qtd);
+                dados = addItem(dados, m.nome, qtd);
             }
         }
         if (Math.random() < 0.25) {
-            await delItem(sender, 'picareta');
+            dados = delItem(dados, 'picareta');
             ganhos.push({ nome: 'picareta quebrada', qtd: 1 });
         }
         dados.delay.minerar = agora + 3 * 60 * 1000;
@@ -717,10 +714,13 @@ async function minerar(sender) {
 // Agricultura
 async function plantar(sender) {
     try {
-        const dados = await getUser(sender);
+        let dados = await getUser(sender);
         if (!dados) return { msg: '⚠️ Herói não encontrado!' };
-        const petFugiu = await verificarPet(sender, dados);
-        if (petFugiu) return petFugiu;
+        const petFugiu = await verificarPet(dados);
+        if (petFugiu) {
+            await salvar(sender, dados);
+            return petFugiu;
+        }
         if (!dados.inv.semente) return { msg: '🌱 Precisa de sementes!' };
         const agora = Date.now();
         if (dados.delay?.plantar && agora < dados.delay.plantar) {
@@ -728,8 +728,8 @@ async function plantar(sender) {
         }
         let colheita = Math.floor(Math.random() * 5) + 3;
         if (dados.pet?.nome === 'falcao') colheita = Math.floor(colheita * 1.1);
-        await delItem(sender, 'semente');
-        await addItem(sender, 'trigo', colheita);
+        dados = delItem(dados, 'semente');
+        dados = addItem(dados, 'trigo', colheita);
         dados.delay.plantar = agora + 5 * 60 * 1000;
         await salvar(sender, dados);
         return { msg: `🌾 Plantou e colheu ${colheita} trigos dourados!` };
@@ -742,10 +742,13 @@ async function plantar(sender) {
 // Corte de madeira
 async function cortar(sender) {
     try {
-        const dados = await getUser(sender);
+        let dados = await getUser(sender);
         if (!dados) return { msg: '⚠️ Herói não encontrado!' };
-        const petFugiu = await verificarPet(sender, dados);
-        if (petFugiu) return petFugiu;
+        const petFugiu = await verificarPet(dados);
+        if (petFugiu) {
+            await salvar(sender, dados);
+            return petFugiu;
+        }
         if (!dados.inv.machado) return { msg: '🪓 Precisa de machado!' };
         const agora = Date.now();
         if (dados.delay?.cortar && agora < dados.delay.cortar) {
@@ -755,11 +758,11 @@ async function cortar(sender) {
         if (dados.pet?.nome === 'lobo') madeira = Math.floor(madeira * 1.2);
         const quebra = Math.random() < 0.2;
         if (quebra) {
-            await delItem(sender, 'machado');
+            dados = delItem(dados, 'machado');
             await salvar(sender, dados);
             return { msg: `🪓 Cortou ${madeira} madeiras, mas seu machado quebrou!` };
         }
-        await addItem(sender, 'madeira', madeira);
+        dados = addItem(dados, 'madeira', madeira);
         dados.delay.cortar = agora + 3 * 60 * 1000;
         await salvar(sender, dados);
         return { msg: `🪓 Derrubou árvores e conseguiu ${madeira} madeiras!` };
@@ -772,10 +775,13 @@ async function cortar(sender) {
 // Batalha contra monstros
 async function batalhar(sender) {
     try {
-        const dados = await getUser(sender);
+        let dados = await getUser(sender);
         if (!dados) return { msg: '⚠️ Herói não encontrado!' };
-        const petFugiu = await verificarPet(sender, dados);
-        if (petFugiu) return petFugiu;
+        const petFugiu = await verificarPet(dados);
+        if (petFugiu) {
+            await salvar(sender, dados);
+            return petFugiu;
+        }
         if (!dados.inv.arma && !dados.inv.varinha) return { msg: '⚔️ Precisa de arma ou varinha!' };
         if (dados.status.hp <= 30) return { msg: '💔 Muito ferido! Cure-se antes!' };
         const agora = Date.now();
@@ -788,9 +794,9 @@ async function batalhar(sender) {
         if (dados.pet?.nome === 'dragao bebe') dano -= 10;
         dados.status.hp -= dano;
         dados.delay.batalhar = agora + 5 * 60 * 1000;
-        if (Math.random() < 0.1 && dados.inv.arma) await delItem(sender, 'arma');
-        await addSaldo(sender, monstro.recompensa.dinheiro);
-        await addItem(sender, monstro.recompensa.item);
+        if (Math.random() < 0.1 && dados.inv.arma) dados = delItem(dados, 'arma');
+        dados = addSaldo(dados, monstro.recompensa.dinheiro);
+        dados = addItem(dados, monstro.recompensa.item);
         dados.xp += monstro.recompensa.xp;
         await salvar(sender, dados);
         await atualizarRanking(sender, 'monstros', 1);
@@ -804,11 +810,14 @@ async function batalhar(sender) {
 // Duelo PvP
 async function duelar(sender, adversario, aposta) {
     try {
-        const dados = await getUser(sender);
-        const rival = await getUser(adversario);
+        let dados = await getUser(sender);
+        let rival = await getUser(adversario);
         if (!dados || !rival) return { msg: '⚠️ Um dos heróis não existe!' };
-        const petFugiu = await verificarPet(sender, dados);
-        if (petFugiu) return petFugiu;
+        const petFugiu = await verificarPet(dados);
+        if (petFugiu) {
+            await salvar(sender, dados);
+            return petFugiu;
+        }
         if (sender === adversario) return { msg: '⚠️ Não pode duelar consigo mesmo!' };
         if (apesta < 100) return { msg: '⚠️ Aposta mínima é R$100!' };
         if (dados.saldo.carteira < aposta || rival.saldo.carteira < aposta) return { msg: '💸 Ouro insuficiente!' };
@@ -831,13 +840,17 @@ async function duelar(sender, adversario, aposta) {
 // Aceita duelo
 async function aceitarDuelo(sender) {
     try {
-        const dados = await getUser(sender);
+        let dados = await getUser(sender);
         if (!dados) return { msg: '⚠️ Herói não encontrado!' };
-        const petFugiu = await verificarPet(sender, dados);
-        if (petFugiu) return petFugiu;
+        const petFugiu = await verificarPet(dados);
+        if (petFugiu) {
+            await salvar(sender, dados);
+            return petFugiu;
+        }
         const duelo = Object.values(duelosPendentes).find(d => d.adversario === sender);
         if (!duelo) return { msg: '⚠️ Nenhum duelo pendente!' };
-        const desafiante = await getUser(Object.keys(duelosPendentes).find(k => duelosPendentes[k].adversario === sender));
+        const desafianteId = Object.keys(duelosPendentes).find(k => duelosPendentes[k].adversario === sender);
+        let desafiante = await getUser(desafianteId);
         if (!desafiante) return { msg: '⚠️ Desafiante sumiu!' };
 
         let poder1 = dados.status.hp + (dados.inv.arma ? 20 : 0) + (dados.inv.varinha ? 30 : 0) + (dados.pet?.nome === 'dragao bebe' ? 20 : 0);
@@ -847,13 +860,13 @@ async function aceitarDuelo(sender) {
 
         const vencedor = poder1 > poder2 ? dados : desafiante;
         const perdedor = vencedor === dados ? desafiante : dados;
-        await delSaldo(dados.id, duelo.aposta);
-        await delSaldo(desafiante.id, duelo.aposta);
-        await addSaldo(vencedor.id, duelo.aposta * 2);
+        dados = delSaldo(dados, duelo.aposta);
+        desafiante = delSaldo(desafiante, duelo.aposta);
+        vencedor === dados ? (dados = addSaldo(dados, duelo.aposta * 2)) : (desafiante = addSaldo(desafiante, duelo.aposta * 2));
         vencedor.status.hp = Math.max(10, vencedor.status.hp - 20);
         perdedor.status.hp = Math.max(10, perdedor.status.hp - 30);
-        if (Math.random() < 0.1 && vencedor.inv.arma) await delItem(vencedor.id, 'arma');
-        if (Math.random() < 0.15 && perdedor.inv.arma) await delItem(perdedor.id, 'arma');
+        if (Math.random() < 0.1 && vencedor.inv.arma) vencedor === dados ? (dados = delItem(dados, 'arma')) : (desafiante = delItem(desafiante, 'arma'));
+        if (Math.random() < 0.15 && perdedor.inv.arma) perdedor === dados ? (dados = delItem(dados, 'arma')) : (desafiante = delItem(desafiante, 'arma'));
         await salvar(dados.id, dados);
         await salvar(desafiante.id, desafiante);
         delete duelosPendentes[desafiante.id];
@@ -868,12 +881,15 @@ async function aceitarDuelo(sender) {
 // Usa pocao
 async function usarPocao(sender) {
     try {
-        const dados = await getUser(sender);
+        let dados = await getUser(sender);
         if (!dados) return { msg: '⚠️ Herói não encontrado!' };
-        const petFugiu = await verificarPet(sender, dados);
-        if (petFugiu) return petFugiu;
+        const petFugiu = await verificarPet(dados);
+        if (petFugiu) {
+            await salvar(sender, dados);
+            return petFugiu;
+        }
         if (!dados.inv.pocao) return { msg: '🧪 Sem poções!' };
-        await delItem(sender, 'pocao');
+        dados = delItem(dados, 'pocao');
         dados.status.hp = Math.min(100, dados.status.hp + 50);
         dados.status.fadiga = Math.max(0, dados.status.fadiga - 20);
         await salvar(sender, dados);
@@ -887,10 +903,13 @@ async function usarPocao(sender) {
 // Inventario
 async function verInventario(sender) {
     try {
-        const dados = await getUser(sender);
+        let dados = await getUser(sender);
         if (!dados) return { msg: '⚠️ Herói não encontrado!' };
-        const petFugiu = await verificarPet(sender, dados);
-        if (petFugiu) return petFugiu;
+        const petFugiu = await verificarPet(dados);
+        if (petFugiu) {
+            await salvar(sender, dados);
+            return petFugiu;
+        }
         if (!Object.keys(dados.inv).length) return { msg: '🛒 *Mochila vazia!* Explore o mercado!' };
         let texto = '🎒 *Sua Mochila* 🎒\n\n';
         for (const item in dados.inv) {
@@ -907,10 +926,13 @@ async function verInventario(sender) {
 // Perfil
 async function verPerfil(sender) {
     try {
-        const dados = await getUser(sender);
+        let dados = await getUser(sender);
         if (!dados) return { msg: '⚠️ Herói não encontrado!' };
-        const petFugiu = await verificarPet(sender, dados);
-        if (petFugiu) return petFugiu;
+        const petFugiu = await verificarPet(dados);
+        if (petFugiu) {
+            await salvar(sender, dados);
+            return petFugiu;
+        }
         const inv = Object.keys(dados.inv).length ? Object.keys(dados.inv).map(i => {
             const it = itensLoja.find(item => item.nome === i) || itensVenda.find(item => item.nome === i);
             return `- *${it?.nomeExibicao || i}*: ${dados.inv[i]}`;
@@ -947,10 +969,13 @@ ${inv}
 // Inicia missao
 async function iniciarMissao(sender, nome) {
     try {
-        const dados = await getUser(sender);
+        let dados = await getUser(sender);
         if (!dados) return { msg: '⚠️ Herói não encontrado!' };
-        const petFugiu = await verificarPet(sender, dados);
-        if (petFugiu) return petFugiu;
+        const petFugiu = await verificarPet(dados);
+        if (petFugiu) {
+            await salvar(sender, dados);
+            return petFugiu;
+        }
         const missao = missoes.find(m => normalizar(m.nome) === normalizar(nome));
         if (!missao) return { msg: '⚠️ Missão não encontrada!' };
         if (dados.missoes.includes(missao.nome)) return { msg: '⚠️ Você já está nessa saga!' };
@@ -966,18 +991,21 @@ async function iniciarMissao(sender, nome) {
 // Completa missao
 async function completarMissao(sender, nome) {
     try {
-        const dados = await getUser(sender);
+        let dados = await getUser(sender);
         if (!dados) return { msg: '⚠️ Herói não encontrado!' };
-        const petFugiu = await verificarPet(sender, dados);
-        if (petFugiu) return petFugiu;
+        const petFugiu = await verificarPet(dados);
+        if (petFugiu) {
+            await salvar(sender, dados);
+            return petFugiu;
+        }
         const missao = missoes.find(m => normalizar(m.nome) === normalizar(nome));
         if (!missao || !dados.missoes.includes(missao.nome)) return { msg: '⚠️ Missão não iniciada!' };
         let delayMissao = 5 * 60 * 1000;
         if (dados.pet?.nome === 'falcao') delayMissao *= 0.9;
         dados.missoes = dados.missoes.filter(m => m !== missao.nome);
-        await addSaldo(sender, missao.recompensa.dinheiro);
+        dados = addSaldo(dados, missao.recompensa.dinheiro);
         dados.xp += missao.recompensa.xp;
-        if (missao.recompensa.item) await addItem(sender, missao.recompensa.item);
+        if (missao.recompensa.item) dados = addItem(dados, missao.recompensa.item);
         dados.delay.missao = Date.now() + delayMissao;
         await salvar(sender, dados);
         await atualizarRanking(sender, 'xp', missao.recompensa.xp);
@@ -993,13 +1021,16 @@ async function completarMissao(sender, nome) {
 // Cria guilda
 async function criarGuilda(sender, nome) {
     try {
-        const dados = await getUser(sender);
+        let dados = await getUser(sender);
         if (!dados) return { msg: '⚠️ Herói não encontrado!' };
-        const petFugiu = await verificarPet(sender, dados);
-        if (petFugiu) return petFugiu;
+        const petFugiu = await verificarPet(dados);
+        if (petFugiu) {
+            await salvar(sender, dados);
+            return petFugiu;
+        }
         if (dados.guilda) return { msg: '⚠️ Você já pertence a uma guilda!' };
         if (dados.saldo.carteira < 5000) return { msg: '⚠️ Guilda custa R$5000!' };
-        await delSaldo(sender, 5000);
+        dados = delSaldo(dados, 5000);
         dados.guilda = normalizar(nome);
         await salvar(sender, dados);
         return { msg: `🏰 Guilda *${nome}* fundada! Você é o líder supremo!` };
@@ -1012,10 +1043,13 @@ async function criarGuilda(sender, nome) {
 // Junta-se a guilda
 async function entrarGuilda(sender, nome) {
     try {
-        const dados = await getUser(sender);
+        let dados = await getUser(sender);
         if (!dados) return { msg: '⚠️ Herói não encontrado!' };
-        const petFugiu = await verificarPet(sender, dados);
-        if (petFugiu) return petFugiu;
+        const petFugiu = await verificarPet(dados);
+        if (petFugiu) {
+            await salvar(sender, dados);
+            return petFugiu;
+        }
         if (dados.guilda) return { msg: '⚠️ Você já pertence a uma guilda!' };
         const arquivos = await fs.readdir(RpgPath);
         let guildaExiste = false;
@@ -1039,10 +1073,13 @@ async function entrarGuilda(sender, nome) {
 // Sai da guilda
 async function sairGuilda(sender) {
     try {
-        const dados = await getUser(sender);
+        let dados = await getUser(sender);
         if (!dados) return { msg: '⚠️ Herói não encontrado!' };
-        const petFugiu = await verificarPet(sender, dados);
-        if (petFugiu) return petFugiu;
+        const petFugiu = await verificarPet(dados);
+        if (petFugiu) {
+            await salvar(sender, dados);
+            return petFugiu;
+        }
         if (!dados.guilda) return { msg: '⚠️ Você não está em guilda!' };
         dados.guilda = null;
         await salvar(sender, dados);
@@ -1056,10 +1093,13 @@ async function sairGuilda(sender) {
 // Exibe ranking
 async function verRanking(sender) {
     try {
-        const dados = await getUser(sender);
+        let dados = await getUser(sender);
         if (!dados) return { msg: '⚠️ Herói não encontrado!' };
-        const petFugiu = await verificarPet(sender, dados);
-        if (petFugiu) return petFugiu;
+        const petFugiu = await verificarPet(dados);
+        if (petFugiu) {
+            await salvar(sender, dados);
+            return petFugiu;
+        }
         const ranking = JSON.parse(await fs.readFile(RankPath, 'utf-8'));
         const agora = Date.now();
         if (agora - ranking.reset > 7 * 24 * 60 * 60 * 1000) {
@@ -1090,21 +1130,21 @@ async function verRanking(sender) {
         const topXp = Object.entries(ranking.xp).sort((a, b) => b[1] - a[1])[0]?.[0];
         const topMonstros = Object.entries(ranking.monstros).sort((a, b) => b[1] - a[1])[0]?.[0];
         if (topOuro) {
-            const user = await getUser(topOuro);
+            let user = await getUser(topOuro);
             if (user) {
                 user.titulo = 'Rei do Ouro';
                 await salvar(topOuro, user);
             }
         }
         if (topXp) {
-            const user = await getUser(topXp);
+            let user = await getUser(topXp);
             if (user) {
                 user.titulo = 'Lenda Viva';
                 await salvar(topXp, user);
             }
         }
         if (topMonstros) {
-            const user = await getUser(topMonstros);
+            let user = await getUser(topMonstros);
             if (user) {
                 user.titulo = 'Matador de Monstros';
                 await salvar(topMonstros, user);
@@ -1121,13 +1161,16 @@ async function verRanking(sender) {
 // Cassino
 async function cassino(sender, aposta) {
     try {
-        const dados = await getUser(sender);
+        let dados = await getUser(sender);
         if (!dados) return { msg: '⚠️ Herói não encontrado!' };
-        const petFugiu = await verificarPet(sender, dados);
-        if (petFugiu) return petFugiu;
+        const petFugiu = await verificarPet(dados);
+        if (petFugiu) {
+            await salvar(sender, dados);
+            return petFugiu;
+        }
         if (apesta < 150) return { msg: '⚠️ Aposta mínima é R$150!' };
         if (dados.saldo.carteira < aposta) return { msg: '💸 Ouro insuficiente!' };
-        await delSaldo(sender, aposta);
+        dados = delSaldo(dados, aposta);
         const rodada = Array(3).fill().map(() => frutas[Math.floor(Math.random() * frutas.length)]);
         const rodadaExibicao = rodada.map(r => frutasExibicao[frutas.indexOf(r)]);
         let resultado = '', premio = 0;
@@ -1143,9 +1186,9 @@ async function cassino(sender, aposta) {
         } else {
             resultado = `💔 Perdeu! Runas: ${rodadaExibicao.join(' ')}`;
         }
-        if (premio > 0) await addSaldo(sender, premio);
+        if (premio > 0) dados = addSaldo(dados, premio);
         await salvar(sender, dados);
-        return { msg: `${resultado}\n💰 *Ouro Atual*: R$${dados.saldo.carteira + premio}` };
+        return { msg: `${resultado}\n💰 *Ouro Atual*: R$${dados.saldo.carteira}` };
     } catch (err) {
         console.error('Erro no cassino:', err);
         return { msg: '⚠️ Runas do cassino falharam!' };
@@ -1183,8 +1226,8 @@ module.exports = Object.assign(getUser, {
         del: delSaldo
     },
     banco: {
-        add: (sender, valor) => addSaldo(sender, valor, true),
-        del: (sender, valor) => delSaldo(sender, valor, true)
+        add: (dados, valor) => addSaldo(dados, valor, true),
+        del: (dados, valor) => delSaldo(dados, valor, true)
     },
     inventario: {
         add: addItem,
