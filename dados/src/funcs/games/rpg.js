@@ -1195,6 +1195,74 @@ async function cassino(sender, aposta) {
     }
 }
 
+// Depositar (transfere do saldo da carteira para o banco)
+async function depositar(sender, valor) {
+    try {
+        let dados = await getUser(sender);
+        if (!dados) return { msg: '⚠️ Herói não encontrado!' };
+        if (isNaN(valor) || valor <= 0) return { msg: '⚠️ Valor inválido! Informe um número maior que zero.' };
+        if (dados.saldo.carteira < valor) return { msg: '💸 Ouro insuficiente na carteira!' };
+        dados = delSaldo(dados, valor, false); // Remove da carteira
+        dados = addSaldo(dados, valor, true);  // Adiciona ao banco
+        await salvar(sender, dados);
+        return { msg: `🏦 Depositou R$${valor} no banco! Agora tem R$${dados.saldo.banco} no banco e R$${dados.saldo.carteira} na carteira.` };
+    } catch (err) {
+        console.error('Erro ao depositar:', err);
+        return { msg: '⚠️ Falha ao depositar no banco!' };
+    }
+}
+
+// Sacar (transfere do banco para a carteira)
+async function sacar(sender, valor) {
+    try {
+        let dados = await getUser(sender);
+        if (!dados) return { msg: '⚠️ Herói não encontrado!' };
+        if (isNaN(valor) || valor <= 0) return { msg: '⚠️ Valor inválido! Informe um número maior que zero.' };
+        if (dados.saldo.banco < valor) return { msg: '🏦 Ouro insuficiente no banco!' };
+        dados = delSaldo(dados, valor, true);  // Remove do banco
+        dados = addSaldo(dados, valor, false); // Adiciona à carteira
+        await salvar(sender, dados);
+        return { msg: `💰 Sacou R$${valor} do banco! Agora tem R$${dados.saldo.banco} no banco e R$${dados.saldo.carteira} na carteira.` };
+    } catch (err) {
+        console.error('Erro ao sacar:', err);
+        return { msg: '⚠️ Falha ao sacar do banco!' };
+    }
+}
+
+// Depositar tudo (transfere todo o saldo da carteira para o banco)
+async function depoall(sender) {
+    try {
+        let dados = await getUser(sender);
+        if (!dados) return { msg: '⚠️ Herói não encontrado!' };
+        if (dados.saldo.carteira <= 0) return { msg: '💸 Nenhum ouro na carteira para depositar!' };
+        const valor = dados.saldo.carteira;
+        dados = delSaldo(dados, valor, false); // Remove da carteira
+        dados = addSaldo(dados, valor, true);  // Adiciona ao banco
+        await salvar(sender, dados);
+        return { msg: `🏦 Depositou todo o ouro (R$${valor}) no banco! Agora tem R$${dados.saldo.banco} no banco e R$${dados.saldo.carteira} na carteira.` };
+    } catch (err) {
+        console.error('Erro ao depositar tudo:', err);
+        return { msg: '⚠️ Falha ao depositar todo o ouro!' };
+    }
+}
+
+// Sacar tudo (transfere todo o saldo do banco para a carteira)
+async function saqueall(sender) {
+    try {
+        let dados = await getUser(sender);
+        if (!dados) return { msg: '⚠️ Herói não encontrado!' };
+        if (dados.saldo.banco <= 0) return { msg: '🏦 Nenhum ouro no banco para sacar!' };
+        const valor = dados.saldo.banco;
+        dados = delSaldo(dados, valor, true);  // Remove do banco
+        dados = addSaldo(dados, valor, false); // Adiciona à carteira
+        await salvar(sender, dados);
+        return { msg: `💰 Sacou todo o ouro (R$${valor}) do banco! Agora tem R$${dados.saldo.banco} no banco e R$${dados.saldo.carteira} na carteira.` };
+    } catch (err) {
+        console.error('Erro ao sacar tudo:', err);
+        return { msg: '⚠️ Falha ao sacar todo o ouro!' };
+    }
+}
+
 // Exporta funcoes
 module.exports = Object.assign(getUser, {
     rg: rgUser,
@@ -1207,6 +1275,10 @@ module.exports = Object.assign(getUser, {
     itens: verInventario,
     me: verPerfil,
     cassino,
+    depositar,
+    sacar,
+    depoall,
+    saqueall,
     acao: {
         minerar,
         cacar,
