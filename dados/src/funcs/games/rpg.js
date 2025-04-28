@@ -13,7 +13,7 @@ const path = require('path');
 const fs = require('fs').promises;
 
 // Diretorios
-const RpgPath = path.join(__dirname, 'rpg');
+const RpgPath = path.join(__dirname, '../../../database/rpg');
 const RankPath = path.join(RpgPath, 'ranking.json');
 
 // Gerenciador de delays e duelos
