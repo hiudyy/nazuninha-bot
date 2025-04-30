@@ -1971,7 +1971,7 @@ break;
    case 'eununca': try {
     if (!isGroup) return reply(t.b.grupo());
     if (!isModoBn) return reply('❌ O modo brincadeira não esta ativo nesse grupo');
-    await nazu.sendMessage(from, {poll: {name: toolsJson.iNever[Math.floor(Math.random() * toolsJson.iNever.length)],values: ["Eu nunca", "Eu ja"], selectableCount: 1}, messageContextInfo: { messageSecret: Math.random()}}, {from, options: {userJid: nazu?.user?.id}})
+    await nazu.sendMessage(from, {poll: {name: toolsJson().iNever[Math.floor(Math.random() * toolsJson().iNever.length)],values: ["Eu nunca", "Eu ja"], selectableCount: 1}, messageContextInfo: { messageSecret: Math.random()}}, {from, options: {userJid: nazu?.user?.id}})
    } catch(e) {
    console.error(e);
    await reply(t.b.erro());
@@ -1981,7 +1981,7 @@ break;
    case 'vab': try {
    if (!isGroup) return reply(t.b.grupo());
    if (!isModoBn) return reply('❌ O modo brincadeira não esta ativo nesse grupo');
-   const vabs = vabJson[Math.floor(Math.random() * vabJson.length)];
+   const vabs = vabJson()[Math.floor(Math.random() * vabJson().length)];
    await nazu.sendMessage(from, {poll: {name: 'O que você prefere?',values: [vabs.option1, vabs.option2], selectableCount: 1}, messageContextInfo: { messageSecret: Math.random()}}, {from, options: {userJid: nazu?.user?.id}})
    } catch(e) {
    console.error(e);
