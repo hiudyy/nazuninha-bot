@@ -106,26 +106,9 @@ async function startBot() {
       if (!msg.message) continue;
       try {
         const index = require('./index.js');
-        await index.default(sock, msg, 'default');
+        await index(sock, msg, 'default');
       } catch (err) {
         logger.error(replace(random(texts.indexError), { err: err.message }));
-      }
-    }
-  });
-
-  sock.ev.on('messages.update', async (updates) => {
-    for (const { key, update } of updates) {
-      if (update.pollUpdates) {
-        const root = await getMessage(key);
-        if (root) {
-          const res = await getAggregateVotesInPollMessage({
-            message: root,
-            pollUpdates: update.pollUpdates
-          });
-          console.log(replace(random(texts.pollPrefix), {
-            json: JSON.stringify(res)
-          }));
-        }
       }
     }
   });
