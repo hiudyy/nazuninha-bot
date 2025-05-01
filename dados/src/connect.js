@@ -151,7 +151,7 @@ async function handleParticipants({ id, participants, action }, sock) {
   const meta = await sock.groupMetadata(id).catch(() => null);
   if (meta) groupCache.set(id, meta);
 
-  const cfgPath = path.join(__dirname, 'database', 'grupos', `${id}.json`);
+  const cfgPath = path.join(__dirname, '..', 'database', 'grupos', `${id}.json`);
   const cfg = fs.existsSync(cfgPath) ? JSON.parse(fs.readFileSync(cfgPath)) : {};
 
   const who = participants[0];
