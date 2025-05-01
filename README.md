@@ -1,10 +1,17 @@
 # **Nazuninha Bot 🤖🚀**
 
+
 ---
 
 ## 🌐 **Escolha Seu Idioma**
 
-Basta clicar no idioma desejado abaixo para expandir o guia completo.
+Clique no idioma para expandir as instruções completas e personalizadas:
+
+- 🇺🇸 [English](#english)
+- 🇧🇷 [Português (Brasil)](#portugues-brasil)
+- 🇪🇸 [Español](#espanol)
+- 🇮🇩 [Bahasa Indonesia](#bahasa-indonesia)
+- 🇫🇷 [Français](#francais)
 
 ---
 
@@ -453,862 +460,11 @@ Hiudy é um entusiasta de tech que curte criar soluções práticas e com aquele
 
 > 💡 **Mais Dúvidas?** Pergunte no [Canal do WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b)!
 
-
-
-<details>
-<summary>🖥️ Windows</summary>
-
-### 🖥️ **Windows**
-
-1. **Pré-requisitos**  
-   - Baixe e instale o [Node.js](https://nodejs.org) (LTS recomendado).  
-   - Instale o [Git](https://git-scm.com/downloads) pro Windows.  
-   - Verifique:  
-     ```bash
-     node -v
-     git --version
-     ```
-
-2. **Clonar e Instalar**  
-   Abra o Prompt de Comando ou PowerShell:  
-   ```bash
-   git clone https://github.com/hiudyy/nazuninha-bot.git
-   cd nazuninha-bot
-   npm run config
-   npm run config:install
-   ```
-
-3. **Rodar o Bot**  
-   ```bash
-   npm start
-   ```
-
-4. **Manter Online**  
-   - Use o [NSSM](https://nssm.cc/) pra rodar 24/7:  
-     ```bash
-     nssm install nazuninha-bot "C:\caminho\para\node.exe" "C:\caminho\para\nazuninha-bot\app.js"
-     ```
-   - Ou deixe o Prompt aberto (não feche!).
-
-> 💡 **Dica**: Bot parou? Cheque a conexão ou rode `npm start` novamente.
-
-##### 🐧 **Linux**
-
-1. **Pré-requisitos**  
-   Atualize e instale:  
-   ```bash
-   sudo apt update && sudo apt install -y nodejs git
-   ```  
-   Verifique:  
-   ```bash
-   node -v
-   git --version
-   ```
-
-2. **Clonar e Instalar**  
-   ```bash
-   git clone https://github.com/hiudyy/nazuninha-bot.git
-   cd nazuninha-bot
-   npm run config
-   npm run config:install
-   ```
-
-3. **Rodar o Bot**  
-   ```bash
-   npm start
-   ```
-
-4. **Rodar em Segundo Plano**  
-   Use o `pm2`:  
-   ```bash
-   npm install -g pm2
-   pm2 start npm --name "nazuninha-bot" -- start
-   pm2 save
-   ```  
-   Monitore com `pm2 logs nazuninha-bot`.
-
-> 💡 **Dica**: Desconectou? Reinicie com `pm2 restart nazuninha-bot`.
-
-##### 📱 **Termux (Android)**
-
-1. **Instalar o Termux**  
-   - Baixe pelo [F-Droid](https://f-droid.org/packages/com.termux/) (evite Google Play).  
-   - Atualize:  
-     ```bash
-     pkg update && pkg upgrade -y
-     ```
-
-2. **Pré-requisitos**  
-   ```bash
-   pkg install nodejs git -y
-   termux-setup-storage
-   ```
-
-3. **Clonar e Instalar**  
-   ```bash
-   cd /sdcard
-   git clone https://github.com/hiudyy/nazuninha-bot.git
-   cd nazuninha-bot
-   npm run config
-   npm run config:install
-   ```
-
-4. **Rodar o Bot**  
-   ```bash
-   npm start
-   ```
-
-5. **Manter Online**  
-   - Evite fechar o Termux; mantenha o celular ligado ou use app de “manter acordado”.  
-   - Se parar, reinicie:  
-     ```bash
-     cd /sdcard/nazuninha-bot
-     npm start
-     ```
-
-> 💡 **Dica**: “Permissão negada”? Rode `termux-setup-storage` de novo.
-
-##### ☁️ **Pterodactyl**
-
-Configure o **Nazuninha Bot** no Pterodactyl de duas formas:
-
-**Opção 1: Egg Oficial da Nazuninha**
-
-1. **Baixar o Egg**  
-   - Pegue o egg em: [github.com/hiudyy/nazu-files/egg-ptero.json](https://github.com/hiudyy/nazu-files/egg-ptero.json).  
-   - Importe no painel Pterodactyl (**Eggs** > **Import Egg**).
-
-2. **Criar o Servidor**  
-   - Crie um servidor com o egg da Nazuninha.  
-   - No **Startup**, configure:  
-     - **Nome do Dono**: Seu nome/apelido (ex.: `João`).  
-     - **Número do Bot**: Número com código do país (ex.: `+5511999999999`).  
-     - **Prefixo do Bot**: Símbolo pros comandos (ex.: `/`).  
-     - **Nome do Bot**: Nome no WhatsApp (ex.: `Nazuninha`).  
-     - **Atualização Automática**: `Sim` pra updates automáticos ou `Não` pra manual.  
-   - Recursos mínimos: 512MB RAM e 512MB disco (1GB RAM e 2GB disco recomendados).
-
-3. **Iniciar o Servidor**  
-   - Clique em **Iniciar** no painel.  
-   - O egg clona o repo (`https://github.com/hiudyy/nazuninha-bot.git`) e instala tudo.  
-   - Conecte ao WhatsApp via QR code ou código de pareamento (use console ou VNC).
-
-4. **Manter Online**  
-   - O Pterodactyl roda 24/7.  
-   - Sem atualização automática? Rode:  
-     ```bash
-     npm run update
-     ```
-
-**Opção 2: Egg Node.js Comum**
-
-1. **Criar o Servidor**  
-   - Crie um servidor com o egg **Node.js** padrão.  
-   - Defina o **Comando de Inicialização** como: `npm start`.  
-   - Recursos mínimos: 512MB RAM e 512MB disco (1GB RAM e 2GB disco recomendados).
-
-2. **Clonar o Repositório**  
-   - No console do Pterodactyl:  
-     ```bash
-     git clone https://github.com/hiudyy/nazuninha-bot.git
-     cd nazuninha-bot
-     ```
-
-3. **Instalar Dependências**  
-   - Execute:  
-     ```bash
-     npm run config
-     npm run config:install
-     ```
-
-4. **Iniciar o Bot**  
-   - Inicie o servidor no painel.  
-   - Conecte ao WhatsApp com QR code ou código.
-
-5. **Atualizações**  
-   - Atualize manualmente:  
-     ```bash
-     npm run update
-     ```
-
-> 💡 **Dica**: O egg oficial automatiza tudo, é mais fácil!
-
----
-
-#### ❓ **Resolvendo Problemas**
-
-Deu pau? Soluções pros problemas mais comuns:
-
-| **Problema**                     | **Solução**                                                                 |
-|----------------------------------|-----------------------------------------------------------------------------|
-| **“Comando não encontrado”**     | Instale Git/Node.js (`pkg install git nodejs` no Termux).                   |
-| **QR Code não funciona**         | Atualize o WhatsApp, gere outro QR com `npm start`, ou cheque a internet.   |
-| **Bot desconecta**               | Reinicie com `npm start`, apague a pasta `sessions`, ou troque o número.    |
-| **Erro na instalação**           | Rode `npm install`, verifique Node.js 18+ (`node -v`), ou atualize pacotes. |
-| **Termux para**                  | Mantenha o celular ligado e reinicie com `cd /sdcard/nazuninha-bot && npm start`. |
-
-> 😊 **Tá na Merda?** Cola no [Canal do WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b) pra suporte!
-
----
-
-#### 💖 **Apoie o Projeto**
-
-Fazer o **Nazuninha Bot** é um trampo danado. Seu apoio é tudo:
-
-- **🌍 Global (Patreon)**  
-  [![Apoiar no Patreon](https://img.shields.io/badge/Apoiar-Patreon-orange?style=flat-square&logo=patreon)](https://patreon.com/hiudyy)  
-  *Contribua mensalmente pra manter o projeto vivo.*
-
-- **🇧🇷 Brasil (Pix)**  
-  **Chave Pix (E-mail):** `lua.bot@hotmail.com`  
-  *Qualquer valor já ajuda pra caramba.*
-
-> ❤️ **Valeu!** Cada real motiva mais features e melhorias!
-
----
-
-#### 📜 **Licença**
-
-© 2025 **Hiudy**. Todos os direitos reservados.
-
-O **Nazuninha Bot** é **protegido por copyright**. Não remova os créditos, não venda, e não distribua versões modificadas sem autorização. Violações podem levar a ações legais.
-
----
-
-#### 👤 **Sobre o Criador**
-
-Feito com ❤️ por [**Hiudy**](https://github.com/hiudyy), um dev apaixonado por criar ferramentas que tornam a tecnologia mais divertida e acessível. Ele tá sempre bolando projetos novos e dando aquele gás no Nazuninha Bot pra comunidade.
-
-**Estatísticas do Hiudy**:
-
-| Ícone | Badge | Descrição |
-|-------|-------|-----------|
-| 👥 | ![Seguidores](https://img.shields.io/github/followers/hiudyy?color=blue&style=flat-square) | **Seguidores**: Quantas pessoas acompanham o Hiudy no GitHub. |
-| 📝 | ![Contribuições](https://img.shields.io/github/commit-activity/y/hiudyy?color=purple&style=flat-square) | **Contribuições**: Atividade anual do Hiudy em todos os projetos. |
-| 📚 | ![Repositórios](https://img.shields.io/github/repos/hiudyy?color=green&style=flat-square) | **Repositórios**: Total de projetos públicos do Hiudy. |
-| 💬 | ![Discord](https://img.shields.io/badge/Discord-hiudyyy-7289DA?style=flat-square&logo=discord) | **Discord**: Conecte-se com o Hiudy no Discord. |
-| 📷 | ![Instagram](https://img.shields.io/badge/Instagram-hiudyyy_-E4405F?style=flat-square&logo=instagram) | **Instagram**: Siga o Hiudy no Insta pra novidades. |
-
-**Bio**:  
-Hiudy é um entusiasta de tech que curte criar soluções práticas e com aquele toque de diversão. Além do Nazuninha Bot, ele contribui pra projetos open-source e ama trocar ideia com a comunidade. Cola nas redes dele pra acompanhar os próximos rolês!
-
-- 📍 **GitHub**: [hiudyy](https://github.com/hiudyy)
-- 💬 **Discord**: [hiudyyy](https://discord.com/users/hiudyyy)
-- 📷 **Instagram**: [hiudyyy_](https://instagram.com/hiudyyy_)
-
-> 🌟 **Gostou?** Dá uma estrela no GitHub e compartilha com a galera!
-
----
-
-#### ❔ **FAQ Avançado**
-
-| **Pergunta**                              | **Resposta**                                                                 |
-|------------------------------------------|-----------------------------------------------------------------------------|
-| **Posso usar meu número principal?**      | Não é recomendado. Use um número secundário pra evitar riscos de banimento. |
-| **O bot funciona offline?**               | Não, precisa de internet pra se conectar ao WhatsApp.                       |
-| **Como personalizo os comandos?**         | Edite o `config.json` após instalar (veja a documentação).                  |
-| **E se meu servidor Pterodactyl travar?** | Reinicie o servidor e cheque os logs no console do Pterodactyl.             |
-
-> 💡 **Mais Dúvidas?** Pergunte no [Canal do WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b)!
-
 </details>
 
 ---
 
-## 🇺🇸 **English**
-
-<details>
-<summary>💻 Click to Expand English Instructions</summary>
-
-</details>
-<details>
-<summary>🐧 Linux</summary>
-
-### 🐧 **Linux**
-
-1. **Pré-requisitos**  
-   Atualize e instale:  
-   ```bash
-   sudo apt update && sudo apt install -y nodejs git
-   ```  
-   Verifique:  
-   ```bash
-   node -v
-   git --version
-   ```
-
-2. **Clonar e Instalar**  
-   ```bash
-   git clone https://github.com/hiudyy/nazuninha-bot.git
-   cd nazuninha-bot
-   npm run config
-   npm run config:install
-   ```
-
-3. **Rodar o Bot**  
-   ```bash
-   npm start
-   ```
-
-4. **Rodar em Segundo Plano**  
-   Use o `pm2`:  
-   ```bash
-   npm install -g pm2
-   pm2 start npm --name "nazuninha-bot" -- start
-   pm2 save
-   ```  
-   Monitore com `pm2 logs nazuninha-bot`.
-
-> 💡 **Dica**: Desconectou? Reinicie com `pm2 restart nazuninha-bot`.
-
-##### 📱 **Termux (Android)**
-
-1. **Instalar o Termux**  
-   - Baixe pelo [F-Droid](https://f-droid.org/packages/com.termux/) (evite Google Play).  
-   - Atualize:  
-     ```bash
-     pkg update && pkg upgrade -y
-     ```
-
-2. **Pré-requisitos**  
-   ```bash
-   pkg install nodejs git -y
-   termux-setup-storage
-   ```
-
-3. **Clonar e Instalar**  
-   ```bash
-   cd /sdcard
-   git clone https://github.com/hiudyy/nazuninha-bot.git
-   cd nazuninha-bot
-   npm run config
-   npm run config:install
-   ```
-
-4. **Rodar o Bot**  
-   ```bash
-   npm start
-   ```
-
-5. **Manter Online**  
-   - Evite fechar o Termux; mantenha o celular ligado ou use app de “manter acordado”.  
-   - Se parar, reinicie:  
-     ```bash
-     cd /sdcard/nazuninha-bot
-     npm start
-     ```
-
-> 💡 **Dica**: “Permissão negada”? Rode `termux-setup-storage` de novo.
-
-##### ☁️ **Pterodactyl**
-
-Configure o **Nazuninha Bot** no Pterodactyl de duas formas:
-
-**Opção 1: Egg Oficial da Nazuninha**
-
-1. **Baixar o Egg**  
-   - Pegue o egg em: [github.com/hiudyy/nazu-files/egg-ptero.json](https://github.com/hiudyy/nazu-files/egg-ptero.json).  
-   - Importe no painel Pterodactyl (**Eggs** > **Import Egg**).
-
-2. **Criar o Servidor**  
-   - Crie um servidor com o egg da Nazuninha.  
-   - No **Startup**, configure:  
-     - **Nome do Dono**: Seu nome/apelido (ex.: `João`).  
-     - **Número do Bot**: Número com código do país (ex.: `+5511999999999`).  
-     - **Prefixo do Bot**: Símbolo pros comandos (ex.: `/`).  
-     - **Nome do Bot**: Nome no WhatsApp (ex.: `Nazuninha`).  
-     - **Atualização Automática**: `Sim` pra updates automáticos ou `Não` pra manual.  
-   - Recursos mínimos: 512MB RAM e 512MB disco (1GB RAM e 2GB disco recomendados).
-
-3. **Iniciar o Servidor**  
-   - Clique em **Iniciar** no painel.  
-   - O egg clona o repo (`https://github.com/hiudyy/nazuninha-bot.git`) e instala tudo.  
-   - Conecte ao WhatsApp via QR code ou código de pareamento (use console ou VNC).
-
-4. **Manter Online**  
-   - O Pterodactyl roda 24/7.  
-   - Sem atualização automática? Rode:  
-     ```bash
-     npm run update
-     ```
-
-**Opção 2: Egg Node.js Comum**
-
-1. **Criar o Servidor**  
-   - Crie um servidor com o egg **Node.js** padrão.  
-   - Defina o **Comando de Inicialização** como: `npm start`.  
-   - Recursos mínimos: 512MB RAM e 512MB disco (1GB RAM e 2GB disco recomendados).
-
-2. **Clonar o Repositório**  
-   - No console do Pterodactyl:  
-     ```bash
-     git clone https://github.com/hiudyy/nazuninha-bot.git
-     cd nazuninha-bot
-     ```
-
-3. **Instalar Dependências**  
-   - Execute:  
-     ```bash
-     npm run config
-     npm run config:install
-     ```
-
-4. **Iniciar o Bot**  
-   - Inicie o servidor no painel.  
-   - Conecte ao WhatsApp com QR code ou código.
-
-5. **Atualizações**  
-   - Atualize manualmente:  
-     ```bash
-     npm run update
-     ```
-
-> 💡 **Dica**: O egg oficial automatiza tudo, é mais fácil!
-
----
-
-#### ❓ **Resolvendo Problemas**
-
-Deu pau? Soluções pros problemas mais comuns:
-
-| **Problema**                     | **Solução**                                                                 |
-|----------------------------------|-----------------------------------------------------------------------------|
-| **“Comando não encontrado”**     | Instale Git/Node.js (`pkg install git nodejs` no Termux).                   |
-| **QR Code não funciona**         | Atualize o WhatsApp, gere outro QR com `npm start`, ou cheque a internet.   |
-| **Bot desconecta**               | Reinicie com `npm start`, apague a pasta `sessions`, ou troque o número.    |
-| **Erro na instalação**           | Rode `npm install`, verifique Node.js 18+ (`node -v`), ou atualize pacotes. |
-| **Termux para**                  | Mantenha o celular ligado e reinicie com `cd /sdcard/nazuninha-bot && npm start`. |
-
-> 😊 **Tá na Merda?** Cola no [Canal do WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b) pra suporte!
-
----
-
-#### 💖 **Apoie o Projeto**
-
-Fazer o **Nazuninha Bot** é um trampo danado. Seu apoio é tudo:
-
-- **🌍 Global (Patreon)**  
-  [![Apoiar no Patreon](https://img.shields.io/badge/Apoiar-Patreon-orange?style=flat-square&logo=patreon)](https://patreon.com/hiudyy)  
-  *Contribua mensalmente pra manter o projeto vivo.*
-
-- **🇧🇷 Brasil (Pix)**  
-  **Chave Pix (E-mail):** `lua.bot@hotmail.com`  
-  *Qualquer valor já ajuda pra caramba.*
-
-> ❤️ **Valeu!** Cada real motiva mais features e melhorias!
-
----
-
-#### 📜 **Licença**
-
-© 2025 **Hiudy**. Todos os direitos reservados.
-
-O **Nazuninha Bot** é **protegido por copyright**. Não remova os créditos, não venda, e não distribua versões modificadas sem autorização. Violações podem levar a ações legais.
-
----
-
-#### 👤 **Sobre o Criador**
-
-Feito com ❤️ por [**Hiudy**](https://github.com/hiudyy), um dev apaixonado por criar ferramentas que tornam a tecnologia mais divertida e acessível. Ele tá sempre bolando projetos novos e dando aquele gás no Nazuninha Bot pra comunidade.
-
-**Estatísticas do Hiudy**:
-
-| Ícone | Badge | Descrição |
-|-------|-------|-----------|
-| 👥 | ![Seguidores](https://img.shields.io/github/followers/hiudyy?color=blue&style=flat-square) | **Seguidores**: Quantas pessoas acompanham o Hiudy no GitHub. |
-| 📝 | ![Contribuições](https://img.shields.io/github/commit-activity/y/hiudyy?color=purple&style=flat-square) | **Contribuições**: Atividade anual do Hiudy em todos os projetos. |
-| 📚 | ![Repositórios](https://img.shields.io/github/repos/hiudyy?color=green&style=flat-square) | **Repositórios**: Total de projetos públicos do Hiudy. |
-| 💬 | ![Discord](https://img.shields.io/badge/Discord-hiudyyy-7289DA?style=flat-square&logo=discord) | **Discord**: Conecte-se com o Hiudy no Discord. |
-| 📷 | ![Instagram](https://img.shields.io/badge/Instagram-hiudyyy_-E4405F?style=flat-square&logo=instagram) | **Instagram**: Siga o Hiudy no Insta pra novidades. |
-
-**Bio**:  
-Hiudy é um entusiasta de tech que curte criar soluções práticas e com aquele toque de diversão. Além do Nazuninha Bot, ele contribui pra projetos open-source e ama trocar ideia com a comunidade. Cola nas redes dele pra acompanhar os próximos rolês!
-
-- 📍 **GitHub**: [hiudyy](https://github.com/hiudyy)
-- 💬 **Discord**: [hiudyyy](https://discord.com/users/hiudyyy)
-- 📷 **Instagram**: [hiudyyy_](https://instagram.com/hiudyyy_)
-
-> 🌟 **Gostou?** Dá uma estrela no GitHub e compartilha com a galera!
-
----
-
-#### ❔ **FAQ Avançado**
-
-| **Pergunta**                              | **Resposta**                                                                 |
-|------------------------------------------|-----------------------------------------------------------------------------|
-| **Posso usar meu número principal?**      | Não é recomendado. Use um número secundário pra evitar riscos de banimento. |
-| **O bot funciona offline?**               | Não, precisa de internet pra se conectar ao WhatsApp.                       |
-| **Como personalizo os comandos?**         | Edite o `config.json` após instalar (veja a documentação).                  |
-| **E se meu servidor Pterodactyl travar?** | Reinicie o servidor e cheque os logs no console do Pterodactyl.             |
-
-> 💡 **Mais Dúvidas?** Pergunte no [Canal do WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b)!
-
-</details>
-
----
-
-## 🇺🇸 **English**
-
-<details>
-<summary>💻 Click to Expand English Instructions</summary>
-
-</details>
-<details>
-<summary>📱 Termux (Android)</summary>
-
-### 📱 **Termux (Android)**
-
-1. **Instalar o Termux**  
-   - Baixe pelo [F-Droid](https://f-droid.org/packages/com.termux/) (evite Google Play).  
-   - Atualize:  
-     ```bash
-     pkg update && pkg upgrade -y
-     ```
-
-2. **Pré-requisitos**  
-   ```bash
-   pkg install nodejs git -y
-   termux-setup-storage
-   ```
-
-3. **Clonar e Instalar**  
-   ```bash
-   cd /sdcard
-   git clone https://github.com/hiudyy/nazuninha-bot.git
-   cd nazuninha-bot
-   npm run config
-   npm run config:install
-   ```
-
-4. **Rodar o Bot**  
-   ```bash
-   npm start
-   ```
-
-5. **Manter Online**  
-   - Evite fechar o Termux; mantenha o celular ligado ou use app de “manter acordado”.  
-   - Se parar, reinicie:  
-     ```bash
-     cd /sdcard/nazuninha-bot
-     npm start
-     ```
-
-> 💡 **Dica**: “Permissão negada”? Rode `termux-setup-storage` de novo.
-
-##### ☁️ **Pterodactyl**
-
-Configure o **Nazuninha Bot** no Pterodactyl de duas formas:
-
-**Opção 1: Egg Oficial da Nazuninha**
-
-1. **Baixar o Egg**  
-   - Pegue o egg em: [github.com/hiudyy/nazu-files/egg-ptero.json](https://github.com/hiudyy/nazu-files/egg-ptero.json).  
-   - Importe no painel Pterodactyl (**Eggs** > **Import Egg**).
-
-2. **Criar o Servidor**  
-   - Crie um servidor com o egg da Nazuninha.  
-   - No **Startup**, configure:  
-     - **Nome do Dono**: Seu nome/apelido (ex.: `João`).  
-     - **Número do Bot**: Número com código do país (ex.: `+5511999999999`).  
-     - **Prefixo do Bot**: Símbolo pros comandos (ex.: `/`).  
-     - **Nome do Bot**: Nome no WhatsApp (ex.: `Nazuninha`).  
-     - **Atualização Automática**: `Sim` pra updates automáticos ou `Não` pra manual.  
-   - Recursos mínimos: 512MB RAM e 512MB disco (1GB RAM e 2GB disco recomendados).
-
-3. **Iniciar o Servidor**  
-   - Clique em **Iniciar** no painel.  
-   - O egg clona o repo (`https://github.com/hiudyy/nazuninha-bot.git`) e instala tudo.  
-   - Conecte ao WhatsApp via QR code ou código de pareamento (use console ou VNC).
-
-4. **Manter Online**  
-   - O Pterodactyl roda 24/7.  
-   - Sem atualização automática? Rode:  
-     ```bash
-     npm run update
-     ```
-
-**Opção 2: Egg Node.js Comum**
-
-1. **Criar o Servidor**  
-   - Crie um servidor com o egg **Node.js** padrão.  
-   - Defina o **Comando de Inicialização** como: `npm start`.  
-   - Recursos mínimos: 512MB RAM e 512MB disco (1GB RAM e 2GB disco recomendados).
-
-2. **Clonar o Repositório**  
-   - No console do Pterodactyl:  
-     ```bash
-     git clone https://github.com/hiudyy/nazuninha-bot.git
-     cd nazuninha-bot
-     ```
-
-3. **Instalar Dependências**  
-   - Execute:  
-     ```bash
-     npm run config
-     npm run config:install
-     ```
-
-4. **Iniciar o Bot**  
-   - Inicie o servidor no painel.  
-   - Conecte ao WhatsApp com QR code ou código.
-
-5. **Atualizações**  
-   - Atualize manualmente:  
-     ```bash
-     npm run update
-     ```
-
-> 💡 **Dica**: O egg oficial automatiza tudo, é mais fácil!
-
----
-
-#### ❓ **Resolvendo Problemas**
-
-Deu pau? Soluções pros problemas mais comuns:
-
-| **Problema**                     | **Solução**                                                                 |
-|----------------------------------|-----------------------------------------------------------------------------|
-| **“Comando não encontrado”**     | Instale Git/Node.js (`pkg install git nodejs` no Termux).                   |
-| **QR Code não funciona**         | Atualize o WhatsApp, gere outro QR com `npm start`, ou cheque a internet.   |
-| **Bot desconecta**               | Reinicie com `npm start`, apague a pasta `sessions`, ou troque o número.    |
-| **Erro na instalação**           | Rode `npm install`, verifique Node.js 18+ (`node -v`), ou atualize pacotes. |
-| **Termux para**                  | Mantenha o celular ligado e reinicie com `cd /sdcard/nazuninha-bot && npm start`. |
-
-> 😊 **Tá na Merda?** Cola no [Canal do WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b) pra suporte!
-
----
-
-#### 💖 **Apoie o Projeto**
-
-Fazer o **Nazuninha Bot** é um trampo danado. Seu apoio é tudo:
-
-- **🌍 Global (Patreon)**  
-  [![Apoiar no Patreon](https://img.shields.io/badge/Apoiar-Patreon-orange?style=flat-square&logo=patreon)](https://patreon.com/hiudyy)  
-  *Contribua mensalmente pra manter o projeto vivo.*
-
-- **🇧🇷 Brasil (Pix)**  
-  **Chave Pix (E-mail):** `lua.bot@hotmail.com`  
-  *Qualquer valor já ajuda pra caramba.*
-
-> ❤️ **Valeu!** Cada real motiva mais features e melhorias!
-
----
-
-#### 📜 **Licença**
-
-© 2025 **Hiudy**. Todos os direitos reservados.
-
-O **Nazuninha Bot** é **protegido por copyright**. Não remova os créditos, não venda, e não distribua versões modificadas sem autorização. Violações podem levar a ações legais.
-
----
-
-#### 👤 **Sobre o Criador**
-
-Feito com ❤️ por [**Hiudy**](https://github.com/hiudyy), um dev apaixonado por criar ferramentas que tornam a tecnologia mais divertida e acessível. Ele tá sempre bolando projetos novos e dando aquele gás no Nazuninha Bot pra comunidade.
-
-**Estatísticas do Hiudy**:
-
-| Ícone | Badge | Descrição |
-|-------|-------|-----------|
-| 👥 | ![Seguidores](https://img.shields.io/github/followers/hiudyy?color=blue&style=flat-square) | **Seguidores**: Quantas pessoas acompanham o Hiudy no GitHub. |
-| 📝 | ![Contribuições](https://img.shields.io/github/commit-activity/y/hiudyy?color=purple&style=flat-square) | **Contribuições**: Atividade anual do Hiudy em todos os projetos. |
-| 📚 | ![Repositórios](https://img.shields.io/github/repos/hiudyy?color=green&style=flat-square) | **Repositórios**: Total de projetos públicos do Hiudy. |
-| 💬 | ![Discord](https://img.shields.io/badge/Discord-hiudyyy-7289DA?style=flat-square&logo=discord) | **Discord**: Conecte-se com o Hiudy no Discord. |
-| 📷 | ![Instagram](https://img.shields.io/badge/Instagram-hiudyyy_-E4405F?style=flat-square&logo=instagram) | **Instagram**: Siga o Hiudy no Insta pra novidades. |
-
-**Bio**:  
-Hiudy é um entusiasta de tech que curte criar soluções práticas e com aquele toque de diversão. Além do Nazuninha Bot, ele contribui pra projetos open-source e ama trocar ideia com a comunidade. Cola nas redes dele pra acompanhar os próximos rolês!
-
-- 📍 **GitHub**: [hiudyy](https://github.com/hiudyy)
-- 💬 **Discord**: [hiudyyy](https://discord.com/users/hiudyyy)
-- 📷 **Instagram**: [hiudyyy_](https://instagram.com/hiudyyy_)
-
-> 🌟 **Gostou?** Dá uma estrela no GitHub e compartilha com a galera!
-
----
-
-#### ❔ **FAQ Avançado**
-
-| **Pergunta**                              | **Resposta**                                                                 |
-|------------------------------------------|-----------------------------------------------------------------------------|
-| **Posso usar meu número principal?**      | Não é recomendado. Use um número secundário pra evitar riscos de banimento. |
-| **O bot funciona offline?**               | Não, precisa de internet pra se conectar ao WhatsApp.                       |
-| **Como personalizo os comandos?**         | Edite o `config.json` após instalar (veja a documentação).                  |
-| **E se meu servidor Pterodactyl travar?** | Reinicie o servidor e cheque os logs no console do Pterodactyl.             |
-
-> 💡 **Mais Dúvidas?** Pergunte no [Canal do WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b)!
-
-</details>
-
----
-
-## 🇺🇸 **English**
-
-<details>
-<summary>💻 Click to Expand English Instructions</summary>
-
-</details>
-<details>
-<summary>☁️ Pterodactyl</summary>
-
-### ☁️ **Pterodactyl**
-
-Configure o **Nazuninha Bot** no Pterodactyl de duas formas:
-
-**Opção 1: Egg Oficial da Nazuninha**
-
-1. **Baixar o Egg**  
-   - Pegue o egg em: [github.com/hiudyy/nazu-files/egg-ptero.json](https://github.com/hiudyy/nazu-files/egg-ptero.json).  
-   - Importe no painel Pterodactyl (**Eggs** > **Import Egg**).
-
-2. **Criar o Servidor**  
-   - Crie um servidor com o egg da Nazuninha.  
-   - No **Startup**, configure:  
-     - **Nome do Dono**: Seu nome/apelido (ex.: `João`).  
-     - **Número do Bot**: Número com código do país (ex.: `+5511999999999`).  
-     - **Prefixo do Bot**: Símbolo pros comandos (ex.: `/`).  
-     - **Nome do Bot**: Nome no WhatsApp (ex.: `Nazuninha`).  
-     - **Atualização Automática**: `Sim` pra updates automáticos ou `Não` pra manual.  
-   - Recursos mínimos: 512MB RAM e 512MB disco (1GB RAM e 2GB disco recomendados).
-
-3. **Iniciar o Servidor**  
-   - Clique em **Iniciar** no painel.  
-   - O egg clona o repo (`https://github.com/hiudyy/nazuninha-bot.git`) e instala tudo.  
-   - Conecte ao WhatsApp via QR code ou código de pareamento (use console ou VNC).
-
-4. **Manter Online**  
-   - O Pterodactyl roda 24/7.  
-   - Sem atualização automática? Rode:  
-     ```bash
-     npm run update
-     ```
-
-**Opção 2: Egg Node.js Comum**
-
-1. **Criar o Servidor**  
-   - Crie um servidor com o egg **Node.js** padrão.  
-   - Defina o **Comando de Inicialização** como: `npm start`.  
-   - Recursos mínimos: 512MB RAM e 512MB disco (1GB RAM e 2GB disco recomendados).
-
-2. **Clonar o Repositório**  
-   - No console do Pterodactyl:  
-     ```bash
-     git clone https://github.com/hiudyy/nazuninha-bot.git
-     cd nazuninha-bot
-     ```
-
-3. **Instalar Dependências**  
-   - Execute:  
-     ```bash
-     npm run config
-     npm run config:install
-     ```
-
-4. **Iniciar o Bot**  
-   - Inicie o servidor no painel.  
-   - Conecte ao WhatsApp com QR code ou código.
-
-5. **Atualizações**  
-   - Atualize manualmente:  
-     ```bash
-     npm run update
-     ```
-
-> 💡 **Dica**: O egg oficial automatiza tudo, é mais fácil!
-
----
-
-#### ❓ **Resolvendo Problemas**
-
-Deu pau? Soluções pros problemas mais comuns:
-
-| **Problema**                     | **Solução**                                                                 |
-|----------------------------------|-----------------------------------------------------------------------------|
-| **“Comando não encontrado”**     | Instale Git/Node.js (`pkg install git nodejs` no Termux).                   |
-| **QR Code não funciona**         | Atualize o WhatsApp, gere outro QR com `npm start`, ou cheque a internet.   |
-| **Bot desconecta**               | Reinicie com `npm start`, apague a pasta `sessions`, ou troque o número.    |
-| **Erro na instalação**           | Rode `npm install`, verifique Node.js 18+ (`node -v`), ou atualize pacotes. |
-| **Termux para**                  | Mantenha o celular ligado e reinicie com `cd /sdcard/nazuninha-bot && npm start`. |
-
-> 😊 **Tá na Merda?** Cola no [Canal do WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b) pra suporte!
-
----
-
-#### 💖 **Apoie o Projeto**
-
-Fazer o **Nazuninha Bot** é um trampo danado. Seu apoio é tudo:
-
-- **🌍 Global (Patreon)**  
-  [![Apoiar no Patreon](https://img.shields.io/badge/Apoiar-Patreon-orange?style=flat-square&logo=patreon)](https://patreon.com/hiudyy)  
-  *Contribua mensalmente pra manter o projeto vivo.*
-
-- **🇧🇷 Brasil (Pix)**  
-  **Chave Pix (E-mail):** `lua.bot@hotmail.com`  
-  *Qualquer valor já ajuda pra caramba.*
-
-> ❤️ **Valeu!** Cada real motiva mais features e melhorias!
-
----
-
-#### 📜 **Licença**
-
-© 2025 **Hiudy**. Todos os direitos reservados.
-
-O **Nazuninha Bot** é **protegido por copyright**. Não remova os créditos, não venda, e não distribua versões modificadas sem autorização. Violações podem levar a ações legais.
-
----
-
-#### 👤 **Sobre o Criador**
-
-Feito com ❤️ por [**Hiudy**](https://github.com/hiudyy), um dev apaixonado por criar ferramentas que tornam a tecnologia mais divertida e acessível. Ele tá sempre bolando projetos novos e dando aquele gás no Nazuninha Bot pra comunidade.
-
-**Estatísticas do Hiudy**:
-
-| Ícone | Badge | Descrição |
-|-------|-------|-----------|
-| 👥 | ![Seguidores](https://img.shields.io/github/followers/hiudyy?color=blue&style=flat-square) | **Seguidores**: Quantas pessoas acompanham o Hiudy no GitHub. |
-| 📝 | ![Contribuições](https://img.shields.io/github/commit-activity/y/hiudyy?color=purple&style=flat-square) | **Contribuições**: Atividade anual do Hiudy em todos os projetos. |
-| 📚 | ![Repositórios](https://img.shields.io/github/repos/hiudyy?color=green&style=flat-square) | **Repositórios**: Total de projetos públicos do Hiudy. |
-| 💬 | ![Discord](https://img.shields.io/badge/Discord-hiudyyy-7289DA?style=flat-square&logo=discord) | **Discord**: Conecte-se com o Hiudy no Discord. |
-| 📷 | ![Instagram](https://img.shields.io/badge/Instagram-hiudyyy_-E4405F?style=flat-square&logo=instagram) | **Instagram**: Siga o Hiudy no Insta pra novidades. |
-
-**Bio**:  
-Hiudy é um entusiasta de tech que curte criar soluções práticas e com aquele toque de diversão. Além do Nazuninha Bot, ele contribui pra projetos open-source e ama trocar ideia com a comunidade. Cola nas redes dele pra acompanhar os próximos rolês!
-
-- 📍 **GitHub**: [hiudyy](https://github.com/hiudyy)
-- 💬 **Discord**: [hiudyyy](https://discord.com/users/hiudyyy)
-- 📷 **Instagram**: [hiudyyy_](https://instagram.com/hiudyyy_)
-
-> 🌟 **Gostou?** Dá uma estrela no GitHub e compartilha com a galera!
-
----
-
-#### ❔ **FAQ Avançado**
-
-| **Pergunta**                              | **Resposta**                                                                 |
-|------------------------------------------|-----------------------------------------------------------------------------|
-| **Posso usar meu número principal?**      | Não é recomendado. Use um número secundário pra evitar riscos de banimento. |
-| **O bot funciona offline?**               | Não, precisa de internet pra se conectar ao WhatsApp.                       |
-| **Como personalizo os comandos?**         | Edite o `config.json` após instalar (veja a documentação).                  |
-| **E se meu servidor Pterodactyl travar?** | Reinicie o servidor e cheque os logs no console do Pterodactyl.             |
-
-> 💡 **Mais Dúvidas?** Pergunte no [Canal do WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b)!
-
-</details>
-
----
-
-## 🇺🇸 **English**
-
-<details>
-<summary>💻 Click to Expand English Instructions</summary>
-
-</details>
-</details>
-
----
-
-## 🇺🇸 **English**
+## 🇺�_unregister_globals **English**
 
 <details>
 <summary>💻 Click to Expand English Instructions</summary>
@@ -1618,7 +774,7 @@ Set up **Nazuninha Bot** on Pterodactyl in two ways:
 
 1. **Download the Egg**  
    - Grab the egg at: [github.com/hiudyy/nazu-files/egg-ptero.json](https://github.com/hiudyy/nazu-files/egg-ptero.json).  
-   - Import it in your Pterodactyl panel (**Eggs** > **Import Egg**).
+   - Import it in your Pterodactyl panel (**Eggs** > **Import Facet Import Egg**).
 
 2. **Create the Server**  
    - Create a server with the Nazuninha egg.  
@@ -1753,857 +909,6 @@ Hiudy’s a tech enthusiast who loves crafting practical, fun solutions. Beyond 
 
 > 💡 **More Questions?** Ask in our [WhatsApp Channel](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b)!
 
-
-
-<details>
-<summary>🖥️ Windows</summary>
-
-### 🖥️ **Windows**
-
-1. **Pré-requisitos**  
-   - Baixe e instale o [Node.js](https://nodejs.org) (LTS recomendado).  
-   - Instale o [Git](https://git-scm.com/downloads) pro Windows.  
-   - Verifique:  
-     ```bash
-     node -v
-     git --version
-     ```
-
-2. **Clonar e Instalar**  
-   Abra o Prompt de Comando ou PowerShell:  
-   ```bash
-   git clone https://github.com/hiudyy/nazuninha-bot.git
-   cd nazuninha-bot
-   npm run config
-   npm run config:install
-   ```
-
-3. **Rodar o Bot**  
-   ```bash
-   npm start
-   ```
-
-4. **Manter Online**  
-   - Use o [NSSM](https://nssm.cc/) pra rodar 24/7:  
-     ```bash
-     nssm install nazuninha-bot "C:\caminho\para\node.exe" "C:\caminho\para\nazuninha-bot\app.js"
-     ```
-   - Ou deixe o Prompt aberto (não feche!).
-
-> 💡 **Dica**: Bot parou? Cheque a conexão ou rode `npm start` novamente.
-
-##### 🐧 **Linux**
-
-1. **Pré-requisitos**  
-   Atualize e instale:  
-   ```bash
-   sudo apt update && sudo apt install -y nodejs git
-   ```  
-   Verifique:  
-   ```bash
-   node -v
-   git --version
-   ```
-
-2. **Clonar e Instalar**  
-   ```bash
-   git clone https://github.com/hiudyy/nazuninha-bot.git
-   cd nazuninha-bot
-   npm run config
-   npm run config:install
-   ```
-
-3. **Rodar o Bot**  
-   ```bash
-   npm start
-   ```
-
-4. **Rodar em Segundo Plano**  
-   Use o `pm2`:  
-   ```bash
-   npm install -g pm2
-   pm2 start npm --name "nazuninha-bot" -- start
-   pm2 save
-   ```  
-   Monitore com `pm2 logs nazuninha-bot`.
-
-> 💡 **Dica**: Desconectou? Reinicie com `pm2 restart nazuninha-bot`.
-
-##### 📱 **Termux (Android)**
-
-1. **Instalar o Termux**  
-   - Baixe pelo [F-Droid](https://f-droid.org/packages/com.termux/) (evite Google Play).  
-   - Atualize:  
-     ```bash
-     pkg update && pkg upgrade -y
-     ```
-
-2. **Pré-requisitos**  
-   ```bash
-   pkg install nodejs git -y
-   termux-setup-storage
-   ```
-
-3. **Clonar e Instalar**  
-   ```bash
-   cd /sdcard
-   git clone https://github.com/hiudyy/nazuninha-bot.git
-   cd nazuninha-bot
-   npm run config
-   npm run config:install
-   ```
-
-4. **Rodar o Bot**  
-   ```bash
-   npm start
-   ```
-
-5. **Manter Online**  
-   - Evite fechar o Termux; mantenha o celular ligado ou use app de “manter acordado”.  
-   - Se parar, reinicie:  
-     ```bash
-     cd /sdcard/nazuninha-bot
-     npm start
-     ```
-
-> 💡 **Dica**: “Permissão negada”? Rode `termux-setup-storage` de novo.
-
-##### ☁️ **Pterodactyl**
-
-Configure o **Nazuninha Bot** no Pterodactyl de duas formas:
-
-**Opção 1: Egg Oficial da Nazuninha**
-
-1. **Baixar o Egg**  
-   - Pegue o egg em: [github.com/hiudyy/nazu-files/egg-ptero.json](https://github.com/hiudyy/nazu-files/egg-ptero.json).  
-   - Importe no painel Pterodactyl (**Eggs** > **Import Egg**).
-
-2. **Criar o Servidor**  
-   - Crie um servidor com o egg da Nazuninha.  
-   - No **Startup**, configure:  
-     - **Nome do Dono**: Seu nome/apelido (ex.: `João`).  
-     - **Número do Bot**: Número com código do país (ex.: `+5511999999999`).  
-     - **Prefixo do Bot**: Símbolo pros comandos (ex.: `/`).  
-     - **Nome do Bot**: Nome no WhatsApp (ex.: `Nazuninha`).  
-     - **Atualização Automática**: `Sim` pra updates automáticos ou `Não` pra manual.  
-   - Recursos mínimos: 512MB RAM e 512MB disco (1GB RAM e 2GB disco recomendados).
-
-3. **Iniciar o Servidor**  
-   - Clique em **Iniciar** no painel.  
-   - O egg clona o repo (`https://github.com/hiudyy/nazuninha-bot.git`) e instala tudo.  
-   - Conecte ao WhatsApp via QR code ou código de pareamento (use console ou VNC).
-
-4. **Manter Online**  
-   - O Pterodactyl roda 24/7.  
-   - Sem atualização automática? Rode:  
-     ```bash
-     npm run update
-     ```
-
-**Opção 2: Egg Node.js Comum**
-
-1. **Criar o Servidor**  
-   - Crie um servidor com o egg **Node.js** padrão.  
-   - Defina o **Comando de Inicialização** como: `npm start`.  
-   - Recursos mínimos: 512MB RAM e 512MB disco (1GB RAM e 2GB disco recomendados).
-
-2. **Clonar o Repositório**  
-   - No console do Pterodactyl:  
-     ```bash
-     git clone https://github.com/hiudyy/nazuninha-bot.git
-     cd nazuninha-bot
-     ```
-
-3. **Instalar Dependências**  
-   - Execute:  
-     ```bash
-     npm run config
-     npm run config:install
-     ```
-
-4. **Iniciar o Bot**  
-   - Inicie o servidor no painel.  
-   - Conecte ao WhatsApp com QR code ou código.
-
-5. **Atualizações**  
-   - Atualize manualmente:  
-     ```bash
-     npm run update
-     ```
-
-> 💡 **Dica**: O egg oficial automatiza tudo, é mais fácil!
-
----
-
-#### ❓ **Resolvendo Problemas**
-
-Deu pau? Soluções pros problemas mais comuns:
-
-| **Problema**                     | **Solução**                                                                 |
-|----------------------------------|-----------------------------------------------------------------------------|
-| **“Comando não encontrado”**     | Instale Git/Node.js (`pkg install git nodejs` no Termux).                   |
-| **QR Code não funciona**         | Atualize o WhatsApp, gere outro QR com `npm start`, ou cheque a internet.   |
-| **Bot desconecta**               | Reinicie com `npm start`, apague a pasta `sessions`, ou troque o número.    |
-| **Erro na instalação**           | Rode `npm install`, verifique Node.js 18+ (`node -v`), ou atualize pacotes. |
-| **Termux para**                  | Mantenha o celular ligado e reinicie com `cd /sdcard/nazuninha-bot && npm start`. |
-
-> 😊 **Tá na Merda?** Cola no [Canal do WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b) pra suporte!
-
----
-
-#### 💖 **Apoie o Projeto**
-
-Fazer o **Nazuninha Bot** é um trampo danado. Seu apoio é tudo:
-
-- **🌍 Global (Patreon)**  
-  [![Apoiar no Patreon](https://img.shields.io/badge/Apoiar-Patreon-orange?style=flat-square&logo=patreon)](https://patreon.com/hiudyy)  
-  *Contribua mensalmente pra manter o projeto vivo.*
-
-- **🇧🇷 Brasil (Pix)**  
-  **Chave Pix (E-mail):** `lua.bot@hotmail.com`  
-  *Qualquer valor já ajuda pra caramba.*
-
-> ❤️ **Valeu!** Cada real motiva mais features e melhorias!
-
----
-
-#### 📜 **Licença**
-
-© 2025 **Hiudy**. Todos os direitos reservados.
-
-O **Nazuninha Bot** é **protegido por copyright**. Não remova os créditos, não venda, e não distribua versões modificadas sem autorização. Violações podem levar a ações legais.
-
----
-
-#### 👤 **Sobre o Criador**
-
-Feito com ❤️ por [**Hiudy**](https://github.com/hiudyy), um dev apaixonado por criar ferramentas que tornam a tecnologia mais divertida e acessível. Ele tá sempre bolando projetos novos e dando aquele gás no Nazuninha Bot pra comunidade.
-
-**Estatísticas do Hiudy**:
-
-| Ícone | Badge | Descrição |
-|-------|-------|-----------|
-| 👥 | ![Seguidores](https://img.shields.io/github/followers/hiudyy?color=blue&style=flat-square) | **Seguidores**: Quantas pessoas acompanham o Hiudy no GitHub. |
-| 📝 | ![Contribuições](https://img.shields.io/github/commit-activity/y/hiudyy?color=purple&style=flat-square) | **Contribuições**: Atividade anual do Hiudy em todos os projetos. |
-| 📚 | ![Repositórios](https://img.shields.io/github/repos/hiudyy?color=green&style=flat-square) | **Repositórios**: Total de projetos públicos do Hiudy. |
-| 💬 | ![Discord](https://img.shields.io/badge/Discord-hiudyyy-7289DA?style=flat-square&logo=discord) | **Discord**: Conecte-se com o Hiudy no Discord. |
-| 📷 | ![Instagram](https://img.shields.io/badge/Instagram-hiudyyy_-E4405F?style=flat-square&logo=instagram) | **Instagram**: Siga o Hiudy no Insta pra novidades. |
-
-**Bio**:  
-Hiudy é um entusiasta de tech que curte criar soluções práticas e com aquele toque de diversão. Além do Nazuninha Bot, ele contribui pra projetos open-source e ama trocar ideia com a comunidade. Cola nas redes dele pra acompanhar os próximos rolês!
-
-- 📍 **GitHub**: [hiudyy](https://github.com/hiudyy)
-- 💬 **Discord**: [hiudyyy](https://discord.com/users/hiudyyy)
-- 📷 **Instagram**: [hiudyyy_](https://instagram.com/hiudyyy_)
-
-> 🌟 **Gostou?** Dá uma estrela no GitHub e compartilha com a galera!
-
----
-
-#### ❔ **FAQ Avançado**
-
-| **Pergunta**                              | **Resposta**                                                                 |
-|------------------------------------------|-----------------------------------------------------------------------------|
-| **Posso usar meu número principal?**      | Não é recomendado. Use um número secundário pra evitar riscos de banimento. |
-| **O bot funciona offline?**               | Não, precisa de internet pra se conectar ao WhatsApp.                       |
-| **Como personalizo os comandos?**         | Edite o `config.json` após instalar (veja a documentação).                  |
-| **E se meu servidor Pterodactyl travar?** | Reinicie o servidor e cheque os logs no console do Pterodactyl.             |
-
-> 💡 **Mais Dúvidas?** Pergunte no [Canal do WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b)!
-
-</details>
-
----
-
-## 🇺🇸 **English**
-
-<details>
-<summary>💻 Click to Expand English Instructions</summary>
-
-</details>
-<details>
-<summary>🐧 Linux</summary>
-
-### 🐧 **Linux**
-
-1. **Pré-requisitos**  
-   Atualize e instale:  
-   ```bash
-   sudo apt update && sudo apt install -y nodejs git
-   ```  
-   Verifique:  
-   ```bash
-   node -v
-   git --version
-   ```
-
-2. **Clonar e Instalar**  
-   ```bash
-   git clone https://github.com/hiudyy/nazuninha-bot.git
-   cd nazuninha-bot
-   npm run config
-   npm run config:install
-   ```
-
-3. **Rodar o Bot**  
-   ```bash
-   npm start
-   ```
-
-4. **Rodar em Segundo Plano**  
-   Use o `pm2`:  
-   ```bash
-   npm install -g pm2
-   pm2 start npm --name "nazuninha-bot" -- start
-   pm2 save
-   ```  
-   Monitore com `pm2 logs nazuninha-bot`.
-
-> 💡 **Dica**: Desconectou? Reinicie com `pm2 restart nazuninha-bot`.
-
-##### 📱 **Termux (Android)**
-
-1. **Instalar o Termux**  
-   - Baixe pelo [F-Droid](https://f-droid.org/packages/com.termux/) (evite Google Play).  
-   - Atualize:  
-     ```bash
-     pkg update && pkg upgrade -y
-     ```
-
-2. **Pré-requisitos**  
-   ```bash
-   pkg install nodejs git -y
-   termux-setup-storage
-   ```
-
-3. **Clonar e Instalar**  
-   ```bash
-   cd /sdcard
-   git clone https://github.com/hiudyy/nazuninha-bot.git
-   cd nazuninha-bot
-   npm run config
-   npm run config:install
-   ```
-
-4. **Rodar o Bot**  
-   ```bash
-   npm start
-   ```
-
-5. **Manter Online**  
-   - Evite fechar o Termux; mantenha o celular ligado ou use app de “manter acordado”.  
-   - Se parar, reinicie:  
-     ```bash
-     cd /sdcard/nazuninha-bot
-     npm start
-     ```
-
-> 💡 **Dica**: “Permissão negada”? Rode `termux-setup-storage` de novo.
-
-##### ☁️ **Pterodactyl**
-
-Configure o **Nazuninha Bot** no Pterodactyl de duas formas:
-
-**Opção 1: Egg Oficial da Nazuninha**
-
-1. **Baixar o Egg**  
-   - Pegue o egg em: [github.com/hiudyy/nazu-files/egg-ptero.json](https://github.com/hiudyy/nazu-files/egg-ptero.json).  
-   - Importe no painel Pterodactyl (**Eggs** > **Import Egg**).
-
-2. **Criar o Servidor**  
-   - Crie um servidor com o egg da Nazuninha.  
-   - No **Startup**, configure:  
-     - **Nome do Dono**: Seu nome/apelido (ex.: `João`).  
-     - **Número do Bot**: Número com código do país (ex.: `+5511999999999`).  
-     - **Prefixo do Bot**: Símbolo pros comandos (ex.: `/`).  
-     - **Nome do Bot**: Nome no WhatsApp (ex.: `Nazuninha`).  
-     - **Atualização Automática**: `Sim` pra updates automáticos ou `Não` pra manual.  
-   - Recursos mínimos: 512MB RAM e 512MB disco (1GB RAM e 2GB disco recomendados).
-
-3. **Iniciar o Servidor**  
-   - Clique em **Iniciar** no painel.  
-   - O egg clona o repo (`https://github.com/hiudyy/nazuninha-bot.git`) e instala tudo.  
-   - Conecte ao WhatsApp via QR code ou código de pareamento (use console ou VNC).
-
-4. **Manter Online**  
-   - O Pterodactyl roda 24/7.  
-   - Sem atualização automática? Rode:  
-     ```bash
-     npm run update
-     ```
-
-**Opção 2: Egg Node.js Comum**
-
-1. **Criar o Servidor**  
-   - Crie um servidor com o egg **Node.js** padrão.  
-   - Defina o **Comando de Inicialização** como: `npm start`.  
-   - Recursos mínimos: 512MB RAM e 512MB disco (1GB RAM e 2GB disco recomendados).
-
-2. **Clonar o Repositório**  
-   - No console do Pterodactyl:  
-     ```bash
-     git clone https://github.com/hiudyy/nazuninha-bot.git
-     cd nazuninha-bot
-     ```
-
-3. **Instalar Dependências**  
-   - Execute:  
-     ```bash
-     npm run config
-     npm run config:install
-     ```
-
-4. **Iniciar o Bot**  
-   - Inicie o servidor no painel.  
-   - Conecte ao WhatsApp com QR code ou código.
-
-5. **Atualizações**  
-   - Atualize manualmente:  
-     ```bash
-     npm run update
-     ```
-
-> 💡 **Dica**: O egg oficial automatiza tudo, é mais fácil!
-
----
-
-#### ❓ **Resolvendo Problemas**
-
-Deu pau? Soluções pros problemas mais comuns:
-
-| **Problema**                     | **Solução**                                                                 |
-|----------------------------------|-----------------------------------------------------------------------------|
-| **“Comando não encontrado”**     | Instale Git/Node.js (`pkg install git nodejs` no Termux).                   |
-| **QR Code não funciona**         | Atualize o WhatsApp, gere outro QR com `npm start`, ou cheque a internet.   |
-| **Bot desconecta**               | Reinicie com `npm start`, apague a pasta `sessions`, ou troque o número.    |
-| **Erro na instalação**           | Rode `npm install`, verifique Node.js 18+ (`node -v`), ou atualize pacotes. |
-| **Termux para**                  | Mantenha o celular ligado e reinicie com `cd /sdcard/nazuninha-bot && npm start`. |
-
-> 😊 **Tá na Merda?** Cola no [Canal do WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b) pra suporte!
-
----
-
-#### 💖 **Apoie o Projeto**
-
-Fazer o **Nazuninha Bot** é um trampo danado. Seu apoio é tudo:
-
-- **🌍 Global (Patreon)**  
-  [![Apoiar no Patreon](https://img.shields.io/badge/Apoiar-Patreon-orange?style=flat-square&logo=patreon)](https://patreon.com/hiudyy)  
-  *Contribua mensalmente pra manter o projeto vivo.*
-
-- **🇧🇷 Brasil (Pix)**  
-  **Chave Pix (E-mail):** `lua.bot@hotmail.com`  
-  *Qualquer valor já ajuda pra caramba.*
-
-> ❤️ **Valeu!** Cada real motiva mais features e melhorias!
-
----
-
-#### 📜 **Licença**
-
-© 2025 **Hiudy**. Todos os direitos reservados.
-
-O **Nazuninha Bot** é **protegido por copyright**. Não remova os créditos, não venda, e não distribua versões modificadas sem autorização. Violações podem levar a ações legais.
-
----
-
-#### 👤 **Sobre o Criador**
-
-Feito com ❤️ por [**Hiudy**](https://github.com/hiudyy), um dev apaixonado por criar ferramentas que tornam a tecnologia mais divertida e acessível. Ele tá sempre bolando projetos novos e dando aquele gás no Nazuninha Bot pra comunidade.
-
-**Estatísticas do Hiudy**:
-
-| Ícone | Badge | Descrição |
-|-------|-------|-----------|
-| 👥 | ![Seguidores](https://img.shields.io/github/followers/hiudyy?color=blue&style=flat-square) | **Seguidores**: Quantas pessoas acompanham o Hiudy no GitHub. |
-| 📝 | ![Contribuições](https://img.shields.io/github/commit-activity/y/hiudyy?color=purple&style=flat-square) | **Contribuições**: Atividade anual do Hiudy em todos os projetos. |
-| 📚 | ![Repositórios](https://img.shields.io/github/repos/hiudyy?color=green&style=flat-square) | **Repositórios**: Total de projetos públicos do Hiudy. |
-| 💬 | ![Discord](https://img.shields.io/badge/Discord-hiudyyy-7289DA?style=flat-square&logo=discord) | **Discord**: Conecte-se com o Hiudy no Discord. |
-| 📷 | ![Instagram](https://img.shields.io/badge/Instagram-hiudyyy_-E4405F?style=flat-square&logo=instagram) | **Instagram**: Siga o Hiudy no Insta pra novidades. |
-
-**Bio**:  
-Hiudy é um entusiasta de tech que curte criar soluções práticas e com aquele toque de diversão. Além do Nazuninha Bot, ele contribui pra projetos open-source e ama trocar ideia com a comunidade. Cola nas redes dele pra acompanhar os próximos rolês!
-
-- 📍 **GitHub**: [hiudyy](https://github.com/hiudyy)
-- 💬 **Discord**: [hiudyyy](https://discord.com/users/hiudyyy)
-- 📷 **Instagram**: [hiudyyy_](https://instagram.com/hiudyyy_)
-
-> 🌟 **Gostou?** Dá uma estrela no GitHub e compartilha com a galera!
-
----
-
-#### ❔ **FAQ Avançado**
-
-| **Pergunta**                              | **Resposta**                                                                 |
-|------------------------------------------|-----------------------------------------------------------------------------|
-| **Posso usar meu número principal?**      | Não é recomendado. Use um número secundário pra evitar riscos de banimento. |
-| **O bot funciona offline?**               | Não, precisa de internet pra se conectar ao WhatsApp.                       |
-| **Como personalizo os comandos?**         | Edite o `config.json` após instalar (veja a documentação).                  |
-| **E se meu servidor Pterodactyl travar?** | Reinicie o servidor e cheque os logs no console do Pterodactyl.             |
-
-> 💡 **Mais Dúvidas?** Pergunte no [Canal do WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b)!
-
-</details>
-
----
-
-## 🇺🇸 **English**
-
-<details>
-<summary>💻 Click to Expand English Instructions</summary>
-
-</details>
-<details>
-<summary>📱 Termux (Android)</summary>
-
-### 📱 **Termux (Android)**
-
-1. **Instalar o Termux**  
-   - Baixe pelo [F-Droid](https://f-droid.org/packages/com.termux/) (evite Google Play).  
-   - Atualize:  
-     ```bash
-     pkg update && pkg upgrade -y
-     ```
-
-2. **Pré-requisitos**  
-   ```bash
-   pkg install nodejs git -y
-   termux-setup-storage
-   ```
-
-3. **Clonar e Instalar**  
-   ```bash
-   cd /sdcard
-   git clone https://github.com/hiudyy/nazuninha-bot.git
-   cd nazuninha-bot
-   npm run config
-   npm run config:install
-   ```
-
-4. **Rodar o Bot**  
-   ```bash
-   npm start
-   ```
-
-5. **Manter Online**  
-   - Evite fechar o Termux; mantenha o celular ligado ou use app de “manter acordado”.  
-   - Se parar, reinicie:  
-     ```bash
-     cd /sdcard/nazuninha-bot
-     npm start
-     ```
-
-> 💡 **Dica**: “Permissão negada”? Rode `termux-setup-storage` de novo.
-
-##### ☁️ **Pterodactyl**
-
-Configure o **Nazuninha Bot** no Pterodactyl de duas formas:
-
-**Opção 1: Egg Oficial da Nazuninha**
-
-1. **Baixar o Egg**  
-   - Pegue o egg em: [github.com/hiudyy/nazu-files/egg-ptero.json](https://github.com/hiudyy/nazu-files/egg-ptero.json).  
-   - Importe no painel Pterodactyl (**Eggs** > **Import Egg**).
-
-2. **Criar o Servidor**  
-   - Crie um servidor com o egg da Nazuninha.  
-   - No **Startup**, configure:  
-     - **Nome do Dono**: Seu nome/apelido (ex.: `João`).  
-     - **Número do Bot**: Número com código do país (ex.: `+5511999999999`).  
-     - **Prefixo do Bot**: Símbolo pros comandos (ex.: `/`).  
-     - **Nome do Bot**: Nome no WhatsApp (ex.: `Nazuninha`).  
-     - **Atualização Automática**: `Sim` pra updates automáticos ou `Não` pra manual.  
-   - Recursos mínimos: 512MB RAM e 512MB disco (1GB RAM e 2GB disco recomendados).
-
-3. **Iniciar o Servidor**  
-   - Clique em **Iniciar** no painel.  
-   - O egg clona o repo (`https://github.com/hiudyy/nazuninha-bot.git`) e instala tudo.  
-   - Conecte ao WhatsApp via QR code ou código de pareamento (use console ou VNC).
-
-4. **Manter Online**  
-   - O Pterodactyl roda 24/7.  
-   - Sem atualização automática? Rode:  
-     ```bash
-     npm run update
-     ```
-
-**Opção 2: Egg Node.js Comum**
-
-1. **Criar o Servidor**  
-   - Crie um servidor com o egg **Node.js** padrão.  
-   - Defina o **Comando de Inicialização** como: `npm start`.  
-   - Recursos mínimos: 512MB RAM e 512MB disco (1GB RAM e 2GB disco recomendados).
-
-2. **Clonar o Repositório**  
-   - No console do Pterodactyl:  
-     ```bash
-     git clone https://github.com/hiudyy/nazuninha-bot.git
-     cd nazuninha-bot
-     ```
-
-3. **Instalar Dependências**  
-   - Execute:  
-     ```bash
-     npm run config
-     npm run config:install
-     ```
-
-4. **Iniciar o Bot**  
-   - Inicie o servidor no painel.  
-   - Conecte ao WhatsApp com QR code ou código.
-
-5. **Atualizações**  
-   - Atualize manualmente:  
-     ```bash
-     npm run update
-     ```
-
-> 💡 **Dica**: O egg oficial automatiza tudo, é mais fácil!
-
----
-
-#### ❓ **Resolvendo Problemas**
-
-Deu pau? Soluções pros problemas mais comuns:
-
-| **Problema**                     | **Solução**                                                                 |
-|----------------------------------|-----------------------------------------------------------------------------|
-| **“Comando não encontrado”**     | Instale Git/Node.js (`pkg install git nodejs` no Termux).                   |
-| **QR Code não funciona**         | Atualize o WhatsApp, gere outro QR com `npm start`, ou cheque a internet.   |
-| **Bot desconecta**               | Reinicie com `npm start`, apague a pasta `sessions`, ou troque o número.    |
-| **Erro na instalação**           | Rode `npm install`, verifique Node.js 18+ (`node -v`), ou atualize pacotes. |
-| **Termux para**                  | Mantenha o celular ligado e reinicie com `cd /sdcard/nazuninha-bot && npm start`. |
-
-> 😊 **Tá na Merda?** Cola no [Canal do WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b) pra suporte!
-
----
-
-#### 💖 **Apoie o Projeto**
-
-Fazer o **Nazuninha Bot** é um trampo danado. Seu apoio é tudo:
-
-- **🌍 Global (Patreon)**  
-  [![Apoiar no Patreon](https://img.shields.io/badge/Apoiar-Patreon-orange?style=flat-square&logo=patreon)](https://patreon.com/hiudyy)  
-  *Contribua mensalmente pra manter o projeto vivo.*
-
-- **🇧🇷 Brasil (Pix)**  
-  **Chave Pix (E-mail):** `lua.bot@hotmail.com`  
-  *Qualquer valor já ajuda pra caramba.*
-
-> ❤️ **Valeu!** Cada real motiva mais features e melhorias!
-
----
-
-#### 📜 **Licença**
-
-© 2025 **Hiudy**. Todos os direitos reservados.
-
-O **Nazuninha Bot** é **protegido por copyright**. Não remova os créditos, não venda, e não distribua versões modificadas sem autorização. Violações podem levar a ações legais.
-
----
-
-#### 👤 **Sobre o Criador**
-
-Feito com ❤️ por [**Hiudy**](https://github.com/hiudyy), um dev apaixonado por criar ferramentas que tornam a tecnologia mais divertida e acessível. Ele tá sempre bolando projetos novos e dando aquele gás no Nazuninha Bot pra comunidade.
-
-**Estatísticas do Hiudy**:
-
-| Ícone | Badge | Descrição |
-|-------|-------|-----------|
-| 👥 | ![Seguidores](https://img.shields.io/github/followers/hiudyy?color=blue&style=flat-square) | **Seguidores**: Quantas pessoas acompanham o Hiudy no GitHub. |
-| 📝 | ![Contribuições](https://img.shields.io/github/commit-activity/y/hiudyy?color=purple&style=flat-square) | **Contribuições**: Atividade anual do Hiudy em todos os projetos. |
-| 📚 | ![Repositórios](https://img.shields.io/github/repos/hiudyy?color=green&style=flat-square) | **Repositórios**: Total de projetos públicos do Hiudy. |
-| 💬 | ![Discord](https://img.shields.io/badge/Discord-hiudyyy-7289DA?style=flat-square&logo=discord) | **Discord**: Conecte-se com o Hiudy no Discord. |
-| 📷 | ![Instagram](https://img.shields.io/badge/Instagram-hiudyyy_-E4405F?style=flat-square&logo=instagram) | **Instagram**: Siga o Hiudy no Insta pra novidades. |
-
-**Bio**:  
-Hiudy é um entusiasta de tech que curte criar soluções práticas e com aquele toque de diversão. Além do Nazuninha Bot, ele contribui pra projetos open-source e ama trocar ideia com a comunidade. Cola nas redes dele pra acompanhar os próximos rolês!
-
-- 📍 **GitHub**: [hiudyy](https://github.com/hiudyy)
-- 💬 **Discord**: [hiudyyy](https://discord.com/users/hiudyyy)
-- 📷 **Instagram**: [hiudyyy_](https://instagram.com/hiudyyy_)
-
-> 🌟 **Gostou?** Dá uma estrela no GitHub e compartilha com a galera!
-
----
-
-#### ❔ **FAQ Avançado**
-
-| **Pergunta**                              | **Resposta**                                                                 |
-|------------------------------------------|-----------------------------------------------------------------------------|
-| **Posso usar meu número principal?**      | Não é recomendado. Use um número secundário pra evitar riscos de banimento. |
-| **O bot funciona offline?**               | Não, precisa de internet pra se conectar ao WhatsApp.                       |
-| **Como personalizo os comandos?**         | Edite o `config.json` após instalar (veja a documentação).                  |
-| **E se meu servidor Pterodactyl travar?** | Reinicie o servidor e cheque os logs no console do Pterodactyl.             |
-
-> 💡 **Mais Dúvidas?** Pergunte no [Canal do WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b)!
-
-</details>
-
----
-
-## 🇺🇸 **English**
-
-<details>
-<summary>💻 Click to Expand English Instructions</summary>
-
-</details>
-<details>
-<summary>☁️ Pterodactyl</summary>
-
-### ☁️ **Pterodactyl**
-
-Configure o **Nazuninha Bot** no Pterodactyl de duas formas:
-
-**Opção 1: Egg Oficial da Nazuninha**
-
-1. **Baixar o Egg**  
-   - Pegue o egg em: [github.com/hiudyy/nazu-files/egg-ptero.json](https://github.com/hiudyy/nazu-files/egg-ptero.json).  
-   - Importe no painel Pterodactyl (**Eggs** > **Import Egg**).
-
-2. **Criar o Servidor**  
-   - Crie um servidor com o egg da Nazuninha.  
-   - No **Startup**, configure:  
-     - **Nome do Dono**: Seu nome/apelido (ex.: `João`).  
-     - **Número do Bot**: Número com código do país (ex.: `+5511999999999`).  
-     - **Prefixo do Bot**: Símbolo pros comandos (ex.: `/`).  
-     - **Nome do Bot**: Nome no WhatsApp (ex.: `Nazuninha`).  
-     - **Atualização Automática**: `Sim` pra updates automáticos ou `Não` pra manual.  
-   - Recursos mínimos: 512MB RAM e 512MB disco (1GB RAM e 2GB disco recomendados).
-
-3. **Iniciar o Servidor**  
-   - Clique em **Iniciar** no painel.  
-   - O egg clona o repo (`https://github.com/hiudyy/nazuninha-bot.git`) e instala tudo.  
-   - Conecte ao WhatsApp via QR code ou código de pareamento (use console ou VNC).
-
-4. **Manter Online**  
-   - O Pterodactyl roda 24/7.  
-   - Sem atualização automática? Rode:  
-     ```bash
-     npm run update
-     ```
-
-**Opção 2: Egg Node.js Comum**
-
-1. **Criar o Servidor**  
-   - Crie um servidor com o egg **Node.js** padrão.  
-   - Defina o **Comando de Inicialização** como: `npm start`.  
-   - Recursos mínimos: 512MB RAM e 512MB disco (1GB RAM e 2GB disco recomendados).
-
-2. **Clonar o Repositório**  
-   - No console do Pterodactyl:  
-     ```bash
-     git clone https://github.com/hiudyy/nazuninha-bot.git
-     cd nazuninha-bot
-     ```
-
-3. **Instalar Dependências**  
-   - Execute:  
-     ```bash
-     npm run config
-     npm run config:install
-     ```
-
-4. **Iniciar o Bot**  
-   - Inicie o servidor no painel.  
-   - Conecte ao WhatsApp com QR code ou código.
-
-5. **Atualizações**  
-   - Atualize manualmente:  
-     ```bash
-     npm run update
-     ```
-
-> 💡 **Dica**: O egg oficial automatiza tudo, é mais fácil!
-
----
-
-#### ❓ **Resolvendo Problemas**
-
-Deu pau? Soluções pros problemas mais comuns:
-
-| **Problema**                     | **Solução**                                                                 |
-|----------------------------------|-----------------------------------------------------------------------------|
-| **“Comando não encontrado”**     | Instale Git/Node.js (`pkg install git nodejs` no Termux).                   |
-| **QR Code não funciona**         | Atualize o WhatsApp, gere outro QR com `npm start`, ou cheque a internet.   |
-| **Bot desconecta**               | Reinicie com `npm start`, apague a pasta `sessions`, ou troque o número.    |
-| **Erro na instalação**           | Rode `npm install`, verifique Node.js 18+ (`node -v`), ou atualize pacotes. |
-| **Termux para**                  | Mantenha o celular ligado e reinicie com `cd /sdcard/nazuninha-bot && npm start`. |
-
-> 😊 **Tá na Merda?** Cola no [Canal do WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b) pra suporte!
-
----
-
-#### 💖 **Apoie o Projeto**
-
-Fazer o **Nazuninha Bot** é um trampo danado. Seu apoio é tudo:
-
-- **🌍 Global (Patreon)**  
-  [![Apoiar no Patreon](https://img.shields.io/badge/Apoiar-Patreon-orange?style=flat-square&logo=patreon)](https://patreon.com/hiudyy)  
-  *Contribua mensalmente pra manter o projeto vivo.*
-
-- **🇧🇷 Brasil (Pix)**  
-  **Chave Pix (E-mail):** `lua.bot@hotmail.com`  
-  *Qualquer valor já ajuda pra caramba.*
-
-> ❤️ **Valeu!** Cada real motiva mais features e melhorias!
-
----
-
-#### 📜 **Licença**
-
-© 2025 **Hiudy**. Todos os direitos reservados.
-
-O **Nazuninha Bot** é **protegido por copyright**. Não remova os créditos, não venda, e não distribua versões modificadas sem autorização. Violações podem levar a ações legais.
-
----
-
-#### 👤 **Sobre o Criador**
-
-Feito com ❤️ por [**Hiudy**](https://github.com/hiudyy), um dev apaixonado por criar ferramentas que tornam a tecnologia mais divertida e acessível. Ele tá sempre bolando projetos novos e dando aquele gás no Nazuninha Bot pra comunidade.
-
-**Estatísticas do Hiudy**:
-
-| Ícone | Badge | Descrição |
-|-------|-------|-----------|
-| 👥 | ![Seguidores](https://img.shields.io/github/followers/hiudyy?color=blue&style=flat-square) | **Seguidores**: Quantas pessoas acompanham o Hiudy no GitHub. |
-| 📝 | ![Contribuições](https://img.shields.io/github/commit-activity/y/hiudyy?color=purple&style=flat-square) | **Contribuições**: Atividade anual do Hiudy em todos os projetos. |
-| 📚 | ![Repositórios](https://img.shields.io/github/repos/hiudyy?color=green&style=flat-square) | **Repositórios**: Total de projetos públicos do Hiudy. |
-| 💬 | ![Discord](https://img.shields.io/badge/Discord-hiudyyy-7289DA?style=flat-square&logo=discord) | **Discord**: Conecte-se com o Hiudy no Discord. |
-| 📷 | ![Instagram](https://img.shields.io/badge/Instagram-hiudyyy_-E4405F?style=flat-square&logo=instagram) | **Instagram**: Siga o Hiudy no Insta pra novidades. |
-
-**Bio**:  
-Hiudy é um entusiasta de tech que curte criar soluções práticas e com aquele toque de diversão. Além do Nazuninha Bot, ele contribui pra projetos open-source e ama trocar ideia com a comunidade. Cola nas redes dele pra acompanhar os próximos rolês!
-
-- 📍 **GitHub**: [hiudyy](https://github.com/hiudyy)
-- 💬 **Discord**: [hiudyyy](https://discord.com/users/hiudyyy)
-- 📷 **Instagram**: [hiudyyy_](https://instagram.com/hiudyyy_)
-
-> 🌟 **Gostou?** Dá uma estrela no GitHub e compartilha com a galera!
-
----
-
-#### ❔ **FAQ Avançado**
-
-| **Pergunta**                              | **Resposta**                                                                 |
-|------------------------------------------|-----------------------------------------------------------------------------|
-| **Posso usar meu número principal?**      | Não é recomendado. Use um número secundário pra evitar riscos de banimento. |
-| **O bot funciona offline?**               | Não, precisa de internet pra se conectar ao WhatsApp.                       |
-| **Como personalizo os comandos?**         | Edite o `config.json` após instalar (veja a documentação).                  |
-| **E se meu servidor Pterodactyl travar?** | Reinicie o servidor e cheque os logs no console do Pterodactyl.             |
-
-> 💡 **Mais Dúvidas?** Pergunte no [Canal do WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b)!
-
-</details>
-
----
-
-## 🇺🇸 **English**
-
-<details>
-<summary>💻 Click to Expand English Instructions</summary>
-
-</details>
 </details>
 
 ---
@@ -3053,857 +1358,6 @@ Hiudy es un entusiasta de la tecnología que ama crear soluciones prácticas y d
 
 > 💡 **¿Más Preguntas?** Pregunta en nuestro [Canal de WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b).
 
-
-
-<details>
-<summary>🖥️ Windows</summary>
-
-### 🖥️ **Windows**
-
-1. **Pré-requisitos**  
-   - Baixe e instale o [Node.js](https://nodejs.org) (LTS recomendado).  
-   - Instale o [Git](https://git-scm.com/downloads) pro Windows.  
-   - Verifique:  
-     ```bash
-     node -v
-     git --version
-     ```
-
-2. **Clonar e Instalar**  
-   Abra o Prompt de Comando ou PowerShell:  
-   ```bash
-   git clone https://github.com/hiudyy/nazuninha-bot.git
-   cd nazuninha-bot
-   npm run config
-   npm run config:install
-   ```
-
-3. **Rodar o Bot**  
-   ```bash
-   npm start
-   ```
-
-4. **Manter Online**  
-   - Use o [NSSM](https://nssm.cc/) pra rodar 24/7:  
-     ```bash
-     nssm install nazuninha-bot "C:\caminho\para\node.exe" "C:\caminho\para\nazuninha-bot\app.js"
-     ```
-   - Ou deixe o Prompt aberto (não feche!).
-
-> 💡 **Dica**: Bot parou? Cheque a conexão ou rode `npm start` novamente.
-
-##### 🐧 **Linux**
-
-1. **Pré-requisitos**  
-   Atualize e instale:  
-   ```bash
-   sudo apt update && sudo apt install -y nodejs git
-   ```  
-   Verifique:  
-   ```bash
-   node -v
-   git --version
-   ```
-
-2. **Clonar e Instalar**  
-   ```bash
-   git clone https://github.com/hiudyy/nazuninha-bot.git
-   cd nazuninha-bot
-   npm run config
-   npm run config:install
-   ```
-
-3. **Rodar o Bot**  
-   ```bash
-   npm start
-   ```
-
-4. **Rodar em Segundo Plano**  
-   Use o `pm2`:  
-   ```bash
-   npm install -g pm2
-   pm2 start npm --name "nazuninha-bot" -- start
-   pm2 save
-   ```  
-   Monitore com `pm2 logs nazuninha-bot`.
-
-> 💡 **Dica**: Desconectou? Reinicie com `pm2 restart nazuninha-bot`.
-
-##### 📱 **Termux (Android)**
-
-1. **Instalar o Termux**  
-   - Baixe pelo [F-Droid](https://f-droid.org/packages/com.termux/) (evite Google Play).  
-   - Atualize:  
-     ```bash
-     pkg update && pkg upgrade -y
-     ```
-
-2. **Pré-requisitos**  
-   ```bash
-   pkg install nodejs git -y
-   termux-setup-storage
-   ```
-
-3. **Clonar e Instalar**  
-   ```bash
-   cd /sdcard
-   git clone https://github.com/hiudyy/nazuninha-bot.git
-   cd nazuninha-bot
-   npm run config
-   npm run config:install
-   ```
-
-4. **Rodar o Bot**  
-   ```bash
-   npm start
-   ```
-
-5. **Manter Online**  
-   - Evite fechar o Termux; mantenha o celular ligado ou use app de “manter acordado”.  
-   - Se parar, reinicie:  
-     ```bash
-     cd /sdcard/nazuninha-bot
-     npm start
-     ```
-
-> 💡 **Dica**: “Permissão negada”? Rode `termux-setup-storage` de novo.
-
-##### ☁️ **Pterodactyl**
-
-Configure o **Nazuninha Bot** no Pterodactyl de duas formas:
-
-**Opção 1: Egg Oficial da Nazuninha**
-
-1. **Baixar o Egg**  
-   - Pegue o egg em: [github.com/hiudyy/nazu-files/egg-ptero.json](https://github.com/hiudyy/nazu-files/egg-ptero.json).  
-   - Importe no painel Pterodactyl (**Eggs** > **Import Egg**).
-
-2. **Criar o Servidor**  
-   - Crie um servidor com o egg da Nazuninha.  
-   - No **Startup**, configure:  
-     - **Nome do Dono**: Seu nome/apelido (ex.: `João`).  
-     - **Número do Bot**: Número com código do país (ex.: `+5511999999999`).  
-     - **Prefixo do Bot**: Símbolo pros comandos (ex.: `/`).  
-     - **Nome do Bot**: Nome no WhatsApp (ex.: `Nazuninha`).  
-     - **Atualização Automática**: `Sim` pra updates automáticos ou `Não` pra manual.  
-   - Recursos mínimos: 512MB RAM e 512MB disco (1GB RAM e 2GB disco recomendados).
-
-3. **Iniciar o Servidor**  
-   - Clique em **Iniciar** no painel.  
-   - O egg clona o repo (`https://github.com/hiudyy/nazuninha-bot.git`) e instala tudo.  
-   - Conecte ao WhatsApp via QR code ou código de pareamento (use console ou VNC).
-
-4. **Manter Online**  
-   - O Pterodactyl roda 24/7.  
-   - Sem atualização automática? Rode:  
-     ```bash
-     npm run update
-     ```
-
-**Opção 2: Egg Node.js Comum**
-
-1. **Criar o Servidor**  
-   - Crie um servidor com o egg **Node.js** padrão.  
-   - Defina o **Comando de Inicialização** como: `npm start`.  
-   - Recursos mínimos: 512MB RAM e 512MB disco (1GB RAM e 2GB disco recomendados).
-
-2. **Clonar o Repositório**  
-   - No console do Pterodactyl:  
-     ```bash
-     git clone https://github.com/hiudyy/nazuninha-bot.git
-     cd nazuninha-bot
-     ```
-
-3. **Instalar Dependências**  
-   - Execute:  
-     ```bash
-     npm run config
-     npm run config:install
-     ```
-
-4. **Iniciar o Bot**  
-   - Inicie o servidor no painel.  
-   - Conecte ao WhatsApp com QR code ou código.
-
-5. **Atualizações**  
-   - Atualize manualmente:  
-     ```bash
-     npm run update
-     ```
-
-> 💡 **Dica**: O egg oficial automatiza tudo, é mais fácil!
-
----
-
-#### ❓ **Resolvendo Problemas**
-
-Deu pau? Soluções pros problemas mais comuns:
-
-| **Problema**                     | **Solução**                                                                 |
-|----------------------------------|-----------------------------------------------------------------------------|
-| **“Comando não encontrado”**     | Instale Git/Node.js (`pkg install git nodejs` no Termux).                   |
-| **QR Code não funciona**         | Atualize o WhatsApp, gere outro QR com `npm start`, ou cheque a internet.   |
-| **Bot desconecta**               | Reinicie com `npm start`, apague a pasta `sessions`, ou troque o número.    |
-| **Erro na instalação**           | Rode `npm install`, verifique Node.js 18+ (`node -v`), ou atualize pacotes. |
-| **Termux para**                  | Mantenha o celular ligado e reinicie com `cd /sdcard/nazuninha-bot && npm start`. |
-
-> 😊 **Tá na Merda?** Cola no [Canal do WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b) pra suporte!
-
----
-
-#### 💖 **Apoie o Projeto**
-
-Fazer o **Nazuninha Bot** é um trampo danado. Seu apoio é tudo:
-
-- **🌍 Global (Patreon)**  
-  [![Apoiar no Patreon](https://img.shields.io/badge/Apoiar-Patreon-orange?style=flat-square&logo=patreon)](https://patreon.com/hiudyy)  
-  *Contribua mensalmente pra manter o projeto vivo.*
-
-- **🇧🇷 Brasil (Pix)**  
-  **Chave Pix (E-mail):** `lua.bot@hotmail.com`  
-  *Qualquer valor já ajuda pra caramba.*
-
-> ❤️ **Valeu!** Cada real motiva mais features e melhorias!
-
----
-
-#### 📜 **Licença**
-
-© 2025 **Hiudy**. Todos os direitos reservados.
-
-O **Nazuninha Bot** é **protegido por copyright**. Não remova os créditos, não venda, e não distribua versões modificadas sem autorização. Violações podem levar a ações legais.
-
----
-
-#### 👤 **Sobre o Criador**
-
-Feito com ❤️ por [**Hiudy**](https://github.com/hiudyy), um dev apaixonado por criar ferramentas que tornam a tecnologia mais divertida e acessível. Ele tá sempre bolando projetos novos e dando aquele gás no Nazuninha Bot pra comunidade.
-
-**Estatísticas do Hiudy**:
-
-| Ícone | Badge | Descrição |
-|-------|-------|-----------|
-| 👥 | ![Seguidores](https://img.shields.io/github/followers/hiudyy?color=blue&style=flat-square) | **Seguidores**: Quantas pessoas acompanham o Hiudy no GitHub. |
-| 📝 | ![Contribuições](https://img.shields.io/github/commit-activity/y/hiudyy?color=purple&style=flat-square) | **Contribuições**: Atividade anual do Hiudy em todos os projetos. |
-| 📚 | ![Repositórios](https://img.shields.io/github/repos/hiudyy?color=green&style=flat-square) | **Repositórios**: Total de projetos públicos do Hiudy. |
-| 💬 | ![Discord](https://img.shields.io/badge/Discord-hiudyyy-7289DA?style=flat-square&logo=discord) | **Discord**: Conecte-se com o Hiudy no Discord. |
-| 📷 | ![Instagram](https://img.shields.io/badge/Instagram-hiudyyy_-E4405F?style=flat-square&logo=instagram) | **Instagram**: Siga o Hiudy no Insta pra novidades. |
-
-**Bio**:  
-Hiudy é um entusiasta de tech que curte criar soluções práticas e com aquele toque de diversão. Além do Nazuninha Bot, ele contribui pra projetos open-source e ama trocar ideia com a comunidade. Cola nas redes dele pra acompanhar os próximos rolês!
-
-- 📍 **GitHub**: [hiudyy](https://github.com/hiudyy)
-- 💬 **Discord**: [hiudyyy](https://discord.com/users/hiudyyy)
-- 📷 **Instagram**: [hiudyyy_](https://instagram.com/hiudyyy_)
-
-> 🌟 **Gostou?** Dá uma estrela no GitHub e compartilha com a galera!
-
----
-
-#### ❔ **FAQ Avançado**
-
-| **Pergunta**                              | **Resposta**                                                                 |
-|------------------------------------------|-----------------------------------------------------------------------------|
-| **Posso usar meu número principal?**      | Não é recomendado. Use um número secundário pra evitar riscos de banimento. |
-| **O bot funciona offline?**               | Não, precisa de internet pra se conectar ao WhatsApp.                       |
-| **Como personalizo os comandos?**         | Edite o `config.json` após instalar (veja a documentação).                  |
-| **E se meu servidor Pterodactyl travar?** | Reinicie o servidor e cheque os logs no console do Pterodactyl.             |
-
-> 💡 **Mais Dúvidas?** Pergunte no [Canal do WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b)!
-
-</details>
-
----
-
-## 🇺🇸 **English**
-
-<details>
-<summary>💻 Click to Expand English Instructions</summary>
-
-</details>
-<details>
-<summary>🐧 Linux</summary>
-
-### 🐧 **Linux**
-
-1. **Pré-requisitos**  
-   Atualize e instale:  
-   ```bash
-   sudo apt update && sudo apt install -y nodejs git
-   ```  
-   Verifique:  
-   ```bash
-   node -v
-   git --version
-   ```
-
-2. **Clonar e Instalar**  
-   ```bash
-   git clone https://github.com/hiudyy/nazuninha-bot.git
-   cd nazuninha-bot
-   npm run config
-   npm run config:install
-   ```
-
-3. **Rodar o Bot**  
-   ```bash
-   npm start
-   ```
-
-4. **Rodar em Segundo Plano**  
-   Use o `pm2`:  
-   ```bash
-   npm install -g pm2
-   pm2 start npm --name "nazuninha-bot" -- start
-   pm2 save
-   ```  
-   Monitore com `pm2 logs nazuninha-bot`.
-
-> 💡 **Dica**: Desconectou? Reinicie com `pm2 restart nazuninha-bot`.
-
-##### 📱 **Termux (Android)**
-
-1. **Instalar o Termux**  
-   - Baixe pelo [F-Droid](https://f-droid.org/packages/com.termux/) (evite Google Play).  
-   - Atualize:  
-     ```bash
-     pkg update && pkg upgrade -y
-     ```
-
-2. **Pré-requisitos**  
-   ```bash
-   pkg install nodejs git -y
-   termux-setup-storage
-   ```
-
-3. **Clonar e Instalar**  
-   ```bash
-   cd /sdcard
-   git clone https://github.com/hiudyy/nazuninha-bot.git
-   cd nazuninha-bot
-   npm run config
-   npm run config:install
-   ```
-
-4. **Rodar o Bot**  
-   ```bash
-   npm start
-   ```
-
-5. **Manter Online**  
-   - Evite fechar o Termux; mantenha o celular ligado ou use app de “manter acordado”.  
-   - Se parar, reinicie:  
-     ```bash
-     cd /sdcard/nazuninha-bot
-     npm start
-     ```
-
-> 💡 **Dica**: “Permissão negada”? Rode `termux-setup-storage` de novo.
-
-##### ☁️ **Pterodactyl**
-
-Configure o **Nazuninha Bot** no Pterodactyl de duas formas:
-
-**Opção 1: Egg Oficial da Nazuninha**
-
-1. **Baixar o Egg**  
-   - Pegue o egg em: [github.com/hiudyy/nazu-files/egg-ptero.json](https://github.com/hiudyy/nazu-files/egg-ptero.json).  
-   - Importe no painel Pterodactyl (**Eggs** > **Import Egg**).
-
-2. **Criar o Servidor**  
-   - Crie um servidor com o egg da Nazuninha.  
-   - No **Startup**, configure:  
-     - **Nome do Dono**: Seu nome/apelido (ex.: `João`).  
-     - **Número do Bot**: Número com código do país (ex.: `+5511999999999`).  
-     - **Prefixo do Bot**: Símbolo pros comandos (ex.: `/`).  
-     - **Nome do Bot**: Nome no WhatsApp (ex.: `Nazuninha`).  
-     - **Atualização Automática**: `Sim` pra updates automáticos ou `Não` pra manual.  
-   - Recursos mínimos: 512MB RAM e 512MB disco (1GB RAM e 2GB disco recomendados).
-
-3. **Iniciar o Servidor**  
-   - Clique em **Iniciar** no painel.  
-   - O egg clona o repo (`https://github.com/hiudyy/nazuninha-bot.git`) e instala tudo.  
-   - Conecte ao WhatsApp via QR code ou código de pareamento (use console ou VNC).
-
-4. **Manter Online**  
-   - O Pterodactyl roda 24/7.  
-   - Sem atualização automática? Rode:  
-     ```bash
-     npm run update
-     ```
-
-**Opção 2: Egg Node.js Comum**
-
-1. **Criar o Servidor**  
-   - Crie um servidor com o egg **Node.js** padrão.  
-   - Defina o **Comando de Inicialização** como: `npm start`.  
-   - Recursos mínimos: 512MB RAM e 512MB disco (1GB RAM e 2GB disco recomendados).
-
-2. **Clonar o Repositório**  
-   - No console do Pterodactyl:  
-     ```bash
-     git clone https://github.com/hiudyy/nazuninha-bot.git
-     cd nazuninha-bot
-     ```
-
-3. **Instalar Dependências**  
-   - Execute:  
-     ```bash
-     npm run config
-     npm run config:install
-     ```
-
-4. **Iniciar o Bot**  
-   - Inicie o servidor no painel.  
-   - Conecte ao WhatsApp com QR code ou código.
-
-5. **Atualizações**  
-   - Atualize manualmente:  
-     ```bash
-     npm run update
-     ```
-
-> 💡 **Dica**: O egg oficial automatiza tudo, é mais fácil!
-
----
-
-#### ❓ **Resolvendo Problemas**
-
-Deu pau? Soluções pros problemas mais comuns:
-
-| **Problema**                     | **Solução**                                                                 |
-|----------------------------------|-----------------------------------------------------------------------------|
-| **“Comando não encontrado”**     | Instale Git/Node.js (`pkg install git nodejs` no Termux).                   |
-| **QR Code não funciona**         | Atualize o WhatsApp, gere outro QR com `npm start`, ou cheque a internet.   |
-| **Bot desconecta**               | Reinicie com `npm start`, apague a pasta `sessions`, ou troque o número.    |
-| **Erro na instalação**           | Rode `npm install`, verifique Node.js 18+ (`node -v`), ou atualize pacotes. |
-| **Termux para**                  | Mantenha o celular ligado e reinicie com `cd /sdcard/nazuninha-bot && npm start`. |
-
-> 😊 **Tá na Merda?** Cola no [Canal do WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b) pra suporte!
-
----
-
-#### 💖 **Apoie o Projeto**
-
-Fazer o **Nazuninha Bot** é um trampo danado. Seu apoio é tudo:
-
-- **🌍 Global (Patreon)**  
-  [![Apoiar no Patreon](https://img.shields.io/badge/Apoiar-Patreon-orange?style=flat-square&logo=patreon)](https://patreon.com/hiudyy)  
-  *Contribua mensalmente pra manter o projeto vivo.*
-
-- **🇧🇷 Brasil (Pix)**  
-  **Chave Pix (E-mail):** `lua.bot@hotmail.com`  
-  *Qualquer valor já ajuda pra caramba.*
-
-> ❤️ **Valeu!** Cada real motiva mais features e melhorias!
-
----
-
-#### 📜 **Licença**
-
-© 2025 **Hiudy**. Todos os direitos reservados.
-
-O **Nazuninha Bot** é **protegido por copyright**. Não remova os créditos, não venda, e não distribua versões modificadas sem autorização. Violações podem levar a ações legais.
-
----
-
-#### 👤 **Sobre o Criador**
-
-Feito com ❤️ por [**Hiudy**](https://github.com/hiudyy), um dev apaixonado por criar ferramentas que tornam a tecnologia mais divertida e acessível. Ele tá sempre bolando projetos novos e dando aquele gás no Nazuninha Bot pra comunidade.
-
-**Estatísticas do Hiudy**:
-
-| Ícone | Badge | Descrição |
-|-------|-------|-----------|
-| 👥 | ![Seguidores](https://img.shields.io/github/followers/hiudyy?color=blue&style=flat-square) | **Seguidores**: Quantas pessoas acompanham o Hiudy no GitHub. |
-| 📝 | ![Contribuições](https://img.shields.io/github/commit-activity/y/hiudyy?color=purple&style=flat-square) | **Contribuições**: Atividade anual do Hiudy em todos os projetos. |
-| 📚 | ![Repositórios](https://img.shields.io/github/repos/hiudyy?color=green&style=flat-square) | **Repositórios**: Total de projetos públicos do Hiudy. |
-| 💬 | ![Discord](https://img.shields.io/badge/Discord-hiudyyy-7289DA?style=flat-square&logo=discord) | **Discord**: Conecte-se com o Hiudy no Discord. |
-| 📷 | ![Instagram](https://img.shields.io/badge/Instagram-hiudyyy_-E4405F?style=flat-square&logo=instagram) | **Instagram**: Siga o Hiudy no Insta pra novidades. |
-
-**Bio**:  
-Hiudy é um entusiasta de tech que curte criar soluções práticas e com aquele toque de diversão. Além do Nazuninha Bot, ele contribui pra projetos open-source e ama trocar ideia com a comunidade. Cola nas redes dele pra acompanhar os próximos rolês!
-
-- 📍 **GitHub**: [hiudyy](https://github.com/hiudyy)
-- 💬 **Discord**: [hiudyyy](https://discord.com/users/hiudyyy)
-- 📷 **Instagram**: [hiudyyy_](https://instagram.com/hiudyyy_)
-
-> 🌟 **Gostou?** Dá uma estrela no GitHub e compartilha com a galera!
-
----
-
-#### ❔ **FAQ Avançado**
-
-| **Pergunta**                              | **Resposta**                                                                 |
-|------------------------------------------|-----------------------------------------------------------------------------|
-| **Posso usar meu número principal?**      | Não é recomendado. Use um número secundário pra evitar riscos de banimento. |
-| **O bot funciona offline?**               | Não, precisa de internet pra se conectar ao WhatsApp.                       |
-| **Como personalizo os comandos?**         | Edite o `config.json` após instalar (veja a documentação).                  |
-| **E se meu servidor Pterodactyl travar?** | Reinicie o servidor e cheque os logs no console do Pterodactyl.             |
-
-> 💡 **Mais Dúvidas?** Pergunte no [Canal do WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b)!
-
-</details>
-
----
-
-## 🇺🇸 **English**
-
-<details>
-<summary>💻 Click to Expand English Instructions</summary>
-
-</details>
-<details>
-<summary>📱 Termux (Android)</summary>
-
-### 📱 **Termux (Android)**
-
-1. **Instalar o Termux**  
-   - Baixe pelo [F-Droid](https://f-droid.org/packages/com.termux/) (evite Google Play).  
-   - Atualize:  
-     ```bash
-     pkg update && pkg upgrade -y
-     ```
-
-2. **Pré-requisitos**  
-   ```bash
-   pkg install nodejs git -y
-   termux-setup-storage
-   ```
-
-3. **Clonar e Instalar**  
-   ```bash
-   cd /sdcard
-   git clone https://github.com/hiudyy/nazuninha-bot.git
-   cd nazuninha-bot
-   npm run config
-   npm run config:install
-   ```
-
-4. **Rodar o Bot**  
-   ```bash
-   npm start
-   ```
-
-5. **Manter Online**  
-   - Evite fechar o Termux; mantenha o celular ligado ou use app de “manter acordado”.  
-   - Se parar, reinicie:  
-     ```bash
-     cd /sdcard/nazuninha-bot
-     npm start
-     ```
-
-> 💡 **Dica**: “Permissão negada”? Rode `termux-setup-storage` de novo.
-
-##### ☁️ **Pterodactyl**
-
-Configure o **Nazuninha Bot** no Pterodactyl de duas formas:
-
-**Opção 1: Egg Oficial da Nazuninha**
-
-1. **Baixar o Egg**  
-   - Pegue o egg em: [github.com/hiudyy/nazu-files/egg-ptero.json](https://github.com/hiudyy/nazu-files/egg-ptero.json).  
-   - Importe no painel Pterodactyl (**Eggs** > **Import Egg**).
-
-2. **Criar o Servidor**  
-   - Crie um servidor com o egg da Nazuninha.  
-   - No **Startup**, configure:  
-     - **Nome do Dono**: Seu nome/apelido (ex.: `João`).  
-     - **Número do Bot**: Número com código do país (ex.: `+5511999999999`).  
-     - **Prefixo do Bot**: Símbolo pros comandos (ex.: `/`).  
-     - **Nome do Bot**: Nome no WhatsApp (ex.: `Nazuninha`).  
-     - **Atualização Automática**: `Sim` pra updates automáticos ou `Não` pra manual.  
-   - Recursos mínimos: 512MB RAM e 512MB disco (1GB RAM e 2GB disco recomendados).
-
-3. **Iniciar o Servidor**  
-   - Clique em **Iniciar** no painel.  
-   - O egg clona o repo (`https://github.com/hiudyy/nazuninha-bot.git`) e instala tudo.  
-   - Conecte ao WhatsApp via QR code ou código de pareamento (use console ou VNC).
-
-4. **Manter Online**  
-   - O Pterodactyl roda 24/7.  
-   - Sem atualização automática? Rode:  
-     ```bash
-     npm run update
-     ```
-
-**Opção 2: Egg Node.js Comum**
-
-1. **Criar o Servidor**  
-   - Crie um servidor com o egg **Node.js** padrão.  
-   - Defina o **Comando de Inicialização** como: `npm start`.  
-   - Recursos mínimos: 512MB RAM e 512MB disco (1GB RAM e 2GB disco recomendados).
-
-2. **Clonar o Repositório**  
-   - No console do Pterodactyl:  
-     ```bash
-     git clone https://github.com/hiudyy/nazuninha-bot.git
-     cd nazuninha-bot
-     ```
-
-3. **Instalar Dependências**  
-   - Execute:  
-     ```bash
-     npm run config
-     npm run config:install
-     ```
-
-4. **Iniciar o Bot**  
-   - Inicie o servidor no painel.  
-   - Conecte ao WhatsApp com QR code ou código.
-
-5. **Atualizações**  
-   - Atualize manualmente:  
-     ```bash
-     npm run update
-     ```
-
-> 💡 **Dica**: O egg oficial automatiza tudo, é mais fácil!
-
----
-
-#### ❓ **Resolvendo Problemas**
-
-Deu pau? Soluções pros problemas mais comuns:
-
-| **Problema**                     | **Solução**                                                                 |
-|----------------------------------|-----------------------------------------------------------------------------|
-| **“Comando não encontrado”**     | Instale Git/Node.js (`pkg install git nodejs` no Termux).                   |
-| **QR Code não funciona**         | Atualize o WhatsApp, gere outro QR com `npm start`, ou cheque a internet.   |
-| **Bot desconecta**               | Reinicie com `npm start`, apague a pasta `sessions`, ou troque o número.    |
-| **Erro na instalação**           | Rode `npm install`, verifique Node.js 18+ (`node -v`), ou atualize pacotes. |
-| **Termux para**                  | Mantenha o celular ligado e reinicie com `cd /sdcard/nazuninha-bot && npm start`. |
-
-> 😊 **Tá na Merda?** Cola no [Canal do WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b) pra suporte!
-
----
-
-#### 💖 **Apoie o Projeto**
-
-Fazer o **Nazuninha Bot** é um trampo danado. Seu apoio é tudo:
-
-- **🌍 Global (Patreon)**  
-  [![Apoiar no Patreon](https://img.shields.io/badge/Apoiar-Patreon-orange?style=flat-square&logo=patreon)](https://patreon.com/hiudyy)  
-  *Contribua mensalmente pra manter o projeto vivo.*
-
-- **🇧🇷 Brasil (Pix)**  
-  **Chave Pix (E-mail):** `lua.bot@hotmail.com`  
-  *Qualquer valor já ajuda pra caramba.*
-
-> ❤️ **Valeu!** Cada real motiva mais features e melhorias!
-
----
-
-#### 📜 **Licença**
-
-© 2025 **Hiudy**. Todos os direitos reservados.
-
-O **Nazuninha Bot** é **protegido por copyright**. Não remova os créditos, não venda, e não distribua versões modificadas sem autorização. Violações podem levar a ações legais.
-
----
-
-#### 👤 **Sobre o Criador**
-
-Feito com ❤️ por [**Hiudy**](https://github.com/hiudyy), um dev apaixonado por criar ferramentas que tornam a tecnologia mais divertida e acessível. Ele tá sempre bolando projetos novos e dando aquele gás no Nazuninha Bot pra comunidade.
-
-**Estatísticas do Hiudy**:
-
-| Ícone | Badge | Descrição |
-|-------|-------|-----------|
-| 👥 | ![Seguidores](https://img.shields.io/github/followers/hiudyy?color=blue&style=flat-square) | **Seguidores**: Quantas pessoas acompanham o Hiudy no GitHub. |
-| 📝 | ![Contribuições](https://img.shields.io/github/commit-activity/y/hiudyy?color=purple&style=flat-square) | **Contribuições**: Atividade anual do Hiudy em todos os projetos. |
-| 📚 | ![Repositórios](https://img.shields.io/github/repos/hiudyy?color=green&style=flat-square) | **Repositórios**: Total de projetos públicos do Hiudy. |
-| 💬 | ![Discord](https://img.shields.io/badge/Discord-hiudyyy-7289DA?style=flat-square&logo=discord) | **Discord**: Conecte-se com o Hiudy no Discord. |
-| 📷 | ![Instagram](https://img.shields.io/badge/Instagram-hiudyyy_-E4405F?style=flat-square&logo=instagram) | **Instagram**: Siga o Hiudy no Insta pra novidades. |
-
-**Bio**:  
-Hiudy é um entusiasta de tech que curte criar soluções práticas e com aquele toque de diversão. Além do Nazuninha Bot, ele contribui pra projetos open-source e ama trocar ideia com a comunidade. Cola nas redes dele pra acompanhar os próximos rolês!
-
-- 📍 **GitHub**: [hiudyy](https://github.com/hiudyy)
-- 💬 **Discord**: [hiudyyy](https://discord.com/users/hiudyyy)
-- 📷 **Instagram**: [hiudyyy_](https://instagram.com/hiudyyy_)
-
-> 🌟 **Gostou?** Dá uma estrela no GitHub e compartilha com a galera!
-
----
-
-#### ❔ **FAQ Avançado**
-
-| **Pergunta**                              | **Resposta**                                                                 |
-|------------------------------------------|-----------------------------------------------------------------------------|
-| **Posso usar meu número principal?**      | Não é recomendado. Use um número secundário pra evitar riscos de banimento. |
-| **O bot funciona offline?**               | Não, precisa de internet pra se conectar ao WhatsApp.                       |
-| **Como personalizo os comandos?**         | Edite o `config.json` após instalar (veja a documentação).                  |
-| **E se meu servidor Pterodactyl travar?** | Reinicie o servidor e cheque os logs no console do Pterodactyl.             |
-
-> 💡 **Mais Dúvidas?** Pergunte no [Canal do WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b)!
-
-</details>
-
----
-
-## 🇺🇸 **English**
-
-<details>
-<summary>💻 Click to Expand English Instructions</summary>
-
-</details>
-<details>
-<summary>☁️ Pterodactyl</summary>
-
-### ☁️ **Pterodactyl**
-
-Configure o **Nazuninha Bot** no Pterodactyl de duas formas:
-
-**Opção 1: Egg Oficial da Nazuninha**
-
-1. **Baixar o Egg**  
-   - Pegue o egg em: [github.com/hiudyy/nazu-files/egg-ptero.json](https://github.com/hiudyy/nazu-files/egg-ptero.json).  
-   - Importe no painel Pterodactyl (**Eggs** > **Import Egg**).
-
-2. **Criar o Servidor**  
-   - Crie um servidor com o egg da Nazuninha.  
-   - No **Startup**, configure:  
-     - **Nome do Dono**: Seu nome/apelido (ex.: `João`).  
-     - **Número do Bot**: Número com código do país (ex.: `+5511999999999`).  
-     - **Prefixo do Bot**: Símbolo pros comandos (ex.: `/`).  
-     - **Nome do Bot**: Nome no WhatsApp (ex.: `Nazuninha`).  
-     - **Atualização Automática**: `Sim` pra updates automáticos ou `Não` pra manual.  
-   - Recursos mínimos: 512MB RAM e 512MB disco (1GB RAM e 2GB disco recomendados).
-
-3. **Iniciar o Servidor**  
-   - Clique em **Iniciar** no painel.  
-   - O egg clona o repo (`https://github.com/hiudyy/nazuninha-bot.git`) e instala tudo.  
-   - Conecte ao WhatsApp via QR code ou código de pareamento (use console ou VNC).
-
-4. **Manter Online**  
-   - O Pterodactyl roda 24/7.  
-   - Sem atualização automática? Rode:  
-     ```bash
-     npm run update
-     ```
-
-**Opção 2: Egg Node.js Comum**
-
-1. **Criar o Servidor**  
-   - Crie um servidor com o egg **Node.js** padrão.  
-   - Defina o **Comando de Inicialização** como: `npm start`.  
-   - Recursos mínimos: 512MB RAM e 512MB disco (1GB RAM e 2GB disco recomendados).
-
-2. **Clonar o Repositório**  
-   - No console do Pterodactyl:  
-     ```bash
-     git clone https://github.com/hiudyy/nazuninha-bot.git
-     cd nazuninha-bot
-     ```
-
-3. **Instalar Dependências**  
-   - Execute:  
-     ```bash
-     npm run config
-     npm run config:install
-     ```
-
-4. **Iniciar o Bot**  
-   - Inicie o servidor no painel.  
-   - Conecte ao WhatsApp com QR code ou código.
-
-5. **Atualizações**  
-   - Atualize manualmente:  
-     ```bash
-     npm run update
-     ```
-
-> 💡 **Dica**: O egg oficial automatiza tudo, é mais fácil!
-
----
-
-#### ❓ **Resolvendo Problemas**
-
-Deu pau? Soluções pros problemas mais comuns:
-
-| **Problema**                     | **Solução**                                                                 |
-|----------------------------------|-----------------------------------------------------------------------------|
-| **“Comando não encontrado”**     | Instale Git/Node.js (`pkg install git nodejs` no Termux).                   |
-| **QR Code não funciona**         | Atualize o WhatsApp, gere outro QR com `npm start`, ou cheque a internet.   |
-| **Bot desconecta**               | Reinicie com `npm start`, apague a pasta `sessions`, ou troque o número.    |
-| **Erro na instalação**           | Rode `npm install`, verifique Node.js 18+ (`node -v`), ou atualize pacotes. |
-| **Termux para**                  | Mantenha o celular ligado e reinicie com `cd /sdcard/nazuninha-bot && npm start`. |
-
-> 😊 **Tá na Merda?** Cola no [Canal do WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b) pra suporte!
-
----
-
-#### 💖 **Apoie o Projeto**
-
-Fazer o **Nazuninha Bot** é um trampo danado. Seu apoio é tudo:
-
-- **🌍 Global (Patreon)**  
-  [![Apoiar no Patreon](https://img.shields.io/badge/Apoiar-Patreon-orange?style=flat-square&logo=patreon)](https://patreon.com/hiudyy)  
-  *Contribua mensalmente pra manter o projeto vivo.*
-
-- **🇧🇷 Brasil (Pix)**  
-  **Chave Pix (E-mail):** `lua.bot@hotmail.com`  
-  *Qualquer valor já ajuda pra caramba.*
-
-> ❤️ **Valeu!** Cada real motiva mais features e melhorias!
-
----
-
-#### 📜 **Licença**
-
-© 2025 **Hiudy**. Todos os direitos reservados.
-
-O **Nazuninha Bot** é **protegido por copyright**. Não remova os créditos, não venda, e não distribua versões modificadas sem autorização. Violações podem levar a ações legais.
-
----
-
-#### 👤 **Sobre o Criador**
-
-Feito com ❤️ por [**Hiudy**](https://github.com/hiudyy), um dev apaixonado por criar ferramentas que tornam a tecnologia mais divertida e acessível. Ele tá sempre bolando projetos novos e dando aquele gás no Nazuninha Bot pra comunidade.
-
-**Estatísticas do Hiudy**:
-
-| Ícone | Badge | Descrição |
-|-------|-------|-----------|
-| 👥 | ![Seguidores](https://img.shields.io/github/followers/hiudyy?color=blue&style=flat-square) | **Seguidores**: Quantas pessoas acompanham o Hiudy no GitHub. |
-| 📝 | ![Contribuições](https://img.shields.io/github/commit-activity/y/hiudyy?color=purple&style=flat-square) | **Contribuições**: Atividade anual do Hiudy em todos os projetos. |
-| 📚 | ![Repositórios](https://img.shields.io/github/repos/hiudyy?color=green&style=flat-square) | **Repositórios**: Total de projetos públicos do Hiudy. |
-| 💬 | ![Discord](https://img.shields.io/badge/Discord-hiudyyy-7289DA?style=flat-square&logo=discord) | **Discord**: Conecte-se com o Hiudy no Discord. |
-| 📷 | ![Instagram](https://img.shields.io/badge/Instagram-hiudyyy_-E4405F?style=flat-square&logo=instagram) | **Instagram**: Siga o Hiudy no Insta pra novidades. |
-
-**Bio**:  
-Hiudy é um entusiasta de tech que curte criar soluções práticas e com aquele toque de diversão. Além do Nazuninha Bot, ele contribui pra projetos open-source e ama trocar ideia com a comunidade. Cola nas redes dele pra acompanhar os próximos rolês!
-
-- 📍 **GitHub**: [hiudyy](https://github.com/hiudyy)
-- 💬 **Discord**: [hiudyyy](https://discord.com/users/hiudyyy)
-- 📷 **Instagram**: [hiudyyy_](https://instagram.com/hiudyyy_)
-
-> 🌟 **Gostou?** Dá uma estrela no GitHub e compartilha com a galera!
-
----
-
-#### ❔ **FAQ Avançado**
-
-| **Pergunta**                              | **Resposta**                                                                 |
-|------------------------------------------|-----------------------------------------------------------------------------|
-| **Posso usar meu número principal?**      | Não é recomendado. Use um número secundário pra evitar riscos de banimento. |
-| **O bot funciona offline?**               | Não, precisa de internet pra se conectar ao WhatsApp.                       |
-| **Como personalizo os comandos?**         | Edite o `config.json` após instalar (veja a documentação).                  |
-| **E se meu servidor Pterodactyl travar?** | Reinicie o servidor e cheque os logs no console do Pterodactyl.             |
-
-> 💡 **Mais Dúvidas?** Pergunte no [Canal do WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b)!
-
-</details>
-
----
-
-## 🇺🇸 **English**
-
-<details>
-<summary>💻 Click to Expand English Instructions</summary>
-
-</details>
 </details>
 
 ---
@@ -3992,4 +1446,814 @@ Baru dengan **Nazuninha Bot**? Mulai dengan langkah sederhana ini:
 
 1. **Siapkan lingkungan**: Instal Node.js dan Git (lihat [Prasyarat](#prasyarat)).
 2. **Unduh bot**: Klon repositori GitHub.
-3. **Hubungkan ke WhatsApp**: Gunakan nomor sekunder
+3. **Hubungkan ke WhatsApp**: Gunakan nomor sekunder untuk menghindari risiko.
+4. **Jelajahi perintah**: Ketik `/menu` di WhatsApp untuk melihat kemampuan bot.
+
+> 💡 **Tips Pemula**: Terlihat rumit? Tenang, setiap bagian dijelaskan langkah demi langkah!
+
+---
+
+#### 📋 **Prasyarat**
+
+Anda akan membutuhkan:
+
+| **Item**            | **Deskripsi**                                                                 |
+|---------------------|-------------------------------------------------------------------------------|
+| **Node.js**         | Versi 18 atau lebih tinggi. Unduh dari [nodejs.org](https://nodejs.org).      |
+| **Git**             | Untuk mengklon repositori. Dapatkan dari [git-scm.com](https://git-scm.com).  |
+| **WhatsApp**        | Nomor khusus untuk bot (hindari nomor utama untuk mencegah banned).           |
+| **Internet Stabil** | Diperlukan untuk pengaturan dan operasi.                                      |
+| **Perangkat**       | PC (Windows, Linux, macOS), Android dengan Termux, atau server (Pterodactyl). |
+| **Spesifikasi Minimum** | 512MB RAM dan 512MB penyimpanan (disarankan 1GB RAM dan 2GB penyimpanan).   |
+
+> ⚠️ **Peringatan**: Gunakan nomor sekunder untuk bot guna melindungi akun WhatsApp utama Anda.
+
+---
+
+### 📥 **Instalasi**
+
+Mari kita jalankan **Nazuninha Bot**:
+
+1. **Klon Repositori**  
+   Buka terminal (Command Prompt, PowerShell, atau Termux) dan jalankan:  
+   ```bash
+   git clone https://github.com/hiudyy/nazuninha-bot.git
+   cd nazuninha-bot
+   ```
+
+2. **Instal Dependensi**  
+   Jalankan satu per satu:  
+   ```bash
+   npm run config
+   npm run config:install
+   ```  
+   Ini akan mengunduh semua pustaka yang diperlukan.
+
+   > **Error?**: Pastikan Node.js terinstal (`node -v`). Jika masih bermasalah, coba `npm install`.
+
+---
+
+#### 🚀 **Menjalankan Bot**
+
+Untuk menyalakan **Nazuninha Bot**:  
+```bash
+npm start
+```
+
+Ini akan memandu Anda untuk menghubungkan ke WhatsApp (bagian berikutnya).
+
+> 💡 **Pertama Kali**: Anda perlu autentikasi dengan kode QR atau kode pasangan. Setelah itu, biasanya tersambung otomatis.
+
+---
+
+#### 🔌 **Menghubungkan ke WhatsApp**
+
+**Nazuninha Bot** menggunakan **mode multi-perangkat** WhatsApp, jadi ponsel tidak perlu tetap online setelah pengaturan. Pilih metode:
+
+1. **Kode QR**  
+   - Terminal menampilkan kode QR (kotak dengan pola).  
+   - Di ponsel, buka WhatsApp:  
+     1. Masuk ke **Pengaturan** > **Perangkat Tertaut**.  
+     2. Ketuk **Tautkan Perangkat**.  
+     3. Pindai kode QR dengan kamera.  
+   - Selesai, tersambung!  
+   *Contoh*:  
+   ![Contoh Kode QR](https://raw.githubusercontent.com/hiudyy/nazuninha-bot/main/assets/qr-example.png)
+
+2. **Kode Pasangan**  
+   - Cocok untuk perangkat tanpa kamera.  
+   - Masukkan nomor bot (mis.: `+6281234567890`).  
+   - Terminal memberikan kode (mis.: `1234-5678`).  
+   - Di WhatsApp:  
+     1. Masuk ke **Pengaturan** > **Perangkat Tertaut**.  
+     2. Ketuk **Tautkan dengan Nomor Telepon**.  
+     3. Masukkan kode.  
+   - Beres!
+
+> ⚠️ **Peringatan**:  
+> - Gunakan nomor sekunder untuk menghindari banned.  
+> - Kode QR kadaluarsa? Jalankan `npm start` lagi.  
+> - Sesi disimpan, jadi penyambungan ulang otomatis kecuali Anda keluar.
+
+---
+
+#### 🔄 **Memperbarui Bot**
+
+Agar tetap terbaru:  
+```bash
+npm run update
+```
+
+Memperbarui tanpa mengganggu pengaturan atau obrolan.
+
+> ✅ **Aman**: Pembaruan tidak menghapus apa pun.
+
+---
+
+#### 💻 **Tutorial per Platform**
+
+**Di mana Anda menjalankan bot?** Pilih platform Anda:
+
+##### 🖥️ **Windows**
+
+1. **Prasyarat**  
+   - Unduh dan instal [Node.js](https://nodejs.org) (LTS disarankan).  
+   - Instal [Git](https://git-scm.com/downloads) untuk Windows.  
+   - Verifikasi:  
+     ```bash
+     node -v
+     git --version
+     ```
+
+2. **Klon dan Instal**  
+   Buka Command Prompt atau PowerShell:  
+   ```bash
+   git clone https://github.com/hiudyy/nazuninha-bot.git
+   cd nazuninha-bot
+   npm run config
+   npm run config:install
+   ```
+
+3. **Jalankan Bot**  
+   ```bash
+   npm start
+   ```
+
+4. **Jaga Online**  
+   - Gunakan [NSSM](https://nssm.cc/) untuk 24/7:  
+     ```bash
+     nssm install nazuninha-bot "C:\jalur\ke\node.exe" "C:\jalur\ke\nazuninha-bot\app.js"
+     ```
+   - Atau biarkan Command Prompt terbuka.
+
+> 💡 **Tips**: Bot berhenti? Periksa internet atau jalankan ulang `npm start`.
+
+##### 🐧 **Linux**
+
+1. **Prasyarat**  
+   Perbarui dan instal:  
+   ```bash
+   sudo apt update && sudo apt install -y nodejs git
+   ```  
+   Verifikasi:  
+   ```bash
+   node -v
+   git --version
+   ```
+
+2. **Klon dan Instal**  
+   ```bash
+   git clone https://github.com/hiudyy/nazuninha-bot.git
+   cd nazuninha-bot
+   npm run config
+   npm run config:install
+   ```
+
+3. **Jalankan Bot**  
+   ```bash
+   npm start
+   ```
+
+4. **Jalankan di Latar Belakang**  
+   Gunakan `pm2`:  
+   ```bash
+   npm install -g pm2
+   pm2 start npm --name "nazuninha-bot" -- start
+   pm2 save
+   ```  
+   Pantau dengan `pm2 logs nazuninha-bot`.
+
+> 💡 **Tips**: Terputus? Mulai ulang dengan `pm2 restart nazuninha-bot`.
+
+##### 📱 **Termux (Android)**
+
+1. **Instal Termux**  
+   - Unduh dari [F-Droid](https://f-droid.org/packages/com.termux/) (hindari Google Play).  
+   - Perbarui Termux:  
+     ```bash
+     pkg update && pkg upgrade -y
+     ```
+
+2. **Prasyarat**  
+   ```bash
+   pkg install nodejs git -y
+   termux-setup-storage
+   ```
+
+3. **Klon dan Instal**  
+   ```bash
+   cd /sdcard
+   git clone https://github.com/hiudyy/nazuninha-bot.git
+   cd nazuninha-bot
+   npm run config
+   npm run config:install
+   ```
+
+4. **Jalankan Bot**  
+   ```bash
+   npm start
+   ```
+
+5. **Jaga Online**  
+   - Jangan tutup Termux; pastikan ponsel tetap menyala (gunakan charger atau aplikasi “tetap aktif”).  
+   - Jika berhenti, mulai ulang:  
+     ```bash
+     cd /sdcard/nazuninha-bot
+     npm start
+     ```
+
+> 💡 **Tips**: “Izin ditolak”? Jalankan ulang `termux-setup-storage`.
+
+##### ☁️ **Pterodactyl**
+
+Siapkan **Nazuninha Bot** di Pterodactyl dengan dua cara:
+
+**Opsi 1: Egg Resmi Nazuninha**
+
+1. **Unduh Egg**  
+   - Ambil egg di: [github.com/hiudyy/nazu-files/egg-ptero.json](https://github.com/hiudyy/nazu-files/egg-ptero.json).  
+   - Impor di panel Pterodactyl (**Eggs** > **Import Egg**).
+
+2. **Buat Server**  
+   - Buat server dengan egg Nazuninha.  
+   - Di **Startup**, atur:  
+     - **Nama Pemilik**: Nama/panggilan Anda (mis.: `Budi`).  
+     - **Nomor Bot**: Nomor dengan kode negara (mis.: `+6281234567890`).  
+     - **Awalan Bot**: Simbol untuk perintah (mis.: `/`).  
+     - **Nama Bot**: Nama di WhatsApp (mis.: `Nazuninha`).  
+     - **Pembaruan Otomatis**: `Ya` untuk otomatis atau `Tidak` untuk manual.  
+   - Spesifikasi minimum: 512MB RAM dan 512MB penyimpanan (disarankan 1GB RAM dan 2GB penyimpanan).
+
+3. **Mulai Server**  
+   - Klik **Start** di panel.  
+   - Egg otomatis mengklon repo (`https://github.com/hiudyy/nazuninha-bot.git`) dan menginstal dependensi.  
+   - Hubungkan ke WhatsApp dengan kode QR atau kode pasangan (gunakan konsol atau VNC).
+
+4. **Jaga Online**  
+   - Pterodactyl menjalankannya 24/7.  
+   - Untuk pembaruan manual, jalankan:  
+     ```bash
+     npm run update
+     ```
+
+**Opsi 2: Egg Node.js Umum**
+
+1. **Buat Server**  
+   - Buat server dengan egg **Node.js** standar.  
+   - Atur **Perintah Startup** ke: `npm start`.  
+   - Spesifikasi minimum: 512MB RAM dan 512MB penyimpanan (disarankan 1GB RAM dan 2GB penyimpanan).
+
+2. **Klon Repositori**  
+   - Di konsol Pterodactyl:  
+     ```bash
+     git clone https://github.com/hiudyy/nazuninha-bot.git
+     cd nazuninha-bot
+     ```
+
+3. **Inst尸体 Dependensi**  
+   - Jalankan:  
+     ```bash
+     npm run config
+     npm run config:install
+     ```
+
+4. **Mulai Bot**  
+   - Mulai server di panel.  
+   - Hubungkan ke WhatsApp dengan kode QR atau kode pasangan.
+
+5. **Pembaruan**  
+   - Perbarui secara manual:  
+     ```bash
+     npm run update
+     ```
+
+> 💡 **Tips**: Egg resmi mengotomatiskan semuanya, jadi lebih mudah!
+
+---
+
+#### ❓ **Pemecahan Masalah**
+
+Ada masalah? Solusi untuk masalah umum:
+
+| **Masalah**                      | **Solusi**                                                               |
+|----------------------------------|-------------------------------------------------------------------------|
+| **“Perintah tidak ditemukan”**   | Instal Git/Node.js (`pkg install git nodejs` di Termux).                |
+| **Kode QR tidak berfungsi**      | Perbarui WhatsApp, buat QR baru dengan `npm start`, atau cek internet.  |
+| **Bot terputus**                 | Mulai ulang dengan `npm start`, hapus folder `sessions`, atau ganti nomor. |
+| **Error instalasi**              | Jalankan `npm install`, pastikan Node.js 18+ (`node -v`), atau perbarui paket. |
+| **Termux berhenti**              | Jaga ponsel aktif dan mulai ulang dengan `cd /sdcard/nazuninha-bot && npm start`. |
+
+> 😊 **Masih Bingung?** Gabung ke [Kanal WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b) untuk bantuan!
+
+---
+
+#### 💖 **Dukung Proyek**
+
+Mengembangkan **Nazuninha Bot** butuh kerja keras. Dukungan Anda sangat berarti:
+
+- **🌍 Global (Patreon)**  
+  [![Dukung di Patreon](https://img.shields.io/badge/Dukung-Patreon-orange?style=flat-square&logo=patreon)](https://patreon.com/hiudyy)  
+  *Beri kontribusi bulanan untuk menjaga proyek tetap hidup.*
+
+- **🇧🇷 Brasil (Pix)**  
+  **Kunci Pix (Email):** `lua.bot@hotmail.com`  
+  *Jumlah berapa pun sangat membantu.*
+
+> ❤️ **Terima Kasih!** Setiap kontribusi mendorong fitur baru dan perbaikan!
+
+---
+
+#### 📜 **Lisensi**
+
+© 2025 **Hiudy**. Semua hak dilindungi.
+
+**Nazuninha Bot** **dilindungi hak cipta**. Jangan hapus kredit, jual, atau distribusikan versi modifikasi tanpa izin. Pelanggaran dapat berujung pada tindakan hukum.
+
+---
+
+#### 👤 **Tentang Pembuat**
+
+Dibuat dengan ❤️ oleh [**Hiudy**](https://github.com/hiudyy), seorang pengembang yang bersemangat membuat teknologi menyenangkan dan mudah diakses. Dia selalu mengerjakan proyek baru dan meningkatkan Nazuninha Bot untuk komunitas.
+
+**Statistik Hiudy**:
+
+| Ikon | Lencana | Deskripsi |
+|------|---------|-----------|
+| 👥 | ![Pengikut](https://img.shields.io/github/followers/hiudyy?color=blue&style=flat-square) | **Pengikut**: Jumlah orang yang mengikuti Hiudy di GitHub. |
+| 📝 | ![Kontribusi](https://img.shields.io/github/commit-activity/y/hiudyy?color=purple&style=flat-square) | **Kontribusi**: Aktivitas tahunan Hiudy di semua proyek. |
+| 📚 | ![Repositori](https://img.shields.io/github/repos/hiudyy?color=green&style=flat-square) | **Repositori**: Total proyek publik Hiudy. |
+| 💬 | ![Discord](https://img.shields.io/badge/Discord-hiudyyy-7289DA?style=flat-square&logo=discord) | **Discord**: Terhubung dengan Hiudy di Discord. |
+| 📷 | ![Instagram](https://img.shields.io/badge/Instagram-hiudyyy_-E4405F?style=flat-square&logo=instagram) | **Instagram**: Ikuti Hiudy di Instagram untuk update. |
+
+**Bio**:  
+Hiudy adalah penggemar teknologi yang suka membuat solusi praktis dan menyenangkan. Selain Nazuninha Bot, dia berkontribusi pada proyek open-source dan senang berinteraksi dengan komunitas. Ikuti media sosialnya untuk proyek berikutnya!
+
+- 📍 **GitHub**: [hiudyy](https://github.com/hiudyy)
+- 💬 **Discord**: [hiudyyy](https://discord.com/users/hiudyyy)
+- 📷 **Instagram**: [hiudyyy_](https://instagram.com/hiudyyy_)
+
+> 🌟 **Suka?** Beri bintang di GitHub dan bagikan dengan teman!
+
+---
+
+#### ❔ **FAQ Lanjutan**
+
+| **Pertanyaan**                           | **Jawaban**                                                                |
+|-----------------------------------------|---------------------------------------------------------------------------|
+| **Bisa pakai nomor utama?**             | Tidak disarankan. Gunakan nomor sekunder untuk menghindari risiko banned. |
+| **Bot bekerja offline?**                | Tidak, butuh internet untuk terhubung ke WhatsApp.                        |
+| **Cara menyesuaikan perintah?**         | Edit `config.json` setelah instalasi (lihat dokumentasi).                 |
+| **Jika server Pterodactyl crash?**      | Restart server dan cek log di konsol Pterodactyl.                         |
+
+> 💡 **Pertanyaan Lain?** Tanya di [Kanal WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b)!
+
+</details>
+
+---
+
+## 🇫🇷 **Français**
+
+<details>
+<summary>💻 Cliquez pour Développer les Instructions en Français</summary>
+
+### 📊 **Statistiques du Projet**
+
+Métriques en temps réel pour **Nazuninha Bot**, avec leur signification :
+
+| Icône | Badge | Description |
+|-------|-------|-------------|
+| 🕒 | ![Dernière Mise à Jour](https://img.shields.io/github/last-commit/hiudyy/nazuninha-bot?color=blue&style=flat-square) | **Dernière Mise à Jour** : Date de la dernière mise à jour du projet. |
+| ⭐ | ![Étoiles](https://img.shields.io/github/stars/hiudyy/nazuninha-bot?color=yellow&label=Étoiles&style=flat-square) | **Étoiles** : Nombre de personnes ayant mis une étoile sur GitHub. |
+| 🍴 | ![Forks](https://img.shields.io/github/forks/hiudyy/nazuninha-bot?color=green&style=flat-square) | **Forks** : Copies du projet réalisées par d'autres développeurs. |
+| 🐞 | ![Issues](https://img.shields.io/github/issues/hiudyy/nazuninha-bot?color=red&style=flat-square) | **Issues** : Bugs ou suggestions signalés par la communauté. |
+| 📝 | ![Commits](https://img.shields.io/github/commit-activity/m/hiudyy/nazuninha-bot?color=purple&style=flat-square) | **Commits** : Fréquence des mises à jour du code. |
+| 💾 | ![Taille du Repo](https://img.shields.io/github/repo-size/hiudyy/nazuninha-bot?color=orange&style=flat-square) | **Taille du Repo** : Espace occupé par le projet sur GitHub. |
+| 👥 | ![Contributeurs](https://img.shields.io/github/contributors/hiudyy/nazuninha-bot?color=cyan&style=flat-square) | **Contributeurs** : Personnes ayant aidé à développer le bot. |
+| 📥 | ![Téléchargements](https://img.shields.io/github/downloads/hiudyy/nazuninha-bot/total?color=pink&style=flat-square) | **Téléchargements** : Nombre total de téléchargements du projet. |
+| 🌐 | ![Langages](https://img.shields.io/github/languages/top/hiudyy/nazuninha-bot?color=teal&style=flat-square) | **Langages** : Principaux langages utilisés dans le projet. |
+| 🔄 | ![PRs](https://img.shields.io/github/issues-pr/hiudyy/nazuninha-bot?color=brightgreen&style=flat-square) | **Pull Requests** : Propositions d'améliorations soumises. |
+| ⏱️ | ![Temps de Réponse](https://img.shields.io/github/issues-closed-raw/hiudyy/nazuninha-bot?color=blueviolet&style=flat-square) | **Temps de Réponse** : Temps moyen pour résoudre les issues. |
+| 📜 | ![Licence](https://img.shields.io/badge/licence-Copyright-red?style=flat-square) | **Licence** : Projet protégé par des droits d'auteur. |
+| ✅ | ![Statut](https://img.shields.io/badge/STATUT-ACTIF-success?style=flat-square) | **Statut** : Projet actif et en développement. |
+
+📈 **Visites Totales** :  
+![Compteur de Visites](https://count.getloli.com/@nazuninha-bot?name=nazuninha-bot&theme=booru-lewd&padding=8&offset=0&align=top&scale=2&pixelated=1&darkmode=1)  
+*Compte le nombre de visiteurs du projet.*
+
+---
+
+### 📢 **Canal WhatsApp Officiel**
+
+Restez informé des nouveautés, astuces exclusives et mises à jour !  
+[![Canal WhatsApp](https://img.shields.io/badge/Rejoindre-WhatsApp-25D366?style=flat-square&logo=whatsapp)](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b)  
+*Rejoignez notre canal pour du support et du contenu exclusif.*
+
+---
+
+### 🤖 **Qu'est-ce que Nazuninha Bot ?**
+
+**Nazuninha Bot** est un bot WhatsApp épique, construit avec **Node.js** et **Baileys**. C’est un assistant tout-terrain : il automatise les tâches, gère les groupes et propose des commandes pour l’administration, les utilitaires et le divertissement. Parfait pour les débutants et hautement personnalisable pour les codeurs.
+
+> ⚠️ **Avertissement Sérieux** : Nazuninha Bot est **protégé par des droits d'auteur**. Supprimer les crédits, vendre ou distribuer des versions modifiées sans autorisation est illégal et peut entraîner des problèmes juridiques.
+
+### 🎉 **Pourquoi Nazuninha Bot est Génial ?**
+
+- **Configuration Facile** : Connexion via QR code ou code de jumelage en quelques minutes.
+- **Super Polyvalent** : Gère les groupes, fournit des outils et amuse avec des commandes ludiques.
+- **Fonctionne Partout** : Windows, Linux, macOS, Android (Termux) ou serveurs comme Pterodactyl.
+- **Toujours à Jour** : Nouvelles fonctionnalités et correctifs publiés régulièrement.
+- **Sûr et Fluide** : Utilise le mode multi-appareils de WhatsApp pour stabilité et sécurité.
+
+> 💡 **Curieux ?** Après configuration, tapez `/menu` sur WhatsApp pour découvrir les commandes !
+
+---
+
+### 📜 **Tableau des Matières**
+
+1. [🚀 Premiers Pas](#premiers-pas)
+2. [📋 Prérequis](#prérequis)
+3. [📥 Installation](#installation)
+4. [🚀 Lancer le Bot](#lancer-le-bot)
+5. [🔌 Connexion à WhatsApp](#connexion-à-whatsapp)
+6. [🔄 Mise à Jour du Bot](#mise-à-jour-du-bot)
+7. [💻 Tutoriels par Plateforme](#tutoriels-par-plateforme)
+   - [🖥️ Windows](#windows)
+   - [🐧 Linux](#linux)
+   - [📱 Termux (Android)](#termux-android)
+   - [☁️ Pterodactyl](#pterodactyl)
+8. [❓ Résolution des Problèmes](#résolution-des-problèmes)
+9. [💖 Soutenir le Projet](#soutenir-le-projet)
+10. [📜 Licence](#licence)
+11. [👤 À Propos du Créateur](#à-propos-du-créateur)
+12. [❔ FAQ Avancé](#faq-avancé)
+
+---
+
+#### 🚀 **Premiers Pas**
+
+Nouveau sur **Nazuninha Bot** ? Commencez par ces étapes simples :
+
+1. **Préparez l’environnement** : Installez Node.js et Git (voir [Prérequis](#prérequis)).
+2. **Téléchargez le bot** : Clonez le dépôt GitHub.
+3. **Connectez-vous à WhatsApp** : Utilisez un numéro secondaire pour éviter les risques.
+4. **Explorez les commandes** : Tapez `/menu` sur WhatsApp pour voir ce que fait le bot.
+
+> 💡 **Astuce Débutant** : Ça semble compliqué ? Chaque section explique tout étape par étape !
+
+---
+
+#### 📋 **Prérequis**
+
+Vous aurez besoin de :
+
+| **Élément**        | **Description**                                                               |
+|--------------------|-------------------------------------------------------------------------------|
+| **Node.js**        | Version 18 ou supérieure. Téléchargez sur [nodejs.org](https://nodejs.org).   |
+| **Git**            | Pour cloner le dépôt. Obtenez-le sur [git-scm.com](https://git-scm.com).      |
+| **WhatsApp**       | Un numéro dédié pour le bot (évitez votre numéro principal pour éviter un ban). |
+| **Internet Stable**| Essentiel pour la configuration et le fonctionnement.                         |
+| **Appareil**       | PC (Windows, Linux, macOS), Android avec Termux, ou serveur (Pterodactyl).    |
+| **Specs Minimales**| 512 Mo de RAM et 512 Mo de stockage (1 Go de RAM et 2 Go de stockage recommandés). |
+
+> ⚠️ **Avertissement** : Utilisez un numéro secondaire pour protéger votre compte WhatsApp principal.
+
+---
+
+#### 📥 **Installation**
+
+Mettons **Nazuninha Bot** en route :
+
+1. **Cloner le Dépôt**  
+   Ouvrez votre terminal (Invite de commandes, PowerShell ou Termux) et exécutez :  
+   ```bash
+   git clone https://github.com/hiudyy/nazuninha-bot.git
+   cd nazuninha-bot
+   ```
+
+2. **Installer les Dépendances**  
+   Exécutez un par un :  
+   ```bash
+   npm run config
+   npm run config:install
+   ```  
+   Cela télécharge toutes les bibliothèques nécessaires.
+
+   > **Erreur ?** : Vérifiez si Node.js est installé (`node -v`). Si ça persiste, essayez `npm install`.
+
+---
+
+#### 🚀 **Lancer le Bot**
+
+Pour démarrer **Nazuninha Bot** :  
+```bash
+npm start
+```
+
+Il vous guidera pour vous connecter à WhatsApp (section suivante).
+
+> 💡 **Première Exécution** : Vous devrez vous authentifier avec un QR code ou un code de jumelage. Ensuite, il se reconnecte généralement automatiquement.
+
+---
+
+#### 🔌 **Connexion à WhatsApp**
+
+**Nazuninha Bot** utilise le **mode multi-appareils** de WhatsApp, donc votre téléphone n’a pas besoin de rester connecté après la configuration. Choisissez une méthode :
+
+1. **QR Code**  
+   - Le terminal affiche un QR code (un carré avec des motifs).  
+   - Sur votre téléphone, ouvrez WhatsApp :  
+     1. Allez dans **Paramètres** > **Appareils Connectés**.  
+     2. Appuyez sur **Connecter un Appareil**.  
+     3. Scannez le QR code avec l’appareil photo.  
+   - Connecté !  
+   *Exemple* :  
+   ![Exemple de QR Code](https://raw.githubusercontent.com/hiudyy/nazuninha-bot/main/assets/qr-example.png)
+
+2. **Code de Jumelage**  
+   - Parfait pour les appareils sans caméra.  
+   - Entrez le numéro du bot (ex. : `+33612345678`).  
+   - Le terminal fournit un code (ex. : `1234-5678`).  
+   - Dans WhatsApp :  
+     1. Allez dans **Paramètres** > **Appareils Connectés**.  
+     2. Appuyez sur **Connecter avec un Numéro de Téléphone**.  
+     3. Entrez le code.  
+   - C’est bon !
+
+> ⚠️ **Attention** :  
+> - Utilisez un numéro secondaire pour éviter un ban.  
+> - QR code expiré ? Relancez `npm start`.  
+> - La session est enregistrée, donc les reconnexions sont automatiques sauf si vous vous déconnectez.
+
+---
+
+#### 🔄 **Mise à Jour du Bot**
+
+Restez à jour :  
+```bash
+npm run update
+```
+
+Met à jour sans toucher aux paramètres ni aux discussions.
+
+> ✅ **Sûr** : Les mises à jour ne suppriment rien.
+
+---
+
+#### 💻 **Tutoriels par Plateforme**
+
+**Où exécutez-vous le bot ?** Choisissez votre plateforme :
+
+##### 🖥️ **Windows**
+
+1. **Prérequis**  
+   - Téléchargez et installez [Node.js](https://nodejs.org) (LTS recommandé).  
+   - Installez [Git](https://git-scm.com/downloads) pour Windows.  
+   - Vérifiez :  
+     ```bash
+     node -v
+     git --version
+     ```
+
+2. **Cloner et Installer**  
+   Ouvrez l’Invite de commandes ou PowerShell :  
+   ```bash
+   git clone https://github.com/hiudyy/nazuninha-bot.git
+   cd nazuninha-bot
+   npm run config
+   npm run config:install
+   ```
+
+3. **Lancer le Bot**  
+   ```bash
+   npm start
+   ```
+
+4. **Maintenir en Ligne**  
+   - Utilisez [NSSM](https://nssm.cc/) pour 24/7 :  
+     ```bash
+     nssm install nazuninha-bot "C:\chemin\vers\node.exe" "C:\chemin\vers\nazuninha-bot\app.js"
+     ```
+   - Ou gardez l’Invite de commandes ouverte.
+
+> 💡 **Astuce** : Bot arrêté ? Vérifiez la connexion ou relancez `npm start`.
+
+##### 🐧 **Linux**
+
+1. **Prérequis**  
+   Mettez à jour et installez :  
+   ```bash
+   sudo apt update && sudo apt install -y nodejs git
+   ```  
+   Vérifiez :  
+   ```bash
+   node -v
+   git --version
+   ```
+
+2. **Cloner et Installer**  
+   ```bash
+   git clone https://github.com/hiudyy/nazuninha-bot.git
+   cd nazuninha-bot
+   npm run config
+   npm run config:install
+   ```
+
+3. **Lancer le Bot**  
+   ```bash
+   npm start
+   ```
+
+4. **Exécuter en Arrière-Plan**  
+   Utilisez `pm2` :  
+   ```bash
+   npm install -g pm2
+   pm2 start npm --name "nazuninha-bot" -- start
+   pm2 save
+   ```  
+   Surveillez avec `pm2 logs nazuninha-bot`.
+
+> 💡 **Astuce** : Déconnecté ? Redémarrez avec `pm2 restart nazuninha-bot`.
+
+##### 📱 **Termux (Android)**
+
+1. **Installer Termux**  
+   - Téléchargez depuis [F-Droid](https://f-droid.org/packages/com.termux/) (évitez Google Play).  
+   - Mettez à jour Termux :  
+     ```bash
+     pkg update && pkg upgrade -y
+     ```
+
+2. **Prérequis**  
+   ```bash
+   pkg install nodejs git -y
+   termux-setup-storage
+   ```
+
+3. **Cloner et Installer**  
+   ```bash
+   cd /sdcard
+   git clone https://github.com/hiudyy/nazuninha-bot.git
+   cd nazuninha-bot
+   npm run config
+   npm run config:install
+   ```
+
+4. **Lancer le Bot**  
+   ```bash
+   npm start
+   ```
+
+5. **Maintenir en Ligne**  
+   - Évitez de fermer Termux ; gardez le téléphone allumé (utilisez un chargeur ou une app “rester éveillé”).  
+   - En cas d’arrêt, redémarrez :  
+     ```bash
+     cd /sdcard/nazuninha-bot
+     npm start
+     ```
+
+> 💡 **Astuce** : “Permission refusée” ? Relancez `termux-setup-storage`.
+
+##### ☁️ **Pterodactyl**
+
+Configurez **Nazuninha Bot** sur Pterodactyl de deux manières :
+
+**Option 1 : Egg Officiel Nazuninha**
+
+1. **Télécharger l’Egg**  
+   - Obtenez l’egg sur : [github.com/hiudyy/nazu-files/egg-ptero.json](https://github.com/hiudyy/nazu-files/egg-ptero.json).  
+   - Importez-le dans le panneau Pterodactyl (**Eggs** > **Importer un Egg**).
+
+2. **Créer le Serveur**  
+   - Créez un serveur avec l’egg Nazuninha.  
+   - Dans **Startup**, configurez :  
+     - **Nom du Propriétaire** : Votre nom/pseudo (ex. : `Jean`).  
+     - **Numéro du Bot** : Numéro avec code pays (ex. : `+33612345678`).  
+     - **Préfixe du Bot** : Symbole pour les commandes (ex. : `/`).  
+     - **Nom du Bot** : Nom affiché sur WhatsApp (ex. : `Nazuninha`).  
+     - **Mise à Jour Auto** : `Oui` pour les mises à jour automatiques ou `Non` pour manuelles.  
+   - Specs minimales : 512 Mo RAM et 512 Mo stockage (1 Go RAM et 2 Go stockage recommandés).
+
+3. **Démarrer le Serveur**  
+   - Cliquez sur **Démarrer** dans le panneau.  
+   - L’egg clone automatiquement le dépôt (`https://github.com/hiudyy/nazuninha-bot.git`) et installe les dépendances.  
+   - Connectez-vous à WhatsApp avec un QR code ou un code de jumelage (via console ou VNC).
+
+4. **Maintenir en Ligne**  
+   - Pterodactyl le fait tourner 24/7.  
+   - Pour les mises à jour manuelles, exécutez :  
+     ```bash
+     npm run update
+     ```
+
+**Option 2 : Egg Node.js Générique**
+
+1. **Créer le Serveur**  
+   - Créez un serveur avec l’egg **Node.js** standard.  
+   - Définissez **Commande de Démarrage** sur : `npm start`.  
+   - Specs minimales : 512 Mo RAM et 512 Mo stockage (1 Go RAM et 2 Go stockage recommandés).
+
+2. **Cloner le Dépôt**  
+   - Dans la console Pterodactyl :  
+     ```bash
+     git clone https://github.com/hiudyy/nazuninha-bot.git
+     cd nazuninha-bot
+     ```
+
+3. **Installer les Dépendances**  
+   - Exécutez :  
+     ```bash
+     npm run config
+     npm run config:install
+     ```
+
+4. **Démarrer le Bot**  
+   - Démarrez le serveur dans le panneau.  
+   - Connectez-vous à WhatsApp avec un QR code ou un code de jumelage.
+
+5. **Mises à Jour**  
+   - Mettez à jour manuellement :  
+     ```bash
+     npm run update
+     ```
+
+> 💡 **Astuce** : L’egg officiel automatise tout, c’est plus simple !
+
+---
+
+#### ❓ **Résolution des Problèmes**
+
+Des soucis ? Solutions pour les problèmes courants :
+
+| **Problème**                     | **Solution**                                                               |
+|----------------------------------|---------------------------------------------------------------------------|
+| **“Commande introuvable”**       | Installez Git/Node.js (`pkg install git nodejs` sur Termux).              |
+| **QR Code ne fonctionne pas**    | Mettez à jour WhatsApp, générez un nouveau QR avec `npm start`, ou vérifiez internet. |
+| **Bot se déconnecte**            | Relancez avec `npm start`, supprimez le dossier `sessions`, ou changez de numéro. |
+| **Erreurs d’installation**       | Exécutez `npm install`, vérifiez Node.js 18+ (`node -v`), ou mettez à jour les paquets. |
+| **Termux s’arrête**              | Gardez le téléphone allumé et relancez avec `cd /sdcard/nazuninha-bot && npm start`. |
+
+> 😊 **Toujours Bloqué ?** Rejoignez notre [Canal WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b) pour de l’aide !
+
+---
+
+#### 💖 **Soutenir le Projet**
+
+Développer **Nazuninha Bot** demande beaucoup de travail. Votre soutien est précieux :
+
+- **🌍 Global (Patreon)**  
+  [![Soutenir sur Patreon](https://img.shields.io/badge/Soutenir-Patreon-orange?style=flat-square&logo=patreon)](https://patreon.com/hiudyy)  
+  *Contribuez mensuellement pour maintenir le projet.*
+
+- **🇧🇷 Brésil (Pix)**  
+  **Clé Pix (Email)** : `lua.bot@hotmail.com`  
+  *Tout montant aide énormément.*
+
+> ❤️ **Merci !** Chaque contribution alimente de nouvelles fonctionnalités et améliorations !
+
+---
+
+#### 📜 **Licence**
+
+© 2025 **Hiudy**. Tous droits réservés.
+
+**Nazuninha Bot** est **protégé par des droits d'auteur**. Ne supprimez pas les crédits, ne vendez pas et ne distribuez pas de versions modifiées sans autorisation. Les violations peuvent entraîner des actions légales.
+
+---
+
+#### 👤 **À Propos du Créateur**
+
+Créé avec ❤️ par [**Hiudy**](https://github.com/hiudyy), un développeur passionné par rendre la technologie amusante et accessible. Il travaille toujours sur de nouveaux projets et améliore Nazuninha Bot pour la communauté.
+
+**Stats de Hiudy** :
+
+| Icône | Badge | Description |
+|-------|-------|-------------|
+| 👥 | ![Abonnés](https://img.shields.io/github/followers/hiudyy?color=blue&style=flat-square) | **Abonnés** : Nombre de personnes suivant Hiudy sur GitHub. |
+| 📝 | ![Contributions](https://img.shields.io/github/commit-activity/y/hiudyy?color=purple&style=flat-square) | **Contributions** : Activité annuelle de Hiudy sur tous les projets. |
+| 📚 | ![Dépôts](https://img.shields.io/github/repos/hiudyy?color=green&style=flat-square) | **Dépôts** : Total des projets publics de Hiudy. |
+| 💬 | ![Discord](https://img.shields.io/badge/Discord-hiudyyy-7289DA?style=flat-square&logo=discord) | **Discord** : Connectez-vous avec Hiudy sur Discord. |
+| 📷 | ![Instagram](https://img.shields.io/badge/Instagram-hiudyyy_-E4405F?style=flat-square&logo=instagram) | **Instagram** : Suivez Hiudy sur Insta pour les nouveautés. |
+
+**Bio** :  
+Hiudy est un passionné de technologie qui adore créer des solutions pratiques et amusantes. En plus de Nazuninha Bot, il contribue à des projets open-source et aime échanger avec la communauté. Suivez-le sur les réseaux pour découvrir ses prochains projets !
+
+- 📍 **GitHub** : [hiudyy](https://github.com/hiudyy)
+- 💬 **Discord** : [hiudyyy](https://discord.com/users/hiudyyy)
+- 📷 **Instagram** : [hiudyyy_](https://instagram.com/hiudyyy_)
+
+> 🌟 **Vous Aimez ?** Mettez une étoile sur GitHub et partagez avec vos amis !
+
+---
+
+#### ❔ **FAQ Avancé**
+
+| **Question**                             | **Réponse**                                                                |
+|-----------------------------------------|---------------------------------------------------------------------------|
+| **Puis-je utiliser mon numéro principal ?** | Non recommandé. Utilisez un numéro secondaire pour éviter les risques de ban. |
+| **Le bot fonctionne hors ligne ?**       | Non, il nécessite une connexion internet pour WhatsApp.                   |
+| **Comment personnaliser les commandes ?**| Modifiez `config.json` après installation (voir docs).                    |
+| **Et si mon serveur Pterodactyl plante ?** | Redémarrez le serveur et vérifiez les logs dans la console Pterodactyl.   |
+
+> 💡 **Plus de Questions ?** Posez-les sur notre [Canal WhatsApp](https://whatsapp.com/channel/0029Vb6Ezk6LI8YXPgZPUJ2b) !
+
+</details>
