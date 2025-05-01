@@ -463,7 +463,7 @@ Hiudy é um entusiasta de tech que curte criar soluções práticas e com aquele
 
 ---
 
-## 🇺�_unregister_globals **English**
+## 🇺🇸 **English**
 
 <details>
 <summary>💻 Click to Expand English Instructions</summary>
