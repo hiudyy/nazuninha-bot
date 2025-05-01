@@ -170,8 +170,6 @@ O **Nazuninha Bot** usa o **modo multi-dispositivos** do WhatsApp, então o celu
      2. Clique em **Conectar um Aparelho**.  
      3. Escaneie o QR code com a câmera.  
    - Conectado na moral!  
-   *Exemplo*:  
-   ![QR Code Exemplo](https://raw.githubusercontent.com/hiudyy/nazuninha-bot/main/assets/qr-example.png)
 
 2. **Código de Pareamento**  
    - Perfeito pra dispositivos sem câmera.  
@@ -618,8 +616,6 @@ It’ll guide you to connect to WhatsApp (next section).
      2. Tap **Link a Device**.  
      3. Scan the QR code with your camera.  
    - Boom, connected!  
-   *Example*:  
-   ![QR Code Example](https://raw.githubusercontent.com/hiudyy/nazuninha-bot/main/assets/qr-example.png)
 
 2. **Pairing Code**  
    - Great for devices without a camera.  
@@ -1066,8 +1062,6 @@ Te guiará para conectar a WhatsApp (siguiente sección).
      2. Toca **Vincular un Dispositivo**.  
      3. Escanea el código QR con la cámara.  
    - ¡Conectado!  
-   *Ejemplo*:  
-   ![Ejemplo de Código QR](https://raw.githubusercontent.com/hiudyy/nazuninha-bot/main/assets/qr-example.png)
 
 2. **Código de Vinculación**  
    - Ideal para dispositivos sin cámara.  
@@ -1514,8 +1508,6 @@ Ini akan memandu Anda untuk menghubungkan ke WhatsApp (bagian berikutnya).
      2. Ketuk **Tautkan Perangkat**.  
      3. Pindai kode QR dengan kamera.  
    - Selesai, tersambung!  
-   *Contoh*:  
-   ![Contoh Kode QR](https://raw.githubusercontent.com/hiudyy/nazuninha-bot/main/assets/qr-example.png)
 
 2. **Kode Pasangan**  
    - Cocok untuk perangkat tanpa kamera.  
@@ -1962,8 +1954,6 @@ Il vous guidera pour vous connecter à WhatsApp (section suivante).
      2. Appuyez sur **Connecter un Appareil**.  
      3. Scannez le QR code avec l’appareil photo.  
    - Connecté !  
-   *Exemple* :  
-   ![Exemple de QR Code](https://raw.githubusercontent.com/hiudyy/nazuninha-bot/main/assets/qr-example.png)
 
 2. **Code de Jumelage**  
    - Parfait pour les appareils sans caméra.  
