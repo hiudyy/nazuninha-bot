@@ -7,11 +7,11 @@
 
 Clique no idioma para expandir as instruções completas e personalizadas:
 
-- 🇺🇸 [English](#english)
-- 🇧🇷 [Português (Brasil)](#portugues-brasil)
-- 🇪🇸 [Español](#espanol)
-- 🇮🇩 [Bahasa Indonesia](#bahasa-indonesia)
-- 🇫🇷 [Français](#francais)
+- 🇺🇸 [English](#-english)
+- 🇧🇷 [Português (Brasil)](#-portugues-brasil)
+- 🇪🇸 [Español](#-espanol)
+- 🇮🇩 [Bahasa Indonesia](#-bahasa-indonesia)
+- 🇫🇷 [Français](#-francais)
 
 ---
 
@@ -74,22 +74,22 @@ O **Nazuninha Bot** é um bot foda pro WhatsApp, feito com **Node.js** e **Baile
 
 ### 📜 **Índice**
 
-1. [🚀 Primeiros Passos](#primeiros-passos)
-2. [📋 Pré-requisitos](#pré-requisitos)
-3. [📥 Instalação](#instalação)
-4. [🚀 Rodando o Bot](#rodando-o-bot)
-5. [🔌 Conectando ao WhatsApp](#conectando-ao-whatsapp)
-6. [🔄 Atualizando o Bot](#atualizando-o-bot)
-7. [💻 Tutoriais por Plataforma](#tutoriais-por-plataforma)
-   - [🖥️ Windows](#windows)
-   - [🐧 Linux](#linux)
-   - [📱 Termux (Android)](#termux-android)
-   - [☁️ Pterodactyl](#pterodactyl)
-8. [❓ Resolvendo Problemas](#resolvendo-problemas)
-9. [💖 Apoie o Projeto](#apoie-o-projeto)
-10. [📜 Licença](#licença)
-11. [👤 Sobre o Criador](#sobre-o-criador)
-12. [❔ FAQ Avançado](#faq-avançado)
+1. [🚀 Primeiros Passos](#-primeiros-passos)
+2. [📋 Pré-requisitos](#-pré-requisitos)
+3. [📥 Instalação](#-instalação)
+4. [🚀 Rodando o Bot](#-rodando-o-bot)
+5. [🔌 Conectando ao WhatsApp](#-conectando-ao-whatsapp)
+6. [🔄 Atualizando o Bot](#-atualizando-o-bot)
+7. [💻 Tutoriais por Plataforma](#-tutoriais-por-plataforma)
+   - [🖥️ Windows](#-windows)
+   - [🐧 Linux](#-linux)
+   - [📱 Termux (Android)](#-termux-android)
+   - [☁️ Pterodactyl](#-pterodactyl)
+8. [❓ Resolvendo Problemas](#-resolvendo-problemas)
+9. [💖 Apoie o Projeto](#-apoie-o-projeto)
+10. [📜 Licença](#-licença)
+11. [👤 Sobre o Criador](#-sobre-o-criador)
+12. [❔ FAQ Avançado](#-faq-avançado)
 
 ---
 
@@ -97,7 +97,7 @@ O **Nazuninha Bot** é um bot foda pro WhatsApp, feito com **Node.js** e **Baile
 
 Novo no **Nazuninha Bot**? Comece com esses passos simples:
 
-1. **Prepare o ambiente**: Instale Node.js e Git (veja [Pré-requisitos](#pré-requisitos)).
+1. **Prepare o ambiente**: Instale Node.js e Git (veja [Pré-requisitos](#-pré-requisitos)).
 2. **Baixe o bot**: Clone o repositório do GitHub.
 3. **Conecte ao WhatsApp**: Use um número secundário pra evitar riscos.
 4. **Explore os comandos**: Digite `/menu` no WhatsApp pra ver o que o bot faz.
@@ -433,8 +433,7 @@ Feito com ❤️ por [**Hiudy**](https://github.com/hiudyy), um dev apaixonado p
 | Ícone | Badge | Descrição |
 |-------|-------|-----------|
 | 👥 | ![Seguidores](https://img.shields.io/github/followers/hiudyy?color=blue&style=flat-square) | **Seguidores**: Quantas pessoas acompanham o Hiudy no GitHub. |
-| 📝 | ![Contribuições](https://img.shields.io/github/commit-activity/y/hiudyy?color=purple&style=flat-square) | **Contribuições**: Atividade anual do Hiudy em todos os projetos. |
-| 📚 | ![Repositórios](https://img.shields.io/github/repos/hiudyy?color=green&style=flat-square) | **Repositórios**: Total de projetos públicos do Hiudy. |
+| 📝 | ![Contribuições](https://img.shields.io/github/commit-activity/y/hiudyy/nazuninha-bot) | **Contribuições**: Atividade anual do Hiudy em todos os projetos. |
 | 💬 | ![Discord](https://img.shields.io/badge/Discord-hiudyyy-7289DA?style=flat-square&logo=discord) | **Discord**: Conecte-se com o Hiudy no Discord. |
 | 📷 | ![Instagram](https://img.shields.io/badge/Instagram-hiudyyy_-E4405F?style=flat-square&logo=instagram) | **Instagram**: Siga o Hiudy no Insta pra novidades. |
 
@@ -523,22 +522,22 @@ Stay in the loop with news, exclusive tips, and updates!
 
 ### 📜 **Table of Contents**
 
-1. [🚀 Getting Started](#getting-started)
-2. [📋 Prerequisites](#prerequisites)
-3. [📥 Installation](#installation)
-4. [🚀 Running the Bot](#running-the-bot)
-5. [🔌 Connecting to WhatsApp](#connecting-to-whatsapp)
-6. [🔄 Updating the Bot](#updating-the-bot)
-7. [💻 Platform Tutorials](#platform-tutorials)
-   - [🖥️ Windows](#windows)
-   - [🐧 Linux](#linux)
-   - [📱 Termux (Android)](#termux-android)
-   - [☁️ Pterodactyl](#pterodactyl)
-8. [❓ Troubleshooting](#troubleshooting)
-9. [💖 Support the Project](#support-the-project)
-10. [📜 License](#license)
-11. [👤 About the Creator](#about-the-creator)
-12. [❔ Advanced FAQ](#advanced-faq)
+1. [🚀 Getting Started](#-getting-started)
+2. [📋 Prerequisites](#-prerequisites)
+3. [📥 Installation](#-installation)
+4. [🚀 Running the Bot](#-running-the-bot)
+5. [🔌 Connecting to WhatsApp](#-connecting-to-whatsapp)
+6. [🔄 Updating the Bot](#-updating-the-bot)
+7. [💻 Platform Tutorials](#-platform-tutorials)
+   - [🖥️ Windows](#-windows)
+   - [🐧 Linux](#-linux)
+   - [📱 Termux (Android)](#-termux-android)
+   - [☁️ Pterodactyl](#-pterodactyl)
+8. [❓ Troubleshooting](#-troubleshooting)
+9. [💖 Support the Project](#-support-the-project)
+10. [📜 License](#-license)
+11. [👤 About the Creator](#-about-the-creator)
+12. [❔ Advanced FAQ](#-advanced-faq)
 
 ---
 
@@ -546,7 +545,7 @@ Stay in the loop with news, exclusive tips, and updates!
 
 New to **Nazuninha Bot**? Start with these simple steps:
 
-1. **Set up your environment**: Install Node.js and Git (see [Prerequisites](#prerequisites)).
+1. **Set up your environment**: Install Node.js and Git (see [Prerequisites](#-prerequisites)).
 2. **Download the bot**: Clone the GitHub repository.
 3. **Connect to WhatsApp**: Use a secondary number to avoid risks.
 4. **Explore commands**: Type `/menu` in WhatsApp to see what the bot can do.
@@ -882,8 +881,7 @@ Built with ❤️ by [**Hiudy**](https://github.com/hiudyy), a dev passionate ab
 | Icon | Badge | Description |
 |------|-------|-------------|
 | 👥 | ![Followers](https://img.shields.io/github/followers/hiudyy?color=blue&style=flat-square) | **Followers**: Number of people following Hiudy on GitHub. |
-| 📝 | ![Contributions](https://img.shields.io/github/commit-activity/y/hiudyy?color=purple&style=flat-square) | **Contributions**: Hiudy’s yearly activity across projects. |
-| 📚 | ![Repositories](https://img.shields.io/github/repos/hiudyy?color=green&style=flat-square) | **Repositories**: Total public projects by Hiudy. |
+| 📝 | ![Contributions](https://img.shields.io/github/commit-activity/y/hiudyy/nazuninha-bot) | **Contributions**: Hiudy’s yearly activity across projects. |
 | 💬 | ![Discord](https://img.shields.io/badge/Discord-hiudyyy-7289DA?style=flat-square&logo=discord) | **Discord**: Connect with Hiudy on Discord. |
 | 📷 | ![Instagram](https://img.shields.io/badge/Instagram-hiudyyy_-E4405F?style=flat-square&logo=instagram) | **Instagram**: Follow Hiudy on Insta for updates. |
 
@@ -972,22 +970,22 @@ Métricas en tiempo real del **Nazuninha Bot**, con lo que significa cada una:
 
 ### 📜 **Índice**
 
-1. [🚀 Primeros Pasos](#primeros-pasos)
-2. [📋 Requisitos Previos](#requisitos-previos)
-3. [📥 Instalación](#instalación)
-4. [🚀 Ejecutando el Bot](#ejecutando-el-bot)
-5. [🔌 Conectando a WhatsApp](#conectando-a-whatsapp)
-6. [🔄 Actualizando el Bot](#actualizando-el-bot)
-7. [💻 Tutoriales por Plataforma](#tutoriales-por-plataforma)
-   - [🖥️ Windows](#windows)
-   - [🐧 Linux](#linux)
-   - [📱 Termux (Android)](#termux-android)
-   - [☁️ Pterodactyl](#pterodactyl)
-8. [❓ Solución de Problemas](#solución-de-problemas)
-9. [💖 Apoyar el Proyecto](#apoyar-el-proyecto)
-10. [📜 Licencia](#licencia)
-11. [👤 Sobre el Creador](#sobre-el-creador)
-12. [❔ FAQ Avanzado](#faq-avanzado)
+1. [🚀 Primeros Pasos](#-primeros-pasos)
+2. [📋 Requisitos Previos](#-requisitos-previos)
+3. [📥 Instalación](#-instalación)
+4. [🚀 Ejecutando el Bot](#-ejecutando-el-bot)
+5. [🔌 Conectando a WhatsApp](#-conectando-a-whatsapp)
+6. [🔄 Actualizando el Bot](#-actualizando-el-bot)
+7. [💻 Tutoriales por Plataforma](#-tutoriales-por-plataforma)
+   - [🖥️ Windows](#-windows)
+   - [🐧 Linux](#-linux)
+   - [📱 Termux (Android)](#-termux-android)
+   - [☁️ Pterodactyl](#-pterodactyl)
+8. [❓ Solución de Problemas](#-solución-de-problemas)
+9. [💖 Apoyar el Proyecto](#-apoyar-el-proyecto)
+10. [📜 Licencia](#-licencia)
+11. [👤 Sobre el Creador](#-sobre-el-creador)
+12. [❔ FAQ Avanzado](#-faq-avanzado)
 
 ---
 
@@ -995,7 +993,7 @@ Métricas en tiempo real del **Nazuninha Bot**, con lo que significa cada una:
 
 ¿Nuevo en **Nazuninha Bot**? Empieza con estos pasos simples:
 
-1. **Prepara tu entorno**: Instala Node.js y Git (ver [Requisitos Previos](#requisitos-previos)).
+1. **Prepara tu entorno**: Instala Node.js y Git (ver [Requisitos Previos](#-requisitos-previos)).
 2. **Descarga el bot**: Clona el repositorio de GitHub.
 3. **Conecta a WhatsApp**: Usa un número secundario para evitar riesgos.
 4. **Explora comandos**: Escribe `/menu` en WhatsApp para ver qué hace el bot.
@@ -1331,8 +1329,7 @@ Creado con ❤️ por [**Hiudy**](https://github.com/hiudyy), un dev apasionado 
 | Icono | Insignia | Descripción |
 |-------|----------|-------------|
 | 👥 | ![Seguidores](https://img.shields.io/github/followers/hiudyy?color=blue&style=flat-square) | **Seguidores**: Personas que siguen a Hiudy en GitHub. |
-| 📝 | ![Contribuciones](https://img.shields.io/github/commit-activity/y/hiudyy?color=purple&style=flat-square) | **Contribuciones**: Actividad anual de Hiudy en proyectos. |
-| 📚 | ![Repositorios](https://img.shields.io/github/repos/hiudyy?color=green&style=flat-square) | **Repositorios**: Total de proyectos públicos de Hiudy. |
+| 📝 | ![Contribuciones](https://img.shields.io/github/commit-activity/y/hiudyy/nazuninha-bot) | **Contribuciones**: Actividad anual de Hiudy en proyectos. |
 | 💬 | ![Discord](https://img.shields.io/badge/Discord-hiudyyy-7289DA?style=flat-square&logo=discord) | **Discord**: Conecta con Hiudy en Discord. |
 | 📷 | ![Instagram](https://img.shields.io/badge/Instagram-hiudyyy_-E4405F?style=flat-square&logo=instagram) | **Instagram**: Sigue a Hiudy en Insta para novedades. |
 
@@ -1421,22 +1418,22 @@ Tetap update dengan berita, tips eksklusif, dan pembaruan!
 
 ### 📜 **Daftar Isi**
 
-1. [🚀 Memulai](#memulai)
-2. [📋 Prasyarat](#prasyarat)
-3. [📥 Instalasi](#instalasi)
-4. [🚀 Menjalankan Bot](#menjalankan-bot)
-5. [🔌 Menghubungkan ke WhatsApp](#menghubungkan-ke-whatsapp)
-6. [🔄 Memperbarui Bot](#memperbarui-bot)
-7. [💻 Tutorial per Platform](#tutorial-per-platform)
-   - [🖥️ Windows](#windows)
-   - [🐧 Linux](#linux)
-   - [📱 Termux (Android)](#termux-android)
-   - [☁️ Pterodactyl](#pterodactyl)
-8. [❓ Pemecahan Masalah](#pemecahan-masalah)
-9. [💖 Dukung Proyek](#dukung-proyek)
-10. [📜 Lisensi](#lisensi)
-11. [👤 Tentang Pembuat](#tentang-pembuat)
-12. [❔ FAQ Lanjutan](#faq-lanjutan)
+1. [🚀 Memulai](#-memulai)
+2. [📋 Prasyarat](#-prasyarat)
+3. [📥 Instalasi](#-instalasi)
+4. [🚀 Menjalankan Bot](#-menjalankan-bot)
+5. [🔌 Menghubungkan ke WhatsApp](#-menghubungkan-ke-whatsapp)
+6. [🔄 Memperbarui Bot](#-memperbarui-bot)
+7. [💻 Tutorial per Platform](#-tutorial-per-platform)
+   - [🖥️ Windows](#-windows)
+   - [🐧 Linux](#-linux)
+   - [📱 Termux (Android)](#-termux-android)
+   - [☁️ Pterodactyl](#-pterodactyl)
+8. [❓ Pemecahan Masalah](#-pemecahan-masalah)
+9. [💖 Dukung Proyek](#-dukung-proyek)
+10. [📜 Lisensi](#-lisensi)
+11. [👤 Tentang Pembuat](#-tentang-pembuat)
+12. [❔ FAQ Lanjutan](#-faq-lanjutan)
 
 ---
 
@@ -1444,7 +1441,7 @@ Tetap update dengan berita, tips eksklusif, dan pembaruan!
 
 Baru dengan **Nazuninha Bot**? Mulai dengan langkah sederhana ini:
 
-1. **Siapkan lingkungan**: Instal Node.js dan Git (lihat [Prasyarat](#prasyarat)).
+1. **Siapkan lingkungan**: Instal Node.js dan Git (lihat [Prasyarat](#-prasyarat)).
 2. **Unduh bot**: Klon repositori GitHub.
 3. **Hubungkan ke WhatsApp**: Gunakan nomor sekunder untuk menghindari risiko.
 4. **Jelajahi perintah**: Ketik `/menu` di WhatsApp untuk melihat kemampuan bot.
@@ -1780,8 +1777,7 @@ Dibuat dengan ❤️ oleh [**Hiudy**](https://github.com/hiudyy), seorang pengem
 | Ikon | Lencana | Deskripsi |
 |------|---------|-----------|
 | 👥 | ![Pengikut](https://img.shields.io/github/followers/hiudyy?color=blue&style=flat-square) | **Pengikut**: Jumlah orang yang mengikuti Hiudy di GitHub. |
-| 📝 | ![Kontribusi](https://img.shields.io/github/commit-activity/y/hiudyy?color=purple&style=flat-square) | **Kontribusi**: Aktivitas tahunan Hiudy di semua proyek. |
-| 📚 | ![Repositori](https://img.shields.io/github/repos/hiudyy?color=green&style=flat-square) | **Repositori**: Total proyek publik Hiudy. |
+| 📝 | ![Kontribusi](https://img.shields.io/github/commit-activity/y/hiudyy/nazuninha-bot) | **Kontribusi**: Aktivitas tahunan Hiudy di semua proyek. |
 | 💬 | ![Discord](https://img.shields.io/badge/Discord-hiudyyy-7289DA?style=flat-square&logo=discord) | **Discord**: Terhubung dengan Hiudy di Discord. |
 | 📷 | ![Instagram](https://img.shields.io/badge/Instagram-hiudyyy_-E4405F?style=flat-square&logo=instagram) | **Instagram**: Ikuti Hiudy di Instagram untuk update. |
 
@@ -1870,22 +1866,22 @@ Restez informé des nouveautés, astuces exclusives et mises à jour !
 
 ### 📜 **Tableau des Matières**
 
-1. [🚀 Premiers Pas](#premiers-pas)
-2. [📋 Prérequis](#prérequis)
-3. [📥 Installation](#installation)
-4. [🚀 Lancer le Bot](#lancer-le-bot)
-5. [🔌 Connexion à WhatsApp](#connexion-à-whatsapp)
-6. [🔄 Mise à Jour du Bot](#mise-à-jour-du-bot)
-7. [💻 Tutoriels par Plateforme](#tutoriels-par-plateforme)
-   - [🖥️ Windows](#windows)
-   - [🐧 Linux](#linux)
-   - [📱 Termux (Android)](#termux-android)
-   - [☁️ Pterodactyl](#pterodactyl)
-8. [❓ Résolution des Problèmes](#résolution-des-problèmes)
-9. [💖 Soutenir le Projet](#soutenir-le-projet)
-10. [📜 Licence](#licence)
-11. [👤 À Propos du Créateur](#à-propos-du-créateur)
-12. [❔ FAQ Avancé](#faq-avancé)
+1. [🚀 Premiers Pas](#-premiers-pas)
+2. [📋 Prérequis](#-prérequis)
+3. [📥 Installation](#-installation)
+4. [🚀 Lancer le Bot](#-lancer-le-bot)
+5. [🔌 Connexion à WhatsApp](#-connexion-à-whatsapp)
+6. [🔄 Mise à Jour du Bot](#-mise-à-jour-du-bot)
+7. [💻 Tutoriels par Plateforme](#-tutoriels-par-plateforme)
+   - [🖥️ Windows](#-windows)
+   - [🐧 Linux](#-linux)
+   - [📱 Termux (Android)](#-termux-android)
+   - [☁️ Pterodactyl](#-pterodactyl)
+8. [❓ Résolution des Problèmes](#-résolution-des-problèmes)
+9. [💖 Soutenir le Projet](#-soutenir-le-projet)
+10. [📜 Licence](#-licence)
+11. [👤 À Propos du Créateur](#-à-propos-du-créateur)
+12. [❔ FAQ Avancé](#-faq-avancé)
 
 ---
 
@@ -1893,7 +1889,7 @@ Restez informé des nouveautés, astuces exclusives et mises à jour !
 
 Nouveau sur **Nazuninha Bot** ? Commencez par ces étapes simples :
 
-1. **Préparez l’environnement** : Installez Node.js et Git (voir [Prérequis](#prérequis)).
+1. **Préparez l’environnement** : Installez Node.js et Git (voir [Prérequis](#-prérequis)).
 2. **Téléchargez le bot** : Clonez le dépôt GitHub.
 3. **Connectez-vous à WhatsApp** : Utilisez un numéro secondaire pour éviter les risques.
 4. **Explorez les commandes** : Tapez `/menu` sur WhatsApp pour voir ce que fait le bot.
@@ -2229,8 +2225,7 @@ Créé avec ❤️ par [**Hiudy**](https://github.com/hiudyy), un développeur p
 | Icône | Badge | Description |
 |-------|-------|-------------|
 | 👥 | ![Abonnés](https://img.shields.io/github/followers/hiudyy?color=blue&style=flat-square) | **Abonnés** : Nombre de personnes suivant Hiudy sur GitHub. |
-| 📝 | ![Contributions](https://img.shields.io/github/commit-activity/y/hiudyy?color=purple&style=flat-square) | **Contributions** : Activité annuelle de Hiudy sur tous les projets. |
-| 📚 | ![Dépôts](https://img.shields.io/github/repos/hiudyy?color=green&style=flat-square) | **Dépôts** : Total des projets publics de Hiudy. |
+| 📝 | ![Contributions](https://img.shields.io/github/commit-activity/y/hiudyy/nazuninha-bot) | **Contributions** : Activité annuelle de Hiudy sur tous les projets. |
 | 💬 | ![Discord](https://img.shields.io/badge/Discord-hiudyyy-7289DA?style=flat-square&logo=discord) | **Discord** : Connectez-vous avec Hiudy sur Discord. |
 | 📷 | ![Instagram](https://img.shields.io/badge/Instagram-hiudyyy_-E4405F?style=flat-square&logo=instagram) | **Instagram** : Suivez Hiudy sur Insta pour les nouveautés. |
 
