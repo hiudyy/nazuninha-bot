@@ -63,7 +63,7 @@ let SOCKET = null;
   Função principal de inicialização
 ══════════════════════════════════════════════*/
 async function startBot() {
-  const authDir = path.resolve('database/qr-code', 'default');
+  const authDir = path.join(__dirname, '..', 'database/qr-code', 'default');
   fs.mkdirSync(authDir, { recursive: true });
 
   const { state, saveCreds } = await useMultiFileAuthState(authDir);
