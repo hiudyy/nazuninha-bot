@@ -24,7 +24,7 @@ const fsp = require('fs/promises');
 const path = require('path');
 
 /*── Configurações ──*/
-const settingsPath = path.join(process.cwd(), 'config.json');
+const settingsPath = path.join(__dirname, 'config.json');
 const settings = JSON.parse(fs.readFileSync(settingsPath));
 const templateName = settings.template || 'nazu-default';
 const texts = require(path.join(__dirname, `templates/${templateName}/texts/connect.js`));
