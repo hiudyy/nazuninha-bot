@@ -322,16 +322,7 @@ if (isCmd && globalBlocks.commands && globalBlocks.commands[command]) {
       "cognimai"
     ];
     if (!q) {
-      let ajuda = `🖼️ *GERADOR DE IMAGENS* 🖼️\n\n`;
-      ajuda += `⚠️ Use: *${prefix}imagine modelo/prompt*\n\n`;
-      ajuda += `📝 *Modelos disponíveis:*\n`;
-      ajuda += `• realism (Padrão)\n`;
-      ajuda += `• anime\n`;
-      ajuda += `• 3d\n`;
-      ajuda += `• cablyai\n`;
-      ajuda += `• turbo\n`;
-      ajuda += `• pro\n\n`;
-      ajuda += `Exemplo: *${prefix}imagine anime/gato samurai*`;
+      let ajuda = `🖼️ *GERADOR DE IMAGENS* 🖼️\n\n`+`⚠️ Use: *${prefix}imagine modelo/prompt*\n\n`+`📝 *Modelos disponíveis:*\n`+`• realism (Padrão)\n`+`• anime\n`+`• 3d\n`+`• cablyai\n`+`• turbo\n`+`• pro\n\n`+`Exemplo: *${prefix}imagine anime/gato samurai*`;
       return reply(ajuda);
     };
     nazu.react('🔄');
@@ -344,10 +335,7 @@ if (isCmd && globalBlocks.commands && globalBlocks.commands[command]) {
     for (const model of modelosParaTestar) {
       try {
         const url = `https://api.cognima.com.br/api/ia/image/generate?key=CognimaTeamFreeKey&prompt=${encodeURIComponent(prompt)}&model_name=${model}`;
-        await nazu.sendMessage(from, {
-          image: { url },
-          caption: `🎨 Modelo: ${model.replace('cognimai-', '') || 'padrão'}\n📌 Prompt: ${prompt}`
-        });
+        await nazu.sendMessage(from, { image: { url }, caption: `🎨 Modelo: ${model.replace('cognimai-', '') || 'padrão'}\n📌 Prompt: ${prompt}`});
         nazu.react('✅');
         return;
       } catch (e) {
