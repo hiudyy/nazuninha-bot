@@ -230,9 +230,6 @@ async function handleConnection({ connection, lastDisconnect }, sock, authDir) {
       DisconnectReason.multideviceMismatch,
       401, 440
     ];
-    if (invalid.includes(code)) {
-      await fsp.rm(authDir, { recursive: true, force: true });
-    }
 
     await sock.end();
     console.log(random(texts.reconnecting));
