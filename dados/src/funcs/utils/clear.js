@@ -215,7 +215,7 @@ const setupCleanupIntervals = () => {
 };
 
 // Inicia monitoramento
-setupCleanupIntervals();
-console.log('Sistema de limpeza automática iniciado.');
+//setupCleanupIntervals();
+//console.log('Sistema de limpeza automática iniciado.');
 
 module.exports = clearMemory;
